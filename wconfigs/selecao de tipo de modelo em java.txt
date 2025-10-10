@@ -1,0 +1,8 @@
+Por enquanto, o seletor só exibe a escolha do usuário.
+Mais tarde você pode integrar no script.js algo como:
+
+document.getElementById("model-type").addEventListener("change", function() {
+  const tipo = this.value;
+  console.log("Usuário escolheu:", tipo);
+  // Aqui futuramente pode filtrar os modelos por tipo
+});

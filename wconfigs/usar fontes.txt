@@ -1,0 +1,2 @@
+para usar qualquer fonte no vscode, precisa baixar e instalar essa fonte no pc
+primeiramente, logo depois no CSS do vsdoce colocar o link da fonte que tem no google fontes, no topo do cogido.
