@@ -76,7 +76,7 @@ main {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .search-bar {
@@ -175,14 +175,13 @@ main {
   list-style: none;
 }
 
-.main-nav a {  /* ================= Texto do rodapé ================= */
+.main-nav a {  /* ================= Texto do cabeçalho ================= */
   color: #fff;
   font-family: "Playfair Display", Alan Sans;
   text-decoration: none;
-  font-weight: 1500;
-  font-size: 120%;
+  font-weight: 700;
+  font-size: 1.1em;
   transition: color 0.3s;
- 
 }
 
 .main-nav a:hover {
@@ -222,7 +221,7 @@ main {
   background: #a30b24;
 }
 
-/* ================= Hamburger ================= */
+/* ================= Hamburger menu mobile ================= */
 .hamburger {
   display: none;
   flex-direction: column; justify-content: space-around;
@@ -234,7 +233,7 @@ main {
 }
 .hamburger { display: none; }
 .nav-mobile { display: none; }
-/* Menu Mobile */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -302,13 +301,16 @@ main { padding: 18px 24px; }
 /* Responsividade cabeçalho*/
 @media (max-width: 900px) {
   .nav-desktop { display: none; }
-  .hamburger { display: flex; }
+  .header-actions{justify-content:center}
+  .hamburger { display: none; }
 }
 
 @media (max-width: 600px) {
   .site-title { font-size: 22px; }
   .logo { height: 40px; width: 40px; }
+  .header-actions{justify-content:center}
 }
+
 /* ================= Carrossel de Modelos ================= */
 .models {
   margin-top: 60px;
@@ -866,11 +868,17 @@ main { padding: 18px 24px; }
   font-family: "Playfair Display", Alan Sans;
 }
 
-/* ======== Responsivo ROPAPÉ ======== */
+/* ======== Responsivo ROPAPÉ / cabeçalho ======== */
 @media (max-width: 900px) {
   .top-bar {
+    .header-actions{justify-content:center}
     flex-direction: column;
     gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    .model-select { width: 100%; margin-bottom: 10px;}
+    .header-actions {justify-content: center;}
+  
   }
 
   .search-bar {
@@ -891,7 +899,7 @@ main { padding: 18px 24px; }
 
 /* ================= Responsividade ================= */
 @media (max-width:900px){
-  .hamburger{display:flex;}
+  .hamburger{display:none;}
   .grid { grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); }
   #map { width:90%; height:350px; }
   .large-img { height:300px; margin-bottom:12px; }
