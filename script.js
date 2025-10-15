@@ -166,20 +166,44 @@ data.forEach(p => {
 });
 
 
-
-
-// ======== Controles do Carrossel de Shorts ========
+/* ================= Navegação do Carrossel de SHORTS (NOVO CÓDIGO) ================= */
 const shortsCarousel = document.querySelector('.shorts-carousel');
-const shortsPrevBtn = document.querySelector('.carousel-btn.prev');
-const shortsNextBtn = document.querySelector('.carousel-btn.next');
+//  as variáveis novas shortsPrev e shortsNext para evitar conflito
+const shortsPrev = document.querySelector('.shorts-carousel-container .prev');
+const shortsNext = document.querySelector('.shorts-carousel-container .next');
 
-if (shortsCarousel && shortsPrevBtn && shortsNextBtn) {
-  shortsPrevBtn.addEventListener('click', () => {
-    shortsCarousel.scrollBy({ left: -300, behavior: 'smooth' });
-  });
+if (shortsCarousel && shortsPrev && shortsNext) {
+    
+    // Calcula o valor da rolagem (largura do card + gap de 20px)
+    const cardElement = shortsCarousel.querySelector('.short-card');
+    let scrollAmount = 300; // Valor de rolagem padrão (aprox. 1 card)
+    
+    if (cardElement) {
+         // Otimizado: Garante que a largura calculada é correta e legível
+         const cardWidth = cardElement.offsetWidth;
+         const gap = 20; // O gap que você definiu no CSS para os shorts
+         scrollAmount = cardWidth + gap; 
+    }
 
-  shortsNextBtn.addEventListener('click', () => {
-    shortsCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-  });
+    // Se a rolagem do Models funcionar, o Shorts deve funcionar com essa lógica.
+    shortsNext.addEventListener('click', () => {
+        shortsCarousel.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+        console.log("Next button clicked. Scrolling:", scrollAmount); // DEBUG
+    });
+
+    shortsPrev.addEventListener('click', () => {
+        shortsCarousel.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+        console.log("Prev button clicked. Scrolling:", -scrollAmount); // DEBUG
+    });
 }
+
+
+
+/* ================= Fim do script.js ================= */
 

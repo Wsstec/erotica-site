@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* ================= Variáveis Globais ================= */
 :root {
   --bg: #ffffff;
-  --primary: #c8102e;
+  --primary: #eb5a5d;
   --text-dark: #1e1e1e;
   --muted: #666;
   --card-bg: #fff0f0;
@@ -12,19 +12,13 @@
 
 /* ================= Reset & Tipografia ================= */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); }
+body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text-dark); }
 
 /* ======== Fundo do site ======== */
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
-  background-image: url("img/fundo01.jpg"); /* ← Coloque aqui o caminho da sua imagem */
-  background-size: cover; /* Faz a imagem cobrir toda a tela */
-  background-position: center; /* Centraliza a imagem */
-  background-attachment: fixed; /* Faz o fundo rolar lentamente (efeito parallax leve) */
-  background-repeat: no-repeat; /* Evita repetição da imagem */
-  color: #222; /* Cor padrão do texto */
+   color: #222; /* Cor padrão do texto */
 }
 
 /* Fundo levemente translúcido no conteúdo principal */
@@ -96,7 +90,7 @@ main {
 .model-select {
   background: #fff;
   color: var(--primary);
-  font-family: "Playfair Display", Alan Sans;
+  font-family: MONTSERRAT;
   border: 1px solid var(--primary);
   border-radius: 8px;
   padding: 8px 12px;
@@ -129,7 +123,7 @@ main {
   border-radius: 6px;
   padding: 6px 8px;
   cursor: pointer;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
 }
 
 .btn {  /* ======== Botão de cadastro cliente ======== */
@@ -138,7 +132,7 @@ main {
   padding: 8px 14px;
   cursor: pointer;
   font-weight: 600;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -154,7 +148,7 @@ main {
 }
 
 .login-btn:hover {
-  background: #a30b24;
+  background: #eb5a5d;
 }
 
 .register-btn:hover {
@@ -177,7 +171,7 @@ main {
 
 .main-nav a {  /* ================= Texto do cabeçalho ================= */
   color: #fff;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Monteserrat", sans-serif;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.1em;
@@ -218,7 +212,7 @@ main {
 }
 
 .nav-desktop .pill:hover {
-  background: #a30b24;
+  background: #eb5a5d;
 }
 
 /* ================= Hamburger menu mobile ================= */
@@ -321,7 +315,7 @@ main { padding: 18px 24px; }
   font-size: 40px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Playfair Display", Alan Sans; /* ← Nova fonte */
+  font-family: "Montserrat", sans-serif; /* ← Nova fonte */
   margin-bottom: 25px;
   letter-spacing: 1px;
 }
@@ -332,7 +326,7 @@ main { padding: 18px 24px; }
   max-width: 1250px;
   margin: 0 auto;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 10px 50px; /* ESPAÇO PRA OS BOTÕES */
 }
 
 .carousel {
@@ -341,6 +335,7 @@ main { padding: 18px 24px; }
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
 }
 
 .carousel::-webkit-scrollbar {
@@ -357,11 +352,12 @@ main { padding: 18px 24px; }
   transition: all 0.35s ease;
   overflow: hidden;
   cursor: pointer;
+  scroll-snap-align: start;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(179, 15, 33, 0.25);
+  box-shadow: 0 6px 18px rgba(255, 0, 60, 0.3);
 }
 
 .thumb {
@@ -387,13 +383,13 @@ main { padding: 18px 24px; }
   font-weight: 700;
   font-size: 17px;
   color: var(--primary);
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
 }
 
 .info { /* informaçoes basicas das modelos*/
   font-size: 13px;
   color: var(--muted);
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   margin-top: 3px;
 }
 
@@ -413,7 +409,7 @@ main { padding: 18px 24px; }
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -431,13 +427,13 @@ main { padding: 18px 24px; }
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 600;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .pill:hover {
-  background: #a30b24;
+  background: #eb5a5d;
 }
 
 /* Botões de navegação */
@@ -467,11 +463,11 @@ main { padding: 18px 24px; }
 }
 
 .carousel-btn.left {
-  left: 0;
+  left: 5px;
 }
 
 .carousel-btn.right {
-  right: 0;
+  right: 5px;
 }
 /* Responsividade Carrossel Modelos */
 @media (max-width: 900px) {
@@ -528,7 +524,7 @@ main { padding: 18px 24px; }
 }
 
 .icon-card:hover i {
-  color: #ff5a5a;
+  color: #eb5a5d;
 }
 
 .icon-card h3 {
@@ -536,14 +532,13 @@ main { padding: 18px 24px; }
   margin-bottom: 10px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif
 }
-
 .icon-card p {
   font-size: 0.95rem;
   opacity: 0.85;
   line-height: 1.5;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Responsividade */
@@ -572,14 +567,14 @@ main { padding: 18px 24px; }
   margin: 80px auto;
   text-align: center;
   max-width: 1200px;
-  color: #fff;
+  color: var(--text-dark);
 }
 
 .shorts-section h2 { /* titulo shorts*/
   font-size: 1.8rem;
   margin-bottom: 25px;
-  color: #f21717;
-  font-family: "Playfair Display", Alan Sans;
+  color: #eb5a5d;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -614,7 +609,7 @@ main { padding: 18px 24px; }
 /* Cada card de short */
 .short-card {
   flex: 0 0 180px;
-  background: rgba(255, 255, 255, 0.05);
+  background: none;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -636,13 +631,14 @@ main { padding: 18px 24px; }
 .short-card h3 {
   margin: 10px 0;
   font-size: 1rem;
-  color: #f21919;
-  font-family: "Playfair Display", Alan Sans;
+  color: #eb5a5d;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   letter-spacing: 0.4px;
 }
 /* ======== Botões de navegação ======== */
 .carousel-btn {
+  display: none; /* Inicialmente oculto */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -682,6 +678,7 @@ main { padding: 18px 24px; }
   }
 
   .carousel-btn {
+    display: flex;
     width: 35px;
     height: 35px;
     font-size: 1.2rem;
@@ -714,7 +711,7 @@ main { padding: 18px 24px; }
   font-size: 26px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   margin-bottom: 25px;
   text-transform: uppercase;
@@ -725,7 +722,7 @@ main { padding: 18px 24px; }
   font-size: 16px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   text-align:left;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -735,7 +732,7 @@ main { padding: 18px 24px; }
 .about-text {
   font-size: 16px;
   color: #333;
-  font-family: "Playfair Display", Alan Sans;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.8;
   text-align: justify;
   margin-bottom: 20px;
@@ -802,11 +799,11 @@ main { padding: 18px 24px; }
 
 /* ================= RODAPÉ ================= */
 .site-footer {
-  background: #fff;
+  background: #0a1e23;
   border-top: 2px solid var(--primary);
   padding: 30px 20px;
   text-align: center;
-  color: var(--text);
+  color: #fff;
 }
 
 .footer-container {
@@ -823,7 +820,7 @@ main { padding: 18px 24px; }
   align-items: center;
   gap: 8px;
   font-size: 20px;
-  color: var(--primary);
+  color: #fff;
   font-weight: 700;
 }
 
@@ -838,37 +835,39 @@ main { padding: 18px 24px; }
   gap: 20px;
   padding: 0;
   margin: 10px 0;
+  justify-content: center;
 }
 
 .footer-links a { /* ======= Links do Rodapé =======  */
-  color: var(--primary);
-  font-family: "Playfair Display", Alan Sans;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .footer-links a:hover {
-  color: #a30b24;
+  color: var(--primary);
 }
 
 .footer-socials a {
   font-size: 20px;
   margin: 0 6px;
-  color: var(--primary);
+  color: #fff;
   transition: 0.3s;
 }
 
 .footer-socials a:hover {
-  color: #a30b24;
+  color: var(--primary)
+
 }
 
 .footer-copy {
   font-size: 13px;
-  color: var(--muted);
-  font-family: "Playfair Display", Alan Sans;
+  color: #ccc;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* ======== Responsivo ROPAPÉ / cabeçalho ======== */
+/* ======== Responsivo ROPAPÉ / CABEÇALHO  ======== */
 @media (max-width: 900px) {
   .top-bar {
     .header-actions{justify-content:center}
@@ -891,8 +890,12 @@ main { padding: 18px 24px; }
   }
 
   .footer-container {
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-links {
+    justify-content: center;
   }
 }
 /*=====================FIM RODAPÉ=========================== */
