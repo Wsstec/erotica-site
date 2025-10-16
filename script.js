@@ -87,7 +87,44 @@ function render() {
     carousel.appendChild(card);
   });
 }
+/* ================= Fim Render Carrossel Modelos ================= */
 
+/* ================= Dados de Shorts (Exemplo) ================= */
+// CRIE UM ARRAY DE DADOS PARA OS SHORTS (Se não tiver, use um mockup)
+const shortsData = [
+  { video: 'caminho/video-1.mp4', title: 'Luna em Ação' },
+  { video: 'caminho/video-2.mp4', title: 'Bastidores com Gabi' },
+  { video: 'caminho/video-3.mp4', title: 'Novo Ensaio de Bia' },
+  { video: 'caminho/video-4.mp4', title: 'Momento Relax' },
+  { video: 'caminho/video-5.mp4', title: 'Preview VIP' },
+  { video: 'caminho/video-6.mp4', title: 'Novidade do Mês' },
+  { video: 'caminho/video-7.mp4', title: 'Making Off' },
+  // ... adicione mais itens para garantir que a randomização funcione ...
+];
+
+/* ================= Renderiza Shorts Randômicos ================= */
+function renderShorts() {
+    const shortsContainer = document.querySelector('.shorts-carousel');
+    if (!shortsContainer) return; // Sai se o container não for encontrado
+    
+    shortsContainer.innerHTML = '';
+    
+    // 1. Embaralha os dados
+    const randomShorts = [...shortsData]
+        .sort(() => 0.5 - Math.random()) // Embaralha (Randomiza)
+        .slice(0, 6); // 2. Seleciona exatamente 6 itens
+    
+    // 3. Renderiza os 6 cards
+    randomShorts.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'short-card';
+        card.innerHTML = `
+            <video src="${item.video}" muted loop playsinline autoplay></video>
+            <h3>${item.title}</h3>
+        `;
+        shortsContainer.appendChild(card);
+    });
+}
 
 /* ================= Navegação do Carrossel ================= */
 const prevBtn = document.getElementById('prevBtn');
@@ -166,42 +203,6 @@ data.forEach(p => {
 });
 
 
-/* ================= Navegação do Carrossel de SHORTS (NOVO CÓDIGO) ================= */
-const shortsCarousel = document.querySelector('.shorts-carousel');
-//  as variáveis novas shortsPrev e shortsNext para evitar conflito
-const shortsPrev = document.querySelector('.shorts-carousel-container .prev');
-const shortsNext = document.querySelector('.shorts-carousel-container .next');
-
-if (shortsCarousel && shortsPrev && shortsNext) {
-    
-    // Calcula o valor da rolagem (largura do card + gap de 20px)
-    const cardElement = shortsCarousel.querySelector('.short-card');
-    let scrollAmount = 300; // Valor de rolagem padrão (aprox. 1 card)
-    
-    if (cardElement) {
-         // Otimizado: Garante que a largura calculada é correta e legível
-         const cardWidth = cardElement.offsetWidth;
-         const gap = 20; // O gap que você definiu no CSS para os shorts
-         scrollAmount = cardWidth + gap; 
-    }
-
-    // Se a rolagem do Models funcionar, o Shorts deve funcionar com essa lógica.
-    shortsNext.addEventListener('click', () => {
-        shortsCarousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-        console.log("Next button clicked. Scrolling:", scrollAmount); // DEBUG
-    });
-
-    shortsPrev.addEventListener('click', () => {
-        shortsCarousel.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-        console.log("Prev button clicked. Scrolling:", -scrollAmount); // DEBUG
-    });
-}
 
 
 

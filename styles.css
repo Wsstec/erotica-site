@@ -311,16 +311,17 @@ main { padding: 18px 24px; }
   text-align: center;
 }
 
-.section-title {
+.section-title { /* Título do carrossel */
   font-size: 40px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Montserrat", sans-serif; /* ← Nova fonte */
+  font-family: "Montserrat", sans-serif; 
   margin-bottom: 25px;
   letter-spacing: 1px;
 }
 
-.carousel-container {
+.carousel-container { /* Contêiner principal com botões */
+  display: flex;
   position: relative;
   width: 100%;
   max-width: 1250px;
@@ -329,7 +330,7 @@ main { padding: 18px 24px; }
   padding: 10px 50px; /* ESPAÇO PRA OS BOTÕES */
 }
 
-.carousel {
+.carousel { /* Área rolável dos cards */
   display: flex;
   gap: 24px;
   overflow-x: auto;
@@ -338,7 +339,7 @@ main { padding: 18px 24px; }
   scroll-snap-type: x mandatory;
 }
 
-.carousel::-webkit-scrollbar {
+.carousel::-webkit-scrollbar { /* Remove a barra de rolagem no WebKit */
   display: none;
 }
 
@@ -438,6 +439,7 @@ main { padding: 18px 24px; }
 
 /* Botões de navegação */
 .carousel-btn {
+  display: flex;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -449,7 +451,6 @@ main { padding: 18px 24px; }
   border-radius: 50%;
   width: 42px;
   height: 42px;
-  display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
@@ -485,7 +486,7 @@ main { padding: 18px 24px; }
 }
 /*============== FIM DO CARROSSEL ============= */
 
-/* ======== Seção de ícones ======== */
+/* ======== Sessão de ícones ======== */
 .icons-section {
   display: flex;
   justify-content: center;
@@ -562,6 +563,75 @@ main { padding: 18px 24px; }
     margin-bottom: 10px;
   }
 }
+/* ======== Fim sessão de Icones ======== */
+
+/* ================= SEÇÃO DE PROPAGANDA SIMPLES ================= */
+
+.ads-section {
+    margin: 60px auto;
+    padding: 30px 10px; /* Padding ajustado para não ficar muito largo */
+    text-align: center;
+    max-width: 1000px;
+}
+
+.ads-section .section-title {
+    /* Centraliza o título e garante o espaçamento */
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: var(--primary); 
+}
+
+/* Slot de Banner Principal */
+.ad-banner-full {
+    max-width: 1000px;  
+  /* Garante que o banner ocupe a largura máxima dentro do container */
+    width: 95%;
+    
+    /* Altura comum para banners horizontais */
+    height: 300px; 
+    
+    /* Fundo branco e borda tracejada para sinalizar o espaço */
+    background: rgba(255, 255, 255, 0.9); 
+    border: 2px dashed var(--primary);
+    border-radius: 12px;
+    
+    /* Alinhamento de conteúdo interno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: var(--muted);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+     margin: 0 auto; /* Centraliza o banner */
+}
+
+.ad-banner-full:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* ================= RESPONSIVIDADE ADS ================= */
+@media (max-width: 900px) {
+    .ads-section {
+        margin: 40px auto; /* Reduz a margem no mobile */
+        padding: 20px 10px;
+    }
+    
+    .ads-section .section-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    /* Reduz a altura do banner no mobile para economizar espaço vertical */
+    .ad-banner-full {
+        height: 150px; 
+    }
+}
+/* ================= FIM SEÇÃO DE PROPAGANDA SIMPLES ================= */
+
+
 /* ======== Carrossel de Shorts ======== */
 .shorts-section {
   margin: 80px auto;
@@ -598,7 +668,7 @@ main { padding: 18px 24px; }
 }
 
 .shorts-carousel::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
 
 .shorts-carousel::-webkit-scrollbar-thumb {
@@ -637,7 +707,7 @@ main { padding: 18px 24px; }
   letter-spacing: 0.4px;
 }
 /* ======== Botões de navegação ======== */
-.carousel-btn {
+.shorts-carousel-container .carousel-btn {
   display: none; /* Inicialmente oculto */
   position: absolute;
   top: 50%;
