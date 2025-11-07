@@ -12,7 +12,7 @@
 
 /* ================= Reset & Tipografia ================= */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text-dark); }
+body { font-family: 'Montserrat Alternates', sans-serif; background: var(--bg); color: var(--text-dark); }
 
 /* ======== Fundo do site ======== */
 body {
@@ -56,7 +56,7 @@ main {
 }
 
 .logo img {
-  width: 165px;
+  width: 200px;
   height: 80px;
 }
 
@@ -123,7 +123,10 @@ main {
   border-radius: 6px;
   padding: 6px 8px;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+
 }
 
 .btn {  /* ======== Botão de cadastro cliente ======== */
@@ -132,7 +135,10 @@ main {
   padding: 8px 14px;
   cursor: pointer;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+
   transition: all 0.3s ease;
 }
 
@@ -171,11 +177,14 @@ main {
 
 .main-nav a {  /* ================= Texto do cabeçalho ================= */
   color: #fff;
-  font-family: "Monteserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-style: normal;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.1em;
   transition: color 0.3s;
+
 }
 
 .main-nav a:hover {
@@ -571,7 +580,7 @@ main { padding: 18px 24px; }
     margin: 60px auto;
     padding: 30px 10px; /* Padding ajustado para não ficar muito largo */
     text-align: center;
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .ads-section .section-title {
@@ -583,12 +592,12 @@ main { padding: 18px 24px; }
 
 /* Slot de Banner Principal */
 .ad-banner-full {
-    max-width: 1000px;  
+    max-width: 1200px;  
   /* Garante que o banner ocupe a largura máxima dentro do container */
-    width: 95%;
+    width: 100%;
     
     /* Altura comum para banners horizontais */
-    height: 300px; 
+    height: 700px; 
     
     /* Fundo branco e borda tracejada para sinalizar o espaço */
     background: rgba(255, 255, 255, 0.9); 
@@ -869,7 +878,7 @@ main { padding: 18px 24px; }
 
 /* ================= RODAPÉ ================= */
 .site-footer {
-  background: #0a1e23;
+  background: #28616c;
   border-top: 2px solid var(--primary);
   padding: 30px 20px;
   text-align: center;
@@ -895,8 +904,8 @@ main { padding: 18px 24px; }
 }
 
 .footer-logo img {
-  width: 165px;
-  height: 80px;
+  width: 150px;
+  height: 60px;
 }
 
 .footer-links {

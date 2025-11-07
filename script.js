@@ -92,8 +92,8 @@ function render() {
 /* ================= Dados de Shorts (Exemplo) ================= */
 // CRIE UM ARRAY DE DADOS PARA OS SHORTS (Se não tiver, use um mockup)
 const shortsData = [
-  { video: 'caminho/video-1.mp4', title: 'Luna em Ação' },
-  { video: 'caminho/video-2.mp4', title: 'Bastidores com Gabi' },
+  { video: 'video/modelo1.mp4', title: 'Luna em Ação' },
+  { video: 'video/modelo2.mp4', title: 'Bastidores com Gabi' },
   { video: 'caminho/video-3.mp4', title: 'Novo Ensaio de Bia' },
   { video: 'caminho/video-4.mp4', title: 'Momento Relax' },
   { video: 'caminho/video-5.mp4', title: 'Preview VIP' },
@@ -119,7 +119,7 @@ function renderShorts() {
         const card = document.createElement('div');
         card.className = 'short-card';
         card.innerHTML = `
-            <video src="${item.video}" muted loop playsinline autoplay></video>
+            <video src="${item.video || 'video/placeholder.mp4'}" muted loop playsinline autoplay></video>
             <h3>${item.title}</h3>
         `;
         shortsContainer.appendChild(card);
