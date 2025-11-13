@@ -56,8 +56,8 @@ main {
 }
 
 .logo img {
-  width: 200px;
-  height: 80px;
+  width: 300px;
+  height: 100px;
 }
 
 .logo h1 {
@@ -324,7 +324,7 @@ main { padding: 18px 24px; }
   font-size: 40px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Montserrat", sans-serif; 
+  font-family: "Montserrat Alternates", sans-serif; 
   margin-bottom: 25px;
   letter-spacing: 1px;
 }
@@ -393,13 +393,13 @@ main { padding: 18px 24px; }
   font-weight: 700;
   font-size: 17px;
   color: var(--primary);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 
 .info { /* informaçoes basicas das modelos*/
   font-size: 13px;
   color: var(--muted);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   margin-top: 3px;
 }
 
@@ -419,7 +419,7 @@ main { padding: 18px 24px; }
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -437,7 +437,7 @@ main { padding: 18px 24px; }
   padding: 6px 14px;
   font-size: 13px;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -542,13 +542,13 @@ main { padding: 18px 24px; }
   margin-bottom: 10px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  font-family: "Montserrat", sans-serif
+  font-family: "Montserrat Alternates", sans-serif
 }
 .icon-card p {
   font-size: 0.95rem;
   opacity: 0.85;
   line-height: 1.5;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 
 /* Responsividade */
@@ -578,9 +578,9 @@ main { padding: 18px 24px; }
 
 .ads-section {
     margin: 60px auto;
-    padding: 30px 10px; /* Padding ajustado para não ficar muito largo */
+    padding: 30px 0; /* Padding ajustado para não ficar muito largo */
     text-align: center;
-    max-width: 1200px;
+    width: 100%;
 }
 
 .ads-section .section-title {
@@ -592,17 +592,16 @@ main { padding: 18px 24px; }
 
 /* Slot de Banner Principal */
 .ad-banner-full {
-    max-width: 1200px;  
-  /* Garante que o banner ocupe a largura máxima dentro do container */
+     /* Garante que o banner ocupe a largura máxima dentro do container */
     width: 100%;
     
     /* Altura comum para banners horizontais */
-    height: 700px; 
+    height: 300px; 
     
     /* Fundo branco e borda tracejada para sinalizar o espaço */
     background: rgba(255, 255, 255, 0.9); 
     border: 2px dashed var(--primary);
-    border-radius: 12px;
+    border-radius: 0;
     
     /* Alinhamento de conteúdo interno */
     display: flex;
@@ -611,7 +610,7 @@ main { padding: 18px 24px; }
     
     color: var(--muted);
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
     transition: box-shadow 0.3s;
     cursor: pointer;
      margin: 0 auto; /* Centraliza o banner */
@@ -620,7 +619,6 @@ main { padding: 18px 24px; }
 .ad-banner-full:hover {
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
 }
-
 /* ================= RESPONSIVIDADE ADS ================= */
 @media (max-width: 900px) {
     .ads-section {
@@ -653,7 +651,7 @@ main { padding: 18px 24px; }
   font-size: 1.8rem;
   margin-bottom: 25px;
   color: #eb5a5d;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -711,7 +709,7 @@ main { padding: 18px 24px; }
   margin: 10px 0;
   font-size: 1rem;
   color: #eb5a5d;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   font-weight: 600;
   letter-spacing: 0.4px;
 }
@@ -790,7 +788,7 @@ main { padding: 18px 24px; }
   font-size: 26px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   text-align: center;
   margin-bottom: 25px;
   text-transform: uppercase;
@@ -801,7 +799,7 @@ main { padding: 18px 24px; }
   font-size: 16px;
   font-weight: 700;
   color: var(--primary);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   text-align:left;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -811,7 +809,7 @@ main { padding: 18px 24px; }
 .about-text {
   font-size: 16px;
   color: #333;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   line-height: 1.8;
   text-align: justify;
   margin-bottom: 20px;
@@ -919,7 +917,7 @@ main { padding: 18px 24px; }
 
 .footer-links a { /* ======= Links do Rodapé =======  */
   color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   text-decoration: none;
   transition: 0.3s;
 }
@@ -943,7 +941,7 @@ main { padding: 18px 24px; }
 .footer-copy {
   font-size: 13px;
   color: #ccc;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 
 /* ======== Responsivo ROPAPÉ / CABEÇALHO  ======== */
