@@ -8,32 +8,39 @@
   --muted: #666;
   --card-bg: #fff0f0;
   --border: #f3d2d2;
-}
 
 /* ================= Reset & Tipografia ================= */
 * { box-sizing: border-box; 
     margin: 0; 
     padding: 0; }
-body { font-family: 'Montserrat Alternates', sans-serif; background: var(--bg); color: var(--text-dark); }
 
-/* ======== Fundo do site ======== */
-body {
-  margin: 0;
-  padding: 0;
-  color: #222; /* Cor padrão do texto */
+  body { 
+    font-family: 'Montserrat Alternates', sans-serif; 
+    background: var(--bg); 
+    color: var(--text-dark); 
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Medida de segurança contra scroll horizontal */
+    max-width: 100vw; /* Medida de segurança extrema */
 }
 
-/* Fundo levemente translúcido no conteúdo principal */
+/* -----------------Layout Principal--------------------- */
 main {
   background: rgba(255, 255, 255, 0.262);
   border-radius: 18px;
   backdrop-filter: blur(5px);
   margin: 20px auto;
   max-width: 1300px;
-  padding: 25px 0;
+  padding: 25px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
 }
-
+.section-title { 
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
 /* ================= CABEÇALHO ================= */
 .site-header {
   background: #fff;
@@ -58,22 +65,19 @@ main {
 }
 
 .logo img {
-  width: 300px;
-  height: 100px;
+  width: 300px; 
+    height: auto;
+  object-fit: contain;
+
 }
 
-.logo h1 {
-  font-size: 26px;
+.site-title {
+  font-size: 28px;
+  font-weight: 700;
   color: var(--primary);
-  font-weight: 800;
-  letter-spacing: 1px;
-}
+  font-family: "Montserrat Alternates", sans-serif;
+  }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
 
 .search-bar {
   padding: 8px 12px;
@@ -92,7 +96,7 @@ main {
 .model-select {
   background: #fff;
   color: var(--primary);
-  font-family: MONTSERRAT;
+  font-family: "Montserrat Alternates", sans-serif;
   border: 1px solid var(--primary);
   border-radius: 8px;
   padding: 8px 12px;
@@ -144,18 +148,18 @@ main {
   transition: all 0.3s ease;
 }
 
-.login-btn {
+.login-btn {  /* ======== Botão de login cliente ======== */
   background: var(--primary);
   color: #fff;
 }
 
-.register-btn {
+.register-btn { /* ======== Botão de registro cliente ======== */
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
 }
 
-.login-btn:hover {
+.login-btn:hover { /* ======== Hover botão login ======== */
   background: #eb5a5d;
 }
 
@@ -226,59 +230,6 @@ main {
   background: #eb5a5d;
 }
 
-/* ================= Hamburger menu mobile ================= */
-.hamburger {
-  display: none;
-  flex-direction: column; justify-content: space-around;
-  width: 30px; height: 25px; cursor: pointer; z-index: 1000;
-}
-.hamburger div {
-  width: 100%; height: 3px; background: white;
-  border-radius: 2px; transition: all 0.3s ease;
-}
-.hamburger { display: none; }
-.nav-mobile { display: none; }
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 26px;
-  height: 22px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: var(--primary);
-  border-radius: 3px;
-}
-
-.nav-mobile {
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  padding: 10px 20px;
-  gap: 10px;
-  border-top: 1px solid #eee;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.nav-mobile.active { display: flex; }
-
-.nav-mobile .nav-link {
-  text-decoration: none;
-  color: var(--text-dark);
-  padding: 8px 0;
-  transition: color 0.3s;
-}
-
-.nav-mobile .nav-link:hover {
-  color: var(--primary);
-}
-
 /* ================= Main e Grid ================= */
 main { padding: 18px 24px; }
 .grid {
@@ -303,11 +254,7 @@ main { padding: 18px 24px; }
 .tag { background: #fff; border:1px solid var(--border); padding:6px 8px; border-radius:999px; font-size:12px; color:var(--primary); transition:0.3s; }
 .tag:hover { background: var(--primary); color:white; }
 
-/* Responsividade cabeçalho*/
-@media (max-width: 900px) {
-  .nav-desktop { display: none; }
-  .header-actions{justify-content:center}
-  .hamburger { display: none; }
+
 }
 
 @media (max-width: 600px) {
@@ -385,8 +332,7 @@ main { padding: 18px 24px; }
   filter: brightness(1.05);
 }
 
-/* ---- INFORMAÇÕES ---- */
-.meta {
+.meta { /* informaçoes basicas das modelos no card */
   padding: 12px 18px 6px 18px;
   text-align: left;
 }
@@ -481,20 +427,6 @@ main { padding: 18px 24px; }
 .carousel-btn.right {
   right: 5px;
 }
-/* Responsividade Carrossel Modelos */
-@media (max-width: 900px) {
-  .thumb { height: 280px; }
-  .card { min-width: 220px; }
-  .carousel-btn { width: 36px; height: 36px; font-size: 20px; }
-}
-
-@media (max-width: 600px) {
-  .thumb { height: 220px; }
-  .card { min-width: 200px; }
-  .section-title { font-size: 22px; }
-  .carousel-btn.left { left: 6px; }
-  .carousel-btn.right { right: 6px; }
-}
 /*============== FIM DO CARROSSEL ============= */
 
 /* ======== Sessão de ícones ======== */
@@ -552,28 +484,6 @@ main { padding: 18px 24px; }
   line-height: 1.5;
   font-family: "Montserrat Alternates", sans-serif;
 }
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .info-icons {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px 0;
-  }
-
-  .info-icons .icon {
-    width: 80%;
-    text-align: center;
-  }
-
-  .info-icons img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-  }
-}
 /* ======== Fim sessão de Icones ======== */
 
 /* ================= SEÇÃO DE PROPAGANDA SIMPLES ================= */
@@ -620,29 +530,6 @@ main { padding: 18px 24px; }
 
 .ad-banner-full:hover {
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-}
-/* ================= RESPONSIVIDADE ADS ================= */
-@media (max-width: 900px) {
-    .ads-section {
-        margin: 40px 0; /* Reduz a margem no mobile */
-        padding: 0;
-    }
-     main {
-        padding: 15px 0; 
-        margin: 10px 0; /* Garante que não haja margem externa no main */
-    }
-    .ads-section .section-title {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
-
-    /* Reduz a altura do banner no mobile para economizar espaço vertical */
-    .ad-banner-full {
-        width: 100%;
-        height: 150px; 
-        margin: 0;
-        padding: 0;
-    }
 }
 /* ================= FIM SEÇÃO DE PROPAGANDA SIMPLES ================= */
 
@@ -751,36 +638,7 @@ main { padding: 18px 24px; }
 .carousel-btn.next {
   right: -15px;
 }
-
-/* ======== Responsividade ======== */
-@media (max-width: 768px) {
-  .short-card {
-    flex: 0 0 140px;
-  }
-
-  .short-card video {
-    height: 240px;
-  }
-
-  .carousel-btn {
-    display: flex;
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
-
-  .carousel-btn.prev {
-    left: 0;
-  }
-
-  .carousel-btn.next {
-    right: 0;
-  }
-
-  .shorts-section h2 {
-    font-size: 1.4rem;
-  }
-}
+/*===== Fim Carrossel de Shorts =====*/
 
 /* ======== Seção "Sobre o Erotica" ======== */
 .about {
@@ -866,22 +724,6 @@ main { padding: 18px 24px; }
 .modal-right p { font-size:13px; line-height:1.4; color:var(--text-dark); }
 .modal-buttons { display:flex; gap:10px; margin-top:auto; }
 
-/* ================= Mapa ================= */
-.map-section {
-  margin-top: 40px;
-  text-align: center;
-}
-
-#map {
-  width: 30%; /* antes 70%, agora menor */
-  max-width: 600px; /* limitar tamanho máximo */
-  height: 300px; /* antes 400px, agora menor */
-  margin: 20px auto;
-  border-radius: 12px;
-  border: 2px solid var(--border);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-}
-
 /* ================= RODAPÉ ================= */
 .site-footer {
   background: #28616c;
@@ -951,10 +793,12 @@ main { padding: 18px 24px; }
   color: #ccc;
   font-family: "Montserrat Alternates", sans-serif;
 }
+/*=====================FIM RODAPÉ=========================== */
 
-/* ======== Responsivo ROPAPÉ / CABEÇALHO  ======== */
-@media (max-width: 900px) {
-  .top-bar {
+
+/* ================= MÍDIAS / RESPONSIVIDADE (BLOCO UNIFICADO) ================= */
+@media (max-width:900px){
+   .top-bar { /* Ajusta o padding para telas menores */
     .header-actions{justify-content:center}
     flex-direction: column;
     gap: 10px;
@@ -965,7 +809,7 @@ main { padding: 18px 24px; }
   
   }
 
-  .search-bar {
+  .search-bar { /* Ajusta a largura da barra de pesquisa */
     width: 100%;
   }
 
@@ -983,23 +827,112 @@ main { padding: 18px 24px; }
     justify-content: center;
   }
 }
-/*=====================FIM RODAPÉ=========================== */
-
-/* ================= Responsividade ================= */
-@media (max-width:900px){
-  .hamburger{display:none;}
   .grid { grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); }
   #map { width:90%; height:350px; }
   .large-img { height:300px; margin-bottom:12px; }
   .modal-buttons { flex-direction:column; }
   .thumb { height:220px; }
   .modal { grid-template-columns:1fr; padding:16px; }
+
+  .nav-desktop { display: none; } /* Oculta o menu desktop em telas menores */
+  .header-actions{justify-content:center}
+  .logo img {
+        width: 200px; /* Reduz para um tamanho seguro */
+        height: auto;
+
+.thumb { height: 280px; } /* Ajusta a altura da miniatura para telas menores */
+  .card { min-width: 220px; }
+  .carousel-btn { width: 36px; height: 36px; font-size: 20px; }
+
+.ads-section { /* Ajustes na seção de propaganda */
+        margin: 40px 0; /* Reduz a margem no mobile */
+        padding: 0;
+    }
+     main {
+        padding: 15px 0; 
+        margin: 10px 0; /* Garante que não haja margem externa no main */
+        width: 100%; 
+    }
+    .ads-section .section-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    /* Reduz a altura do banner no mobile para economizar espaço vertical */
+    .ad-banner-full {
+        width: 100%;
+        height: 150px; 
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-radius: 0;
+    }
 }
+
 @media (max-width:600px){
-  .grid { grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); }
+  .logo img { width: 160px; height: auto; } /* Reduz ainda mais o logo para telas muito pequenas */
+  .search-bar { width: 100%; } /* Barra de pesquisa ocupa toda a largura */
+  .main-nav ul { gap: 10px; } /* Reduz o espaçamento do menu */
+
+  .grid { grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); } /* Ajusta o grid para telas muito pequenas */
   #map { width:95%; height:300px; }
   .large-img { height:220px; }
   .modal-right h2 { font-size:20px; }
   .modal-right p { font-size:12px; }
+
+  .thumb { height: 220px; } /* Ajusta a altura da miniatura para telas menores */
+  .card { min-width: 200px; }
+  .section-title { font-size: 22px; }
+  .carousel-btn.left { left: 6px; }
+  .carousel-btn.right { right: 6px; }
+
 }
 
+/* Responsividade Icones e Carrossel Shorts */
+@media (max-width: 768px) {
+  .info-icons { /* Contêiner dos ícones */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .info-icons .icon {
+    width: 80%;
+    text-align: center;
+  }
+
+  .info-icons img { /* Ajuste o tamanho dos ícones conforme necessário */
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+    .short-card { /* Cada card de short */
+    flex: 0 0 140px;
+  }
+
+  .short-card video {
+    height: 240px;
+  }
+
+  .carousel-btn {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .carousel-btn.prev {
+    left: 0;
+  }
+
+  .carousel-btn.next {
+    right: 0;
+  }
+
+  .shorts-section h2 { /* titulo shorts*/
+    font-size: 1.4rem;
+  }
+
+}
