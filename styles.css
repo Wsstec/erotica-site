@@ -8,11 +8,9 @@
   --muted: #666;
   --card-bg: #fff0f0;
   --border: #f3d2d2;
-
+}
 /* ================= Reset & Tipografia ================= */
-* { box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; }
+* { box-sizing: border-box;  margin: 0;  padding: 0; }
 
   body { 
     font-family: 'Montserrat Alternates', sans-serif; 
@@ -65,10 +63,8 @@ main {
 }
 
 .logo img {
-  width: 300px; 
-    height: auto;
-  object-fit: contain;
-
+  width: 400px;
+  height: auto;
 }
 
 .site-title {
@@ -238,12 +234,20 @@ main { padding: 18px 24px; }
 }
 @keyframes fadeIn { from { opacity:0; transform: translateY(10px);} to {opacity:1; transform: translateY(0);} }
 .card {
-  background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border);
-  overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 18px rgba(0,0,0,0.15); }
+
 .thumb {
-  width: 100%; height: 300px; background-size: cover; background-position: center;
+  width: 100%;
+  height: 240px;
+  background-size: cover;
+  background-position: center;
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 .card:hover .thumb { transform: scale(1.08); filter: brightness(1.1); }
@@ -273,8 +277,8 @@ main { padding: 18px 24px; }
 .carousel-container { /* Contêiner principal com botões */
   display: flex;
   position: relative;
+  max-width: 1250px;  
   width: 100%;
-  max-width: 1250px;
   margin: 0 auto;
   overflow: hidden;
   padding: 10px 50px; /* ESPAÇO PRA OS BOTÕES */
@@ -480,7 +484,7 @@ main { padding: 18px 24px; }
 
 /* ================= SEÇÃO DE PROPAGANDA SIMPLES ================= */
 
-.ads-section {
+.ads-section { /* Container da seção de propaganda */
     margin: 60px auto;
     padding: 30px 0; /* Padding ajustado para não ficar muito largo */
     text-align: center;
@@ -789,20 +793,35 @@ main { padding: 18px 24px; }
 
 
 /* ================= MÍDIAS / RESPONSIVIDADE (BLOCO UNIFICADO) ================= */
+
+/* Ajustes para tablets e telas médias */
 @media (max-width:900px){
-   .top-bar { /* Ajusta o padding para telas menores */
-    .header-actions{justify-content:center}
+  
+  /* Ajustes no cabeçalho */ 
+  .top-bar { 
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
     flex-wrap: wrap;
-    .model-select { width: 100%; margin-bottom: 10px;}
-    .header-actions {justify-content: center;}
+    padding: 10px 15px;
+     }
   
-  }
-
+  .header-actions {display:grid; grid-template-columns: 1fr 1fr; gap:10px; width: 100%;}
+  .logo { width: 100%; justify-content: center; margin-bottom: 5px;}
   .search-bar { /* Ajusta a largura da barra de pesquisa */
     width: 100%;
+    grid-column: 1 / span 2;
+    order: 1;
+  }
+
+  .model-select { order: 2;  width: 100%; margin-bottom: 10px;}
+  .lang-select { order: 3; }
+  .login-btn { order: 4; }
+  .register-btn { order: 5; }
+  .btn {
+    width: 100%; /* Faz os botões e seletores ocuparem toda a largura disponível */
+    margin: 0;
+    text-align: center;
   }
 
   .main-nav ul {
@@ -810,6 +829,7 @@ main { padding: 18px 24px; }
     gap: 20px;
   }
 
+  /* Ajustes no rodapé */
   .footer-container {
     justify-content: center;
     flex-wrap: wrap;
@@ -818,7 +838,8 @@ main { padding: 18px 24px; }
   .footer-links {
     justify-content: center;
   }
-}
+
+  /* Ajustes no main e grid */
   .grid { grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); }
   #map { width:90%; height:350px; }
   .large-img { height:300px; margin-bottom:12px; }
@@ -830,13 +851,15 @@ main { padding: 18px 24px; }
   .header-actions{justify-content:center}
   .logo img {
         width: 200px; /* Reduz para um tamanho seguro */
-        height: auto;
-
-.thumb { height: 280px; } /* Ajusta a altura da miniatura para telas menores */
+        height: auto; }
+      
+         /*Ajustes Carrossel*/   
+  .thumb { height: 280px; } /* Ajusta a altura da miniatura para telas menores */
   .card { min-width: 220px; }
   .carousel-btn { width: 36px; height: 36px; font-size: 20px; }
 
-.ads-section { /* Ajustes na seção de propaganda */
+  /* Ajustes na seção de propaganda */
+.ads-section { 
         margin: 40px 0; /* Reduz a margem no mobile */
         padding: 0;
     }
@@ -858,11 +881,13 @@ main { padding: 18px 24px; }
         padding: 0 !important;
         border-radius: 0;
     }
-}
+  }
 
+
+  /* Ajustes para telas muito pequenas */
 @media (max-width:600px){
   .site-title { font-size: 22px; } /* Reduz o tamanho do título do site */
-  .logo { height: 40px; width: 40px; }  /* Reduz o tamanho do logo */
+  .logo { height: 40px; width: 40px;}/* Reduz o tamanho do logo */
   .top-bar { /* Ajusta o padding para telas menores */
     flex-direction: column;
     gap: 8px;
@@ -887,6 +912,15 @@ main { padding: 18px 24px; }
   .section-title { font-size: 22px; }
   .carousel-btn.left { left: 6px; }
   .carousel-btn.right { right: 6px; }
+
+   /* Main */
+    main { padding: 15px 0; margin: 10px 0; }
+    .section-title { font-size: 22px; }
+
+     /* Propaganda */
+    .ad-banner-full { height: 150px; width: 10px; border: none; border-radius: 0; }
+    .ads-section { padding: 0; margin: 40px 0; }
+    .ads-section .section-title { font-size: 24px; }
 
 }
 
@@ -937,5 +971,6 @@ main { padding: 18px 24px; }
   .shorts-section h2 { /* titulo shorts*/
     font-size: 1.4rem;
   }
+}  
 
-}
+
