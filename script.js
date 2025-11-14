@@ -61,6 +61,60 @@ const carousel = document.getElementById('carousel');
 const modal = document.getElementById('modal');
 const closeModalBtn = document.getElementById('closeModal');
 
+// Função para construir o HTML de um único card
+function createCardHTML(model) {
+    // Cria as tags
+    const tagsHTML = model.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+    return `
+        <div class="card" data-id="${model.id}">
+            <div class="thumb" style="background-image: url('${model.imageUrl}');"></div>
+            <div class="meta">
+                <span class="name">${model.name}</span>
+            </div>
+            <p class="info">${model.info}</p>
+            <div class="tags">${tagsHTML}</div>
+            <button class="pill">Ver Perfil</button>
+        </div>
+    `;
+}
+
+function renderTwoRows() {
+    // 1. Encontra os novos containers de rolagem individuais
+    const row1 = document.getElementById('carousel-row-1');
+    const row2 = document.getElementById('carousel-row-2');
+    
+    // Verifica se os dados existem e se os containers foram encontrados
+    if (!data || data.length === 0 || !row1 || !row2) {
+        console.error('Dados de modelo não encontrados ou containers de linha ausentes.');
+        return;
+    }
+
+    // 2. Limpa os containers (necessário se a função for chamada novamente)
+    row1.innerHTML = '';
+    row2.innerHTML = '';
+
+    // 3. DIVISÃO CRÍTICA DOS DADOS: Encontra o índice do meio
+    const halfIndex = Math.ceil(data.length / 2);
+    
+    // Cria dois novos arrays:
+    const dataRow1 = data.slice(0, halfIndex); // Primeira metade
+    const dataRow2 = data.slice(halfIndex);    // Segunda metade
+
+    // 4. Renderiza a PRIMEIRA LINHA
+    dataRow1.forEach(model => {
+        row1.insertAdjacentHTML('beforeend', createCardHTML(model));
+    });
+
+    // 5. Renderiza a SEGUNDA LINHA
+    dataRow2.forEach(model => {
+        row2.insertAdjacentHTML('beforeend', createCardHTML(model));
+    });
+}
+
+// Certifique-se de chamar esta nova função quando o DOM estiver carregado:
+// Exemplo: window.onload = renderTwoRows;
+
 /* ================= Renderiza Carrossel com 6 modelos aleatórios ================= */
 function render() {
   carousel.innerHTML = '';
