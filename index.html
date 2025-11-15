@@ -14,7 +14,7 @@
 </head>
 <body>
   
- <!-- =======       CABEÇALHO        ======= -->
+ <!-- =======       CABEÇALHO        ======= -->                
 <header class="site-header">
   <div class="top-bar">
     <div class="logo">
@@ -104,19 +104,29 @@
     <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 </section>
+</main>
  <!-------------------------------FIM CARROSSEL SHORTS-------------------------------------------------->
     <!-- Card de modelos-->
- <section class="models">
-  <h2 class="section-title">Modelos em destaque</h2>
-  <div class="carousel-container">
-    <button class="carousel-btn left" id="prevBtn">&#10094;</button>
-    <div id="carousel" class="carousel">
-      <!-- Os cards são renderizados dinamicamente pelo JS -->
-    </div>
-    <button class="carousel-btn right" id="nextBtn">&#10095;</button>
-  </div>
-</section>
-  </main>
+<main>   
+<section class="models">
+    <h2 class="section-title">Modelos em destaque</h2>
+    
+    <div class="carousel-container">
+        
+        <button class="carousel-btn left" id="prevBtn">&#10094;</button>
+        
+        <div class="carousel-wrapper"> 
+            
+            <div id="carousel-row-1" class="carousel-row">
+                </div>
+            
+            <div id="carousel-row-2" class="carousel-row">  
+                </div>
+            
+        </div>
+        
+        <button class="carousel-btn right" id="nextBtn">&#10095;</button>
+    </div> </section>
 
   <!-- ================= Modal : Pagina da modelo ================= -->
   <div class="modal-backdrop" id="modal">
@@ -137,6 +147,7 @@
       </div>
     </div>
   </div>
+  </main>
 <!-- ================= FIM Modal : Pagina da modelo ================= -->
 
 <!-- ======== ÍCONES DESTAQUE ======== -->
