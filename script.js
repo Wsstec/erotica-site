@@ -7,7 +7,7 @@ const data = [
     city: 'Porto Alegre',
     age: 25,
     height: 170,
-    thumb: 'https://images.unsplash.com/photo-1601987077953-c9fdcfb6c35a?auto=format&fit=crop&w=800&q=60',
+    thumb: "img/models02.jpeg",
     tags: ['Morena', 'Tatuada', 'Acompanhante'],
     bio: 'Modelo de alto padrão, especialista em acompanhamento discreto.', lat: -30.03, lng: -51.22
   },

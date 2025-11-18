@@ -326,7 +326,7 @@ overflow-x: visible;
   cursor: pointer;
   scroll-snap-align: start;
    width: calc( (100% / 6) - 20px );
-   min-width: 150px; /* Largura mínima para responsividade */
+   min-width: 290px;  /* Largura mínima para responsividade */
 }
 
 .card:hover {
@@ -549,7 +549,7 @@ overflow-x: visible;
 /* ================= FIM SEÇÃO DE PROPAGANDA SIMPLES ================= */
 
 
-/* ======== Carrossel de Shorts ======== */
+/* ======== Shorts EROTICA =======*/
 .shorts-section {
   margin: 80px auto;
   text-align: center;
@@ -761,14 +761,14 @@ overflow-x: visible;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 20px;
+  font-size: 30px;
   color: #fff;
   font-weight: 700;
 }
 
 .footer-logo img {
-  width: 150px;
-  height: 60px;
+  width: 200px;
+  height: 80px;
 }
 
 .footer-links {
