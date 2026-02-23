@@ -20,17 +20,26 @@
     padding: 0;
    overflow-x: hidden;
 }
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Corta qualquer conteúdo que queira sair pela direita */
+    margin: 0;
+    padding: 0;
+}
 
 /* -----------------Layout Principal--------------------- */
 main {
-  background: rgba(255, 255, 255, 0.262);
-  border-radius: 18px;
-  backdrop-filter: blur(5px);
+  /* Removemos o fundo, bordas e sombras */
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  border: none;
+  
+  /* Mantemos o alinhamento e a largura */
   margin: 20px auto;
-  max-width: 1300px;
-  padding: 25px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-  overflow: auto;
+  max-width: 1250px; /* Controla a largura total do conteúdo */
+  padding: 0 20px;
+  overflow: visible; /* Garante que os efeitos de hover não cortem */
 }
 .section-title { 
     font-size: 40px;
@@ -238,12 +247,16 @@ main { padding: 18px 24px; }
 
 /* O Card em si */
 .card-new {
+   width: 100%;
+   max-width: 280px;
+   margin: 0 auto;
     background: #fff;
+    border-radius: 12px;
     border: 1px solid #e5e7eb;
-    overflow: hidden;
     transition: all 0.5s ease;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(175, 41, 41, 0.69);
+    overflow: hidden;
 }
 
 .card-new:hover {
@@ -434,144 +447,28 @@ font-size: 1.3rem; /* Diminuí um pouco para nomes longos não quebrarem tudo */
     font-size: 0.875rem;
 }
 
-/* ================= Carrossel de Modelos ================= */
-.models {
- margin-top: 60px;
- text-align: center;
+/* ================= GRID DE MODELOS (8 CARDS FIXOS) ================= */
+.models-section {
+    background : transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 40px 0;
 }
 
-.section-title { /* Título do carrossel */
- font-size: 40px;
- font-weight: 700;
- color: var(--primary);
- font-family: "Montserrat Alternates", sans-serif; 
- margin-bottom: 25px;
- letter-spacing: 1px;
+.models-grid {
+ display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    background: transparent;
 }
 
-.carousel-container { /* Contêiner principal com botões */
- position: relative;
- max-width: 1250px; 
- width: 100%;
- margin:0 auto 60px; /* CRÍTICO: Margem inferior para afastar a próxima seção */
- padding: 10px 0; /* CORRIGIDO: Removido o padding lateral excessivo. O espaço é criado pela largura do container. */
-overflow: hidden;    
-display: flow-root;
-overflow-x: visible;
+/* Ajuste do Card para o Grid */
+.models-grid .card-new {
+    width: 100%; /* Ocupa a largura da coluna do grid */
+    margin: 0;   /* Remove margens externas que eram do carrossel */
 }
 
-.carousel-wrapper{
- display: flex;
- flex-direction: column; /* CRÍTICO: Empilha as rows */
- gap: 24px; /* Espaço entre as linhas */
- overflow-x: visible; /* Garante que as linhas de rolagem sejam visíveis */
- /* NOVO: Garante que o wrapper seja o contêiner de altura */
- position: relative; 
- min-height: min-content;
- width: 100%;
- padding: 0 50px; /* CRÍTICO: O padding lateral vai aqui para afastar os cards dos botões, sem quebrar o fluxo do container */
-overflow-x: visible;
-}
-
-.carousel-row {
- display: flex;
- overflow-x: auto;
- scroll-behavior: smooth;
- scrollbar-width: none;
- scroll-snap-type: x mandatory;
- gap: 24px;
- height: auto !important; /* Força o uso da altura baseada no conteúdo */
- min-height: 400px; /* Altura mínima de segurança */
- flex-wrap: nowrap;
-}
-
-.carousel-row .card-new {
-    flex: 0 0 280px; /* Não deixa o card crescer nem diminuir de 280px */
-    margin-right: 20px;
-    box-sizing: border-box;
-}
-
-.carousel::-webkit-scrollbar { /* Remove a barra de rolagem no WebKit */
-  display: none;
-}
-
-/* ---- CARD ---- */
-
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(255, 0, 60, 0.3);
-}
-
-.thumb {
-  width: 100%;
-  height: 340px;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.card:hover .thumb {
-  transform: scale(1.05);
-  filter: brightness(1.05);
-}
-
-.meta { /* informaçoes basicas das modelos no card */
-  padding: 12px 18px 6px 18px;
-  text-align: left;
-}
-
-.name { /*nome das modelos no card */
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--primary);
-  font-family: "Montserrat Alternates", sans-serif;
-}
-
-.info { /* informaçoes basicas das modelos*/
-  font-size: 13px;
-  color: var(--muted);
-  font-family: "Montserrat Alternates", sans-serif;
-  margin-top: 3px;
-}
-
-/* ---- TAGS ---- */
-
-
-/* Botões de navegação */
-.carousel-btn {
- display: flex;
- position: absolute;
- top: 50%;
- transform: translateY(-50%);
- background: var(--primary);
- color: #fff;
- border: none;
- font-size: 22px;
- cursor: pointer;
- border-radius: 50%;
- width: 42px;
- height: 42px;
- align-items: center;
- justify-content: center;
- transition: all 0.3s ease;
- z-index: 3; /* Aumentado o z-index para garantir visibilidade */
- box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-btn:hover {
-  background: #a30b24;
-  transform: translateY(-50%) scale(1.05);
-}
-
-.carousel-btn.left {
- left: 5px; /* Posição à esquerda do .carousel-container */
-}
-
-.carousel-btn.right {
- right: 5px; /* Posição à direita do .carousel-container */
-}
-/*============== FIM DO CARROSSEL ============= */
+/*============== FIM DO GRID DE MODELOS ============= */
 
 /* ======== Sessão de ícones ======== */
 .icons-section {
@@ -1144,11 +1041,50 @@ overflow-x: visible;
   }
 }  
 
+/* Responsividade do Grid */
+@media (max-width: 1024px) {
+    .models-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .models-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em celulares grandes */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .models-grid {
+        grid-template-columns: 1fr; /* 1 coluna em celulares pequenos */
+        
+    }
+@media (max-width: 600px) {
+    main {
+        padding: 10px; /* Pequeno respiro nas bordas */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .models-grid {
+        display: flex; /* Mudamos para flex no mobile para facilitar a centralização */
+        flex-direction: column;
+        align-items: center; /* Centraliza os cards um embaixo do outro */
+        gap: 20px;
+        width: 100%;
+    }
+
+    .card-new {
+        width: 90% !important; /* Card ocupa 90% da largura da tela */
+        max-width: 320px;       /* Mas não fica gigante */
+        margin: 0 auto;        /* Garante a centralização */
+    }
+}
 /* ================= FIM MÍDIAS / RESPONSIVIDADE ================= */
 .clearfix::after {
     content: "";
     display: table;
     clear: both;
 }
-
-
+}
