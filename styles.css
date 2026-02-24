@@ -255,13 +255,13 @@ main { padding: 18px 24px; }
     border: 1px solid #e5e7eb;
     transition: all 0.5s ease;
     position: relative;
-    box-shadow: 0 1px 3px rgba(175, 41, 41, 0.69);
+    box-shadow: 0 1px 3px rgba(255, 0, 0, 0.368);
     overflow: hidden;
 }
 
 .card-new:hover {
     border-color: rgba(235, 90, 93, 0.5);
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 15px -3px rgba(255, 0, 0, 0.368);
     transform: translateY(-5px);
 }
 
@@ -305,6 +305,7 @@ main { padding: 18px 24px; }
     padding: 4px 12px;
     font-size: 10px;
     font-weight: bold;
+    font-family: "Montserrat Alternates", sans-serif;
     letter-spacing: 0.1em;
     display: flex;
     align-items: center;
@@ -352,6 +353,7 @@ main { padding: 18px 24px; }
     gap: 8px;
     color: rgba(255,255,255,0.8);
     font-size: 10px;
+    font-family: "Montserrat Alternates", sans-serif;
     letter-spacing: 0.1em;
 }
 
@@ -387,8 +389,9 @@ padding: 24px;
 }
 
 .info-header h3 {
-    font-family: serif; /* Ou a sua Montserrat */
-font-size: 1.3rem; /* Diminuí um pouco para nomes longos não quebrarem tudo */
+    font-family: "Montserrat Alternates", sans-serif; 
+    font-size: 1.3rem; /* Diminuí um pouco para nomes longos não quebrarem  tudo */
+    color: #28616C;
     line-height: 1.2;
     margin: 0;
     display: -webkit-box;
@@ -440,11 +443,13 @@ font-size: 1.3rem; /* Diminuí um pouco para nomes longos não quebrarem tudo */
     color: #28616C;
     font-size: 1.25rem;
     font-weight: bold;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .price-unit {
-    color: #EB5A5D;
+    color: #28616C;
     font-size: 0.875rem;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 /* ================= GRID DE MODELOS (8 CARDS FIXOS) ================= */
