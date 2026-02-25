@@ -1,13 +1,13 @@
 /* ================= Dados de Modelos ================= */
 const data = [
-  { id: 1, name: 'Luna Andrade', city: 'Porto Alegre', age: 25, height: 170, thumb: "img/models02.jpeg", tags: ['Morena', 'Tatuada', 'Acompanhante'], verificado: true, vip: false, disponivel: true, valor_hora: 300, bio: 'Modelo de alto padrão, especialista em acompanhamento discreto.', lat: -30.03, lng: -51.22 },
-  { id: 2, name: 'Valentina Rocha', city: 'Caxias do Sul', age: 28, height: 165, thumb: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=60', tags: ['Loira', 'VIP', 'Massagem'], verificado: true, vip: true, disponivel: true, valor_hora: 450, bio: 'Atendimento exclusivo com foco em massagens relaxantes.', lat: -29.17, lng: -51.18 },
-  { id: 3, name: 'Sofia Menezes', city: 'Pelotas', age: 22, height: 168, thumb: 'https://images.unsplash.com/photo-1594824476967-48c8b9642737?auto=format&fit=crop&w=800&q=60', tags: ['Morena Clara', 'Universitária'], verificado: false, vip: false, disponivel: true, valor_hora: 250, bio: 'Companhia discreta para eventos e viagens a negócios.', lat: -31.77, lng: -52.33 },
-  { id: 4, name: 'Camila Duarte', city: 'Santa Maria', age: 27, height: 172, thumb: 'https://images.unsplash.com/photo-1614289321713-d8b14bfb47e8?auto=format&fit=crop&w=800&q=60', tags: ['Morena', 'Modelo'], verificado: true, vip: false, disponivel: false, valor_hora: 350, bio: 'Elegância e sofisticação em todos os encontros.', lat: -29.69, lng: -53.80 },
-  { id: 5, name: 'Isadora Lima', city: 'Novo Hamburgo', age: 24, height: 166, thumb: 'https://images.unsplash.com/photo-1603791452906-bb9d88f6fbc6?auto=format&fit=crop&w=800&q=60', tags: ['Ruiva', 'VIP'], verificado: true, vip: true, disponivel: true, valor_hora: 500, bio: 'Personalidade vibrante e atendimento inesquecível.', lat: -29.69, lng: -51.13 },
-  { id: 6, name: 'Beatriz Faria', city: 'Cachoeirinha', age: 22, height: 170, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Ruiva', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 250, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
-  { id: 7, name: 'Amanda Santos', city: 'Gravataí', age: 30, height: 175, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
-  { id: 6, name: 'Beatriz Faria', city: 'Gravataí', age: 30, height: 175, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
+  { id: 1, name: 'Luna Andrade', city: 'Porto Alegre', age: 25, height: 170, Image:"img/model01.jpg", tags: ['Morena', 'Tatuada', 'Acompanhante'], verificado: true, vip: false, disponivel: true, valor_hora: 300, bio: 'Modelo de alto padrão, especialista em acompanhamento discreto.', lat: -30.03, lng: -51.22 },
+  { id: 2, name: 'Valentina Rocha', city: 'Caxias do Sul', age: 28, height: 165, Image:"img/model02.jpg", tags: ['Loira', 'VIP', 'Massagem'], verificado: true, vip: true, disponivel: true, valor_hora: 450, bio: 'Atendimento exclusivo com foco em massagens relaxantes.', lat: -29.17, lng: -51.18 },
+  { id: 3, name: 'Sofia Menezes', city: 'Pelotas', age: 22, height: 168, Image:"img/model03.jpg", tags: ['Morena Clara', 'Universitária'], verificado: false, vip: false, disponivel: true, valor_hora: 250, bio: 'Companhia discreta para eventos e viagens a negócios.', lat: -31.77, lng: -52.33 },
+  { id: 4, name: 'Camila Duarte', city: 'Santa Maria', age: 27, height: 172, Image:"img/model04.jpg", tags: ['Morena', 'Modelo'], verificado: true, vip: false, disponivel: false, valor_hora: 350, bio: 'Elegância e sofisticação em todos os encontros.', lat: -29.69, lng: -53.80 },
+  { id: 5, name: 'Isadora Lima', city: 'Novo Hamburgo', age: 24, height: 166, Image:"img/model05.jpg", tags: ['Ruiva', 'VIP'], verificado: true, vip: true, disponivel: true, valor_hora: 500, bio: 'Personalidade vibrante e atendimento inesquecível.', lat: -29.69, lng: -51.13 },
+  { id: 6, name: 'Beatriz Faria', city: 'Cachoeirinha', age: 22, height: 170, Image:"img/model06.jpg", tags: ['Ruiva', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 250, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
+  { id: 7, name: 'Amanda Santos', city: 'Gravataí', age: 30, height: 175, Image:"img/model07.jpg", tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
+  { id: 8, name: 'Beatriz Faria', city: 'Gravataí', age: 30, height: 175, Image:"img/model08.jpg", tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
   
   // Adicione mais modelos aqui para completar os 8...
 ];
@@ -25,7 +25,7 @@ function createCardHTML(model) {
     return `
         <div class="card-new" onclick="openModal(${model.id})">
             <div class="image-container">
-                <img src="${model.thumb}" alt="${model.name}">
+                <img src="${model.Image}" alt="${model.name}">
                 <div class="image-overlay"></div>
                 <div class="badge-container">
                     ${model.verificado ? `<div class="badge-verified"><i class="fa-solid fa-circle-check"></i> VERIFICADA</div>` : ''}
