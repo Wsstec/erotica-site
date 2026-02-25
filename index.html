@@ -16,47 +16,40 @@
 </head>
 <body>
   
- <!-- =======       CABEÇALHO        ======= -->                
-<header class="site-header">
-  <div class="top-bar">
-    <div class="logo">
-      <img src="img/Logo-Erótica.png" alt="Erotica Logo">
-      
-    </div>
+ <!-- ====================================== TOP BAR ============================================ -->                
+<div class="top-bar">
+    <div class="container top-bar-content">
+        <div class="model-types" id="typeSelector">
+            <button class="type-btn active" data-type="feminino">Feminino</button>
+            <button class="type-btn" data-type="masculino">Masculino</button>
+            <button class="type-btn" data-type="trans">Trans</button>
+        </div>
 
-    <!-- Botão hamburger (só aparece no mobile) -->
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+        <div class="user-actions">
+            <button class="lang-btn">
+                <i class="fa-solid fa-globe"></i> <span>PT</span> <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            
+            <a href="#" class="btn-register-new">Cadastrar</a>
+            
+            <button class="btn-login-new">
+                <i class="fa-solid fa-user"></i> Entrar
+            </button>
+        </div>
     </div>
+</div>
 
-    <!-- Menu Desktop -->
-   <div class="header-actions">
-   <!-- ======== Filtro de tipo de modelo (substitui a busca) ======== -->
-    <select id="model-type" class="model-select">
-    <option value="">Desejo ?</option>
-    <option value="mulher">Mulher</option>
-    <option value="trans">Trans</option>
-    <option value="homem">Homem</option>
-  </select>
-      <button class="btn register-btn">Cadastro Cliente</button>
-      <button class="btn login-btn">Login</button>
-      <select class="lang-select">
-        <option value="pt-BR">🇧🇷 PT-BR</option>
-        <option value="en-US">🇺🇸 EN</option>
-      </select>
+<header class="main-header">
+    <div class="container nav-content">
+        <img src="img/Logo-Erótica.png" alt="Logo" class="site-logo">
+        <nav class="nav-links">
+            <a href="#" class="active">Início</a>
+            <a href="#">+ Modelos</a>
+            <a href="#" class="btn-anuncie">Anuncie</a>
+        </nav>
     </div>
-  </div>
-
-  <!-- Menu Mobile -->
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#">Início</a></li>
-      <li><a href="#">+Modelos</a></li>
-      <li><a href="#">Anuncie!</a></li>
-      </ul>
-  </nav>
 </header>
-<!-- ======= FIM DO NOVO CABEÇALHO ======= -->
+<!-- =================================== FIM DO TOP BAR ========================================= -->
 
 
   <!-- ================= Main ================= -->

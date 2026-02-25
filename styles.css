@@ -17,12 +17,11 @@
     background: var(--bg); 
     color: var(--text-dark); 
     margin: 0;
-    padding: 0;
-   overflow-x: hidden;
+    
+   
 }
 html, body {
     max-width: 100%;
-    overflow-x: hidden; /* Corta qualquer conteúdo que queira sair pela direita */
     margin: 0;
     padding: 0;
 }
@@ -48,195 +47,191 @@ main {
     margin-bottom: 25px;
     letter-spacing: 1px;
 }
-/* ================= CABEÇALHO ================= */
-.site-header {
-  background: #fff;
-  border-bottom: 2px solid var(--primary);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+/* ================= NOVO CABEÇALHO (LAYOUT EROTICA) ================= */
+
+:root {
+    --primary-red: #EB5A5D;    /* Vermelho do código React */
+    --brand-blue: #28616C;     /* Azul petróleo do código React */
+    --font-padrao: "Montserrat Alternates", sans-serif;
 }
 
+/* 1. Barra Superior (Filtros e Login) */
 .top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 30px;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #f3f4f6;
+    padding: 10px 0;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.top-bar .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo img {
-  width: 400px;
-  height: auto;
+/* Botões Pílula (Feminino, Masculino, Trans) */
+.model-types { display: flex; gap: 8px; }
+
+.type-btn {
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    color: var(--brand-blue);
+    font-family: var(--font-padrao);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.site-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--primary);
-  font-family: "Montserrat Alternates", sans-serif;
-  }
-
-
-.search-bar {
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  outline: none;
-  width: 200px;
-  transition: all 0.3s ease;
-}
-/* ======== Estilo do seletor no menu ======== */
-.search-bar {
-  display: flex;
-  align-items: center;
+.type-btn.active {
+    background: var(--primary-red);
+    color: #fff;
 }
 
-.model-select {
-  background: #fff;
-  color: var(--primary);
-  font-family: "Montserrat Alternates", sans-serif;
-  border: 1px solid var(--primary);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 15px;
-  font-weight: 500;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* Lado Direito (Idioma e Auth) */
+.user-actions { display: flex; align-items: center; gap: 15px; }
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--brand-blue);
+    font-family: var(--font-padrao);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
 }
 
-/* ======== Estilo refinado do hover no seletor ======== */
-.model-select:hover {
-  background: #fff;              /* mantém o fundo branco */
-  border-color: var(--primary);  /* destaca a borda em vermelho */
-  color: var(--primary);         /* mantém o texto vermelho */
-  box-shadow: 0 0 6px rgba(179, 15, 33, 0.3); /* brilho suave opcional */
+.btn-register-new {
+    padding: 8px 18px;
+    border: 1px solid var(--brand-blue);
+    border-radius: 8px;
+    color: var(--brand-blue);
+    text-decoration: none;
+    font-family: var(--font-padrao);
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
 }
 
-.model-select option {
-  color: var(--primary);
+.btn-login-new {
+    background: var(--primary-red);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-family: var(--font-padrao);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
 }
 
-.search-bar:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 4px rgba(179, 15, 33, 0.5);
+/* 2. Barra Principal (Logo e Links) */
+.main-header { 
+    width: 100%;
+    position: sticky;      /* Muda de sticky para fixed */
+    top: 0;            /* Aqui está o segredo: ele fica logo abaixo da top-bar (que tem aprox. 45px) */
+    left: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: -webkit-sticky; /* Para Safari */
+    z-index: 1000;        /* Valor bem alto para nada passar por cima */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 10px 0;
+    transition: all 0.3s ease;
 }
 
-.lang-select { /* ======== Seletor de linguagem ======== */
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 8px;
-  cursor: pointer;
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-
+.nav-content {
+    max-width: 1280px;
+    margin: 0 auto !important; /* Centraliza o conteúdo */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-.btn {  /* ======== Botão de cadastro cliente ======== */
-  border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  cursor: pointer;
-  font-weight: 600;
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-
-  transition: all 0.3s ease;
+.site-logo { 
+    height: 55px; /* Altura ideal para logo .jpg */
+    width: auto;
 }
 
-.login-btn {  /* ======== Botão de login cliente ======== */
-  background: var(--primary);
-  color: #fff;
+.nav-links { display: flex; gap: 25px; align-items: center; }
+
+.nav-links a { 
+    text-decoration: none; 
+    color: #444; 
+    font-family: var(--font-padrao);
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.register-btn { /* ======== Botão de registro cliente ======== */
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+.nav-links a:hover, .nav-links a.active { color: var(--primary-red); }
+
+.btn-anuncie {
+    background: var(--brand-blue) !important;
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 30px; /* Estilo pílula conforme o layout */
 }
 
-.login-btn:hover { /* ======== Hover botão login ======== */
-  background: #eb5a5d;
-}
-
-.register-btn:hover {
-  background: var(--primary);
-  color: #fff;
-}
-
-.main-nav {
-  background: var(--primary);
-}
-
-.main-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 10px 0;
-  margin: 0;
-  list-style: none;
-}
-
-.main-nav a {  /* ================= Texto do cabeçalho ================= */
-  color: #fff;
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1em;
-  transition: color 0.3s;
+/* 3. Hero Section (Busca Centralizada) */
+.hero-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%);
+    text-align: center;
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
 
 }
 
-.main-nav a:hover {
-  color: #ffecec;
+.hero-section h1 {
+    font-family: var(--font-padrao);
+    font-size: 48px;
+    color: var(--brand-blue);
+    margin-bottom: 15px;
 }
 
-/* ================= Menu Desktop ================= */
-.nav-desktop {
-  display: flex;
-  align-items: center;
-  gap: 22px;
+.search-box {
+    max-width: 650px;
+    margin: 40px auto 0;
+    background: #fff;
+    padding: 10px;
+    border-radius: 50px;
+    display: flex;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
 }
 
-.nav-desktop .nav-link {
-  text-decoration: none;
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: color 0.3s ease;
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 0 20px;
+    font-family: var(--font-padrao);
+    font-size: 16px;
+    outline: none;
 }
 
-.nav-desktop .nav-link:hover,
-.nav-desktop .nav-link.active {
-  color: var(--primary);
+.btn-search {
+    background: var(--primary-red);
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 40px;
+    font-family: var(--font-padrao);
+    font-weight: 700;
+    cursor: pointer;
 }
-
-.nav-desktop .pill {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.nav-desktop .pill:hover {
-  background: #eb5a5d;
-}
-.nav-menu { /* Ajuste para o nome da classe da sua barra vermelha */
-    margin-bottom: 0 !important;
-}
+/* ================= FIM CABEÇALHO (LAYOUT EROTICA) ================= */
 
 /* ================= Main e Grid ================= */
 main { padding: 18px 24px; }
@@ -487,11 +482,13 @@ main { padding: 18px 24px; }
 }
 
 .models-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     background: transparent;
     margin-top: -90px; /* Ajuste para reduzir o espaço entre o título e os cards */
+    padding: 20px;
 }
 
 /* Ajuste do Card para o Grid */
@@ -731,6 +728,8 @@ main { padding: 18px 24px; }
   line-height: 1.8;
   text-align: justify;
   margin-bottom: 20px;
+  margin:auto;
+  max-width: 800px;
 }
 
 .about-text strong {
@@ -848,252 +847,144 @@ main { padding: 18px 24px; }
 /*=====================FIM RODAPÉ=========================== */
 
 
-/* ================= MÍDIAS / RESPONSIVIDADE (BLOCO UNIFICADO) ================= */
+/* ================= NOVO BLOCO DE RESPONSIVIDADE UNIFICADO ================= */
 
-/* Ajustes para tablets e telas médias */
-@media (max-width:900px){
-  
-  /* Ajustes no cabeçalho */ 
-  .top-bar { 
+/* 1. AJUSTES GERAIS PARA TABLETS (Abaixo de 900px) */
+@media (max-width: 900px) {
+  /* Cabeçalho: Empilha a Top Bar (Filtros em cima, Login embaixo) */
+  .top-bar .container {
     flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .model-types {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .user-actions {
+    width: 100%;
+    justify-content: center;
     gap: 10px;
-    align-items: center;
-    padding: 10px 15px;
-     }
-  .logo { width: 100%; justify-content: center; margin-bottom: 5px;}
-  .header-actions {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    width: 100%;
-    gap: 5px;
-    order: 2
-  }
-  .model-select, 
-  .lang-select,
-  
-  /* Ajustes na barra de pesquisa */
-  .earch-bar { 
-    width: 100%;
-    grid-column: 1 / span 2;
-    order: 1;
-  }
-  .model-select {  margin-bottom: 0 !important; }
-  .lang-select { order: 5 }
-  .login-btn { order: 4; }
-  .register-btn { order: 3; }
-  .btn {
-   flex-grow: 1;  
-    min-width: 0;
-    padding: 6px 4px;
-    font-size: 11px;
-    height: 35px;
-    width: 100%; /* Faz os botões e seletores ocuparem toda a largura disponível */
-    margin: 0;
-    text-align: center;
   }
 
-  .main-nav ul {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  /* Ajustes no rodapé */
-  .footer-container {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .footer-links {
-    justify-content: center;
-  }
-
-  /* Ajustes no main e grid */
-  .grid { grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); }
-  #map { width:90%; height:350px; }
-  .large-img { height:300px; margin-bottom:12px; }
-  .modal-buttons { flex-direction:column; }
-  .thumb { height:220px; }
-  .modal { grid-template-columns:1fr; padding:16px; }
-
-  .nav-desktop { display: none; } /* Oculta o menu desktop em telas menores */
-  .header-actions{justify-content:center}
-  .logo img {
-        width: 200px; /* Reduz para um tamanho seguro */
-        height: auto; }
-      
-         /*Ajustes Carrossel*/   
-  .thumb { height: 280px; } /* Ajusta a altura da miniatura para telas menores */
-  .card { min-width: 220px; width: calc( (100% / 3) - 16px ); } /* Ajusta a largura do card */
-  .carousel-wrapper { padding: 0 10px; } /* Reduz o padding lateral */
-  .carousel-btn.left { left: 0; } /* Ajusta o botão para a borda */
-  .carousel-btn.right { right: 0; }
-
-  /* Ajustes na seção de propaganda */
-@media (max-width: 768px) {
-    .banner-parceiros {
-        padding: 15px;       /* Garante que o banner não encoste nas bordas do celular */
-    }
-    
-    .banner-parceiros img {
-        width: 100%;         /* Faz a imagem ocupar a largura total do celular */
-    }
-}
-
-
-  /* Ajustes para telas muito pequenas */
-@media (max-width:600px){
-  .site-title { font-size: 22px; } /* Reduz o tamanho do título do site */
-  .logo { height: 40px; width: 40px;}/* Reduz o tamanho do logo */
-  .top-bar { /* Ajusta o padding para telas menores */
+  /* Ajuste do Logo e Menu Principal */
+  .nav-content {
     flex-direction: column;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-     .model-select { width: 100%; margin-bottom: 8px;}
-  .header-actions{justify-content:center}
-}
-
-  .logo img { width: 160px; height: auto; } /* Reduz ainda mais o logo para telas muito pequenas */
-  .search-bar { width: 100%; } /* Barra de pesquisa ocupa toda a largura */
-  .main-nav ul { gap: 10px; } /* Reduz o espaçamento do menu */
-
-  .grid { grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); } /* Ajusta o grid para telas muito pequenas */
-  #map { width:95%; height:300px; }
-  .large-img { height:220px; }
-  .modal-right h2 { font-size:20px; }
-  .modal-right p { font-size:12px; }
-
-  .thumb { height: 220px; } /* Ajusta a altura da miniatura para telas menores */
-  .card { min-width: 200px; }
-  .section-title { font-size: 22px; }
-  .carousel-btn.left { left: 6px; }
-  .carousel-btn.right { right: 6px; }
-
-   /* Main */
-   main {
-  padding: 15px 10px;                                                         
-  margin: 10px auto; 
-  width: auto; /* Deixa o browser calcular a largura fluida */
-  max-width: 100%; 
+    gap: 15px;
   }
-    .section-title { font-size: 22px; }
 
-     /*  Responsividade Propaganda   */
-    .ad-banner-full { 
- width: 100%; 
- height: 120px;
- border: none !important; /* Remove a borda para economizar espaço */
- border-radius: 0; 
- margin: 0 !important; /* Remove margens extras */
- padding: 0 !important;
- }
-    .ads-section { padding: 0; margin: 40px 0; }
-    .ads-section .section-title { font-size: 24px; }
-
-}
-
-/* Responsividade Icones e Carrossel Shorts */
-@media (max-width: 768px) {
-  .info-icons { /* Contêiner dos ícones */
-    flex-direction: column;
-    align-items: center;
+  .nav-links {
+    gap: 15px;
     justify-content: center;
-    gap: 20px;
-    padding: 20px 0;
+    width: 100%;
   }
 
-  .info-icons .icon {
-    width: 80%;
-    text-align: center;
+  /* Grid de Modelos: 3 Colunas */
+  .models-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 10px;
   }
-
-  .info-icons img { /* Ajuste o tamanho dos ícones conforme necessário */
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-  }
-
-    .short-card { /* Cada card de short */
-    flex: 0 0 140px;
-  }
-
-  .short-card video {
-    height: 240px;
-  }
-
-  .carousel-btn {
-    display: flex;
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
-
-  .carousel-btn.prev {
-    left: 0;
-  }
-
-  .carousel-btn.next {
-    right: 0;
-  }
-
-  .shorts-section h2 { /* titulo shorts*/
-    font-size: 1.4rem;
-  }
-}  
-
-/* Responsividade do Grid */
-@media (max-width: 1024px) {
-    .models-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas em tablets */
-    }
 }
 
+/* 2. AJUSTES PARA CELULARES (Abaixo de 768px) */
 @media (max-width: 768px) {
-    .models-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em celulares grandes */
-        gap: 15px;
-    }
+  /* Hero Section (Busca) */
+  .hero-section h1 {
+    font-size: 28px !important;
+    line-height: 1.2;
+  }
+
+  .search-box {
+    flex-direction: column;
+    border-radius: 20px;
+    background: transparent;
+    box-shadow: none;
+    gap: 10px;
+  }
+
+  .search-box input {
+    background: #fff;
+    padding: 15px;
+    border-radius: 50px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .btn-search {
+    width: 100%;
+  }
+
+  /* Shorts e Ícones */
+  .info-icons {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .short-card {
+    flex: 0 0 145px; /* Tamanho dos shorts no celular */
+  }
+
+  /* Grid de Modelos: 2 Colunas */
+  .models-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 480px) {
-    .models-grid {
-        grid-template-columns: 1fr; /* 1 coluna em celulares pequenos */
-        
-    }
+/* 3. AJUSTES PARA TELAS PEQUENAS E CENTRALIZAÇÃO (Abaixo de 600px) */
 @media (max-width: 600px) {
-    main {
-        padding: 10px; /* Pequeno respiro nas bordas */
-        width: 100%;
-        box-sizing: border-box;
-    }
+  .site-logo {
+    height: 40px; /* Logo menor para sobrar espaço */
+  }
 
-    .models-grid {
-        display: flex; /* Mudamos para flex no mobile para facilitar a centralização */
-        flex-direction: column;
-        align-items: center; /* Centraliza os cards um embaixo do outro */
-        gap: 20px;
-        width: 100%;
-    }
+  /* CENTRALIZAÇÃO TOTAL DO CONTEÚDO */
+  main {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-    .card-new {
-        width: 90% !important; /* Card ocupa 90% da largura da tela */
-        max-width: 320px;       /* Mas não fica gigante */
-        margin: 0 auto;        /* Garante a centralização */
+  /* Títulos das seções centralizados */
+  .section-title, .shorts-section h2, .section-header h2 {
+    text-align: center;
+    font-size: 20px !important;
+  }
+
+  /* Grid vira uma coluna para os cards ficarem grandes e centralizados */
+  .models-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  /* O Card ocupa 90% da tela para não ficar "magrelo" */
+  .card-new {
+    width: 90% !important;
+    max-width: 320px;
+    height: 450px; /* Aumenta a altura para destaque no celular */
+    margin: 0 auto;
+  }
+
+  /* Esconder elementos desnecessários no mobile para limpar o visual */
+  .lang-btn span { display: none; } /* Deixa só o ícone do globo */
+}
+
+/* 4. AJUSTE PARA O BANNER DE PROPAGANDA */
+@media (max-width: 480px) {
+    .ad-banner-full {
+        height: 100px;
+        width: 100%;
     }
 }
-/* Ajuste para Mobile  Titulo modelos*/
-@media (max-width: 768px) {
-    .section-header h2 {
-        font-size: 1.5rem;
-    }
-}
-/* ================= FIM MÍDIAS / RESPONSIVIDADE ================= */
+
+/* ================= FIM DO BLOCO DE RESPONSIVIDADE ================= */
 .clearfix::after {
     content: "";
     display: table;
     clear: both;
 }
  
-}
-}
+
