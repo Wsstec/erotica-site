@@ -5,7 +5,10 @@ const data = [
   { id: 3, name: 'Sofia Menezes', city: 'Pelotas', age: 22, height: 168, thumb: 'https://images.unsplash.com/photo-1594824476967-48c8b9642737?auto=format&fit=crop&w=800&q=60', tags: ['Morena Clara', 'Universitária'], verificado: false, vip: false, disponivel: true, valor_hora: 250, bio: 'Companhia discreta para eventos e viagens a negócios.', lat: -31.77, lng: -52.33 },
   { id: 4, name: 'Camila Duarte', city: 'Santa Maria', age: 27, height: 172, thumb: 'https://images.unsplash.com/photo-1614289321713-d8b14bfb47e8?auto=format&fit=crop&w=800&q=60', tags: ['Morena', 'Modelo'], verificado: true, vip: false, disponivel: false, valor_hora: 350, bio: 'Elegância e sofisticação em todos os encontros.', lat: -29.69, lng: -53.80 },
   { id: 5, name: 'Isadora Lima', city: 'Novo Hamburgo', age: 24, height: 166, thumb: 'https://images.unsplash.com/photo-1603791452906-bb9d88f6fbc6?auto=format&fit=crop&w=800&q=60', tags: ['Ruiva', 'VIP'], verificado: true, vip: true, disponivel: true, valor_hora: 500, bio: 'Personalidade vibrante e atendimento inesquecível.', lat: -29.69, lng: -51.13 },
-  { id: 6, name: 'Beatriz Faria', city: 'Gravataí', age: 30, height: 175, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 }
+  { id: 6, name: 'Beatriz Faria', city: 'Cachoeirinha', age: 22, height: 170, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Ruiva', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 250, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
+  { id: 7, name: 'Amanda Santos', city: 'Gravataí', age: 30, height: 175, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
+  { id: 6, name: 'Beatriz Faria', city: 'Gravataí', age: 30, height: 175, thumb: 'https://images.unsplash.com/photo-1614287146579-64f19af244d4?auto=format&fit=crop&w=800&q=60', tags: ['Loira', 'Experiente'], verificado: false, vip: false, disponivel: true, valor_hora: 280, bio: 'Experiência e profissionalismo em todos os serviços.', lat: -29.94, lng: -50.99 },
+  
   // Adicione mais modelos aqui para completar os 8...
 ];
 
@@ -66,7 +69,14 @@ function renderModelsGrid() {
 const shortsData = [
     { video: 'videos/modelo1.mp4', title: 'Valentina' },
     { video: 'videos/modelo2.mp4', title: 'Rafaela' },
-    { video: 'videos/modelo3.mp4', title: 'Luna' }
+    { video: 'videos/modelo3.mp4', title: 'Luna' },
+    { video: 'videos/modelo4.mp4', title: 'Isabela' },
+    { video: 'videos/modelo5.mp4', title: 'Amanda' },
+    { video: 'videos/modelo6.mp4', title: 'Beatriz' },
+    { video: 'videos/modelo7.mp4', title: 'Camila' },
+    { video: 'videos/modelo8.mp4', title: 'Juliana' },
+    
+    
 ];
 
 function renderShorts() {
