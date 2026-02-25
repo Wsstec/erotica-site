@@ -234,6 +234,9 @@ main {
 .nav-desktop .pill:hover {
   background: #eb5a5d;
 }
+.nav-menu { /* Ajuste para o nome da classe da sua barra vermelha */
+    margin-bottom: 0 !important;
+}
 
 /* ================= Main e Grid ================= */
 main { padding: 18px 24px; }
@@ -249,7 +252,7 @@ main { padding: 18px 24px; }
     width: 100%;       /* Ocupa a largura total da tela */
     display: flex;     /* Ativa o modo flexbox */
     justify-content: center; /* Centraliza horizontalmente */
-    padding:10px 0;   /* Dá um espaço em cima e embaixo */
+    padding:10px ;   /* Dá um espaço em cima e embaixo */
     gap: 8px;           /* Espaçamento entre o título e o ícone */
      
 }
@@ -259,6 +262,9 @@ main { padding: 18px 24px; }
     color: #EB5A5D;
     font-size: 32px;
     margin: 0;
+    margin-bottom: 0 !important; /* Remove a margem inferior padrão */
+    padding-bottom: 0 !important;
+    margin-top: 8px !important; /* Dá um pequeno espaço em cima do título */
     text-align: center;
     
 }
@@ -288,6 +294,8 @@ main { padding: 18px 24px; }
     position: relative;
     aspect-ratio: 3 / 4;
     overflow: hidden;
+    margin-top: 0 !important;
+    padding-top: 10px !important;
 }
 
 .image-container img {
@@ -391,7 +399,7 @@ main { padding: 18px 24px; }
 
 /* Info Section */
 .info-section {
-padding: 24px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     height: 180px; /* Altura fixa para a parte branca */
@@ -483,6 +491,7 @@ padding: 24px;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     background: transparent;
+    margin-top: -90px; /* Ajuste para reduzir o espaço entre o título e os cards */
 }
 
 /* Ajuste do Card para o Grid */
@@ -575,15 +584,19 @@ padding: 24px;
 
 /* ======== Shorts EROTICA =======*/
 .shorts-section {
-  margin: 80px auto;
+  margin: 10px !important;
   text-align: center;
   max-width: 1200px;
+  padding-top: 10px !important;
+  margin-top: -140px !important;
   color: var(--text-dark);
 }
 
 .shorts-section h2 { /* titulo shorts*/
   font-size: 1.8rem;
-  margin-bottom: 25px;
+  margin-top: 0 !important;
+  margin-bottom: 15px;
+  padding-top: 0 !important;
   color: #eb5a5d;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 700;
