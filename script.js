@@ -18,37 +18,28 @@ const closeModalBtn = document.getElementById('closeModal');
 
 /* ================= Função de Criação do Card ================= */
 function createCardHTML(model) {
-    const localidade = model.city || "Não informado";
-    const tags = model.tags || [];
-    const tagsVisiveis = tags.slice(0, 3).map(t => `<span class="service-tag">${t}</span>`).join('');
+    const language = 'pt'; // Você pode conectar isso ao seu seletor de idiomas depois
+    const t = language === 'pt' ? { verified: 'Verificada', perHour: '/hora' } : { verified: 'Verified', perHour: '/hour' };
 
     return `
-        <div class="card-new" onclick="openModal(${model.id})">
-            <div class="image-container">
-                <img src="${model.Image}" alt="${model.name}">
-                <div class="image-overlay"></div>
-                <div class="badge-container">
-                    ${model.verificado ? `<div class="badge-verified"><i class="fa-solid fa-circle-check"></i> VERIFICADA</div>` : ''}
-                    ${model.vip ? `<div class="badge-vip">VIP</div>` : ''}
-                </div>
-                <button class="heart-btn" onclick="event.stopPropagation();"><i class="fa-regular fa-heart"></i></button>
-                ${model.disponivel ? `<div class="status-available"><div class="dot-pulse"></div><span>DISPONÍVEL</span></div>` : ''}
+    <div class="model-card-modern" onclick="openModal(${model.id})">
+        <img src="${model.Image}" alt="${model.name}">
+        
+        ${model.verificado ? `
+            <div class="badge-verified-modern">
+                <i class="fa-solid fa-circle-check"></i> VERIFICADA
             </div>
-            <div class="info-section">
-                <div class="info-header">
-                    <div>
-                        <h3>${model.name}</h3>
-                        <div class="location"><i class="fa-solid fa-location-dot"></i> ${localidade}</div>
-                    </div>
-                    <span class="price-unit" style="color: #666">${model.age} anos</span>
-                </div>
-                <div class="services-preview">${tagsVisiveis}</div>
-                <div class="price-tag">
-                    <span class="price-value">R$ ${model.valor_hora}</span>
-                    <span class="price-unit">/hora</span>
-                </div>
-            </div>
-        </div>`;
+        ` : ''}
+
+ <div class="card-info-overlay">
+    <h3 class="model-name-modern">${model.name}</h3>
+    <div class="model-location-modern">
+        <i class="fa-solid fa-location-dot"></i> ${model.city}, ${model.state}
+    </div>
+    <div class="model-price-modern">
+        R$ ${model.valor_hora}/hora
+    </div>
+</div>`;
 }
 
 /* ================= Renderização do Grid Fixo (8 Cards) ================= */
@@ -106,6 +97,33 @@ document.getElementById('prevShorts')?.addEventListener('click', () => {
     document.querySelector('.shorts-carousel').scrollBy({ left: -300, behavior: 'smooth' });
 });
 
+/* ================= Seção "Sobre o Erótica" ================= */
+document.getElementById('btn-sobre').addEventListener('click', function(e) {
+    e.preventDefault();
+    const sectionSobre = document.querySelector('.about');
+    
+    // Alterna entre mostrar e esconder
+    sectionSobre.classList.toggle('active');
+    
+    // Rola a página suavemente até o texto
+    if (sectionSobre.classList.contains('active')) {
+        sectionSobre.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+/*================== Fim da Seção "Sobre o Erótica" ================= */
+/* ================= Seção de Ícones Interativos ================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const iconCards = document.querySelectorAll('.icon-card');
+
+    iconCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            // toggle adiciona a classe se não tiver, e remove se já tiver
+            // Isso permite abrir e fechar o mesmo ícone individualmente
+            card.classList.toggle('active');
+        });
+    });
+});
+/*================== Fim da Seção de Ícones Interativos ================= */
 /* ================= Modal ================= */
 function openModal(id) {
     const m = data.find(x => x.id === id);

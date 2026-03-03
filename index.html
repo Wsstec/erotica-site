@@ -14,218 +14,149 @@
   <!-- Leaflet CSS para mapa interativo -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
+
 <body>
-  
- <!-- ====================================== TOP BAR ============================================ -->                
-<div class="top-bar">
-    <div class="container top-bar-content">
-        <div class="model-types" id="typeSelector">
-            <button class="type-btn active" data-type="feminino">Feminino</button>
-            <button class="type-btn" data-type="masculino">Masculino</button>
-            <button class="type-btn" data-type="trans">Trans</button>
-        </div>
 
-        <div class="user-actions">
-            <button class="lang-btn">
-                <i class="fa-solid fa-globe"></i> <span>PT</span> <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            
-            <a href="#" class="btn-register-new">Cadastrar</a>
-            
-            <button class="btn-login-new">
-                <i class="fa-solid fa-user"></i> Entrar
-            </button>
+    <div class="top-bar">
+        <div class="container top-bar-content">
+           <div class="user-actions">
+                <button class="lang-btn">
+                    <i class="fa-solid fa-globe"></i> <span>PT</span> <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <a href="#" class="btn-register-new">Cadastrar</a>
+                <button class="btn-login-new">
+                    <i class="fa-solid fa-user"></i> Entrar
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
-<header class="main-header">
-    <div class="container nav-content">
-        <img src="img/Logo-Erótica.png" alt="Logo" class="site-logo">
-        <nav class="nav-links">
-            <a href="#" class="active">Início</a>
-            <a href="#">+ Modelos</a>
-            <a href="#" class="btn-anuncie">Anuncie</a>
-        </nav>
-    </div>
-</header>
-<!-- =================================== FIM DO TOP BAR ========================================= -->
+    <header class="main-header">
+        <div class="container nav-content">
+            <img src="img/Logo-Erótica2.png" alt="Logo" class="site-logo">
+            <nav class="nav-links">
+                <a href="#" class="active">Início</a>
+                <a href="#">+ Modelos</a>
+                <a href="#" class="btn-anuncie">Anuncie</a>
+            </nav>
+        </div>
+    </header>
 
+    <main>
+        <div class="filters" id="filtersRow"></div>
+        <div class="grid" id="grid"></div>
 
-  <!-- ================= Main ================= -->
-  <main>
-    <!-- Filtros rápidos (opcional) -->
-    <div class="filters" id="filtersRow"></div>
-
-    <!-- Grid de modelos -->
-    <div class="grid" id="grid"></div>
-
-    <!-- ======== CARROSSEL DE SHORTS ======== -->
-<video 
+        <section class="shorts-section">
+            <h2>Erótica Shorts</h2>
+            <div class="shorts-carousel-container">
+                <div class="shorts-carousel">
+                    <div class="short-card">
+                        <video 
   src="videos/short01.mp4" 
   poster="img/thumb-video01.jpg" 
   preload="metadata" 
   muted 
   loop 
   playsinline>
-</video>
-    <section class="shorts-section">
-  <h2>Erótica Shorts</h2>
+</video>  <h3>Valentina</h3>
+                    </div>
+                    <div class="short-card">
+                        <video src="videos/modelo2.mp4" controls muted loop></video>
+                        <h3>Rafaela</h3>
+                    </div>
+                    </div>
+                <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
 
-  <div class="shorts-carousel-container">
-    
-    <div class="shorts-carousel">
-      <div class="short-card">
-        <video src="videos/modelo1.mp4" controls muted loop></video>
-        <h3>Valentina</h3>
-      </div>
-
-    <div class="short-card">
-      <video src="videos/modelo2.mp4" controls muted loop></video>
-      <h3>Rafaela</h3>
-    </div>
-
-    <div class="short-card">
-      <video src="videos/modelo3.mp4" controls muted loop></video>
-      <h3>Luna</h3>
-    </div>
-
-    <div class="short-card">
-      <video src="videos/modelo4.mp4" controls muted loop></video>
-      <h3>Isabella</h3>
-    </div>
-
-    <div class="short-card">
-      <video src="videos/modelo5.mp4" controls muted loop></video>
-      <h3>Giovanna</h3>
-    </div>
-  <div class="short-card">
-        <video src="videos/modelo6.mp4" controls muted loop></video>
-        <h3>Helena</h3>
-      </div>
-    </div>
-
-    <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-  </div>
-</section>
-</main>
- <!-------------------------------FIM CARROSSEL SHORTS-------------------------------------------------->
-   
-
-<!-------------------------CARDS DE MODELOS EM DESTAQUE------------------------- -->
-<div class="titulo-pagina-cheia">
-    <h2>Modelos em Destaque</h2>
+ <div class="section-header-modern">
+    <h2 class="featured-title">Modelos em Destaque</h2>
+    <a href="#" class="view-all-link">Ver todas →</a>
 </div>
-<main>   
 
-  <section class="models-section"></section>
-    <div id="models-grid" class="models-grid"></div>
-    </div> </section>
-<!-------------------------FIM CARDS DE MODELOS EM DESTAQUE------------------------- -->
-  
+<div id="models-grid" class="models-grid">
+    </div>
 
-<!-- ================= Modal : Pagina da modelo ================= -->
-  <div class="modal-backdrop" id="modal">
-    <div class="modal" role="dialog" aria-modal="true">
-      <button class="close" id="closeModal">✕</button>
-      <div class="modal-left">
-        <div id="modalImg" class="large-img"></div>
-      </div>
-      <div class="modal-right">
-        <h2 id="modalName"></h2>
-        <div class="info" id="modalDetails"></div>
-        <p id="modalBio"></p>
-        <div class="tags" id="modalTags"></div>
-        <div class="modal-buttons">
-          <button class="btn">Ver portfólio</button>
-          <button class="pill">Contato</button>
+        <section class="models-section">
+            <div id="models-grid" class="models-grid"></div>
+        </section>
+ <section class="banner-parceiros">
+            <img src="img/anuncio03.png" class="banner-img">
+        </section>
+        
+        <section class="icons-section">
+            <div class="icon-card">
+                <i class="fa-solid fa-video"></i>
+                <h3>Vídeos 360º</h3>
+                <p>Visualize os perfis com vídeos imersivos de 360º que destacam cada detalhe com transparência.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fa-solid fa-id-card"></i>
+                <h3>Documentos verificados</h3>
+                <p>Todas as modelos passam por verificação de identidade e documentação, garantindo autenticidade.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fa-solid fa-camera"></i>
+                <h3>Fotos e Vídeos Reais</h3>
+                <p>Conteúdos revisados e aprovados para oferecer segurança e confiança aos clientes de alto nível.</p>
+            </div>
+        </section>
+
+     
+    </main>
+       
+        <section class="about">  
+            <h2 class="section-title">Sobre o Erótica</h2>
+            <h3 class="section-subtitle">Compromisso com qualidade</h3>
+            <p class="about-text">  O <strong>Erótica</strong> é uma plataforma exclusiva criada para oferecer um ambiente seguro, moderno e discreto, onde modelos independentes podem divulgar seus perfis e serviços de forma profissional. Nosso objetivo é conectar clientes exigentes a modelos de alto nível, prezando sempre pela elegância, privacidade e respeito mútuo.
+               Reforçamos que o <strong>Erótica</strong> atua apenas como um espaço de divulgação e não mantém qualquer vínculo empregatício, comercial ou contratual com as modelos anunciantes. Cada perfil é de responsabilidade exclusiva de sua titular, cabendo ao cliente e à modelo estabelecerem diretamente qualquer contato ou acordo.
+               Nosso público é formado por pessoas de bom gosto, que valorizam discrição, qualidade e excelência no atendimento. O <strong>Erótica</strong> reafirma seu compromisso com a transparência, a legalidade e o alto padrão que definem nossa marca.
+
+</p>
+            <div class="quality-seal">
+                <span>⭐ Site de alto padrão</span>
+            </div>
+        </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logobranco.png" alt="Erotica Logo">
+            </div>
+            <ul class="footer-links">
+                <li><a href="javascript:void(0)" id="btn-sobre">Sobre</a></li>
+                <li><a href="#">Termos</a></li>
+                <li><a href="#">Privacidade</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  </main>
-<!-- ================= FIM Modal : Pagina da modelo ================= -->
+        <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
+    </footer>
 
-<!-- ======== ÍCONES DESTAQUE ======== -->
-<section class="icons-section">
-  <div class="icon-card animate-on-scroll">
-    <i class="fa-solid fa-video"></i>
-    <h3>Vídeos de comparação 360º</h3>
-    <p>Visualize os perfis com vídeos imersivos de 360º que destacam cada detalhe com transparência.</p>
-  </div>
-
-  <div class="icon-card animate-on-scroll">
-     <i class="fa-solid fa-id-card"></i>
-    <h3>Documentos verificados</h3>
-    <p>Todos os modelos passam por verificação de identidade e documentação, garantindo autenticidade.</p>
-  </div>
-
-   <div class="icon-card animate-on-scroll">
-    <i class="fa-solid fa-camera"></i>
-    <h3>Fotos e vídeos verificados</h3>
-    <p>Conteúdos revisados e aprovados para oferecer segurança e confiança aos clientes de alto nível.</p>
-  </div>
-</section>
-
-<!--LOCAL PARA PROPAGANDAS-->
-<section class="banner-parceiros">
-    <img src="img/anuncio03.png"  class="banner-img">
-</section>
-<!--LOCAL PARA PROPAGANDAS-->
-
-<!--TEXTO INTITUCIONAL-->
-<section class="about">  
-  <h2 class="section-title">Sobre o Erótica</h2>
-  <h3 class="section-subtitle">Nosso compromisso com qualidade e discrição</h3>
-  
-  <p class="about-text">
-    O <strong>Erótica</strong> é uma plataforma exclusiva criada para oferecer um ambiente seguro, moderno e discreto, onde modelos independentes podem divulgar seus perfis e serviços de forma profissional. Nosso objetivo é conectar clientes exigentes a modelos de alto nível, prezando sempre pela elegância, privacidade e respeito mútuo.
-  </p>
-  
-  <p class="about-text">
-    Reforçamos que o <strong>Erótica</strong> atua apenas como um espaço de divulgação e não mantém qualquer vínculo empregatício, comercial ou contratual com as modelos anunciantes. Cada perfil é de responsabilidade exclusiva de sua titular, cabendo ao cliente e à modelo estabelecerem diretamente qualquer contato ou acordo.
-  </p>
-  
-  <p class="about-text">
-    Nosso público é formado por pessoas de bom gosto, que valorizam discrição, qualidade e excelência no atendimento. O <strong>Erótica</strong> reafirma seu compromisso com a transparência, a legalidade e o alto padrão que definem nossa marca.
-  </p>
-
-  <!-- ⭐ Selo de alto padrão -->
-  <div class="quality-seal">
-    <span class="star">⭐</span>
-    <span class="seal-text">Site para clientes e modelos de alto padrão</span>
-  </div>
-</section>
-<!--FIM TEXTO INTITUCIONAL-->
-  
-<!-- ================= RODAPÉ ================= -->
-  <footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-logo">
-      <img src="img/logobranco.png" alt="Erotica Logo">
-      
+    <div class="modal-backdrop" id="modal">
+        <div class="modal">
+            <button class="close" id="closeModal">✕</button>
+            <div class="modal-left">
+                <div id="modalImg" class="large-img"></div>
+            </div>
+            <div class="modal-right">
+                <h2 id="modalName"></h2>
+                <div class="info" id="modalDetails"></div>
+                <p id="modalBio"></p>
+                <div class="modal-buttons">
+                    <button class="btn">Portfólio</button>
+                    <button class="pill">Contato</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <ul class="footer-links">
-      <li><a href="#">Sobre</a></li>
-      <li><a href="#">Termos de Uso</a></li>
-      <li><a href="#">Política de Privacidade</a></li>
-      <li><a href="#">Contato</a></li>
-    </ul>
-
-    <div class="footer-socials">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
-      <a href="#"><i class="fab fa-telegram"></i></a>
-    </div>
-  </div>
-  <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
-</footer>
-<!-- ===================== FIM RODAPÉ ===================== -->
-  
-<!-- ================= Scripts ================= -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 
