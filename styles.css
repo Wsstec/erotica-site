@@ -153,8 +153,9 @@ main {
 }
 
 .site-logo { 
-    height: 55px; /* Altura ideal para logo .jpg */
+    height: 80px; /* Altura ideal para logo .jpg */
     width: auto;
+    display: block;
 }
 
 /* 1. Base dos Links (Início e +Modelos) */
@@ -1149,7 +1150,7 @@ display: block !important;
 /* 3. AJUSTES PARA TELAS PEQUENAS E CENTRALIZAÇÃO (Abaixo de 600px) */
 @media (max-width: 600px) {
   .site-logo {
-    height: 40px; /* Logo menor para sobrar espaço */
+    height: 50px; /* Logo menor para sobrar espaço */
   }
 
   /* CENTRALIZAÇÃO TOTAL DO CONTEÚDO */
