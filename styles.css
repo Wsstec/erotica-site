@@ -92,20 +92,33 @@ main {
 }
 
 .btn-register-new {
-    padding: 8px 18px;
-    border: 1px solid var(--brand-blue);
+    background: #28616C !important; /* Vermelho vibrante do Anuncie */
+    color: #ffffff !important;
+    padding: 10px 22px;
+    border: none;
     border-radius: 8px;
-    color: var(--brand-blue);
-    text-decoration: none;
-    font-family: var(--font-padrao);
-    font-weight: 600;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: 700;
     font-size: 14px;
-    transition: 0.3s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    
+    /* Efeito de transição suave */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(235, 90, 93, 0.3);
 }
 .btn-register-new:hover {
-    background-color: #28616C;
-    color: #ffffff !important; /* Texto branco para leitura no fundo azul */
-    border-color: #28616C;
+ background: #d44b4e !important; /* Um tom levemente mais escuro */
+    transform: translateY(-2px); /* Pequena subida para dar profundidade */
+    box-shadow: 0 6px 20px rgba(235, 90, 93, 0.4);
+    color: #ffffff !important;
+}
+
+.btn-register-new:active {
+    transform: translateY(0);
 }
 
 .btn-login-new {
@@ -524,7 +537,7 @@ width: 100%;
 .model-card-modern:hover {
     /* Sobe suavemente e aumenta 2% */
     transform: translateY(-12px) scale(1.02) !important; 
-    box-shadow: 0 08px 25px rgba(255, 0, 60, 0.3);
+    box-shadow: 0 08px 25px rgba(6, 6, 6, 0.3);
     z-index: 10;
 }
 
@@ -630,43 +643,48 @@ width: 100%;
 /*============== FIM DO GRID DE MODELOS ============= */
 
 /* ======== Sessão de ícones ======== */
-.icons-wrapper {
-display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 20px;
-    max-width: 700px; /* Reduzi de 1200px para 900px para os cards ficarem menores */
-    margin: 40px auto !important; /* Centraliza o bloco na página */
-    padding: 20px;
-    align-items: start;
+.icons-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 60px auto 60px auto;
+  padding: 30px 10px;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
 }
-
 .icon-card {
-background: #ffffff;
+    background: #ffffff;
     border: 1px solid #f0f0f0;
-    border-radius: 15px;
-    padding: 15px; /* Padding interno menor */
+    border-radius: 12px;
+    padding: 10px 15px;
     cursor: pointer;
-    text-align: center;
+    
+    /* MUDANÇA AQUI: Alinha Ícone e Título lado a lado */
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row; 
+    flex-wrap: wrap; /* Permite que o parágrafo pule para a linha de baixo ao abrir */
+    align-items: center; 
+    justify-content: flex-start;
+    
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     width: 100%;
-    min-height: 110px; /* Reduzi um pouco a altura mínima */
+    min-height: 60px; /* Menor agora que estão lado a lado */
 }
 
 .icon-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(255, 0, 60, 0.3);
+  box-shadow: 0 8px 25px rgba(6, 6, 6, 0.3);
   border-color: var(--primary-red);
 }
 
-.icon-card i {
-  font-size: 40px;
-  color: var(--primary);
-  margin-bottom: 15px;
-  transition: color 0.3s ease;
-  transform: scale(1.1);    
+.icon-card i, .icon-card img {
+font-size: 20px;
+    margin-right: 8px; /* Espaço entre ícone e texto */
+    color: #28616C;
+    flex-shrink: 0; /* Impede o ícone de amassar */
 }
 
 .icon-card:hover i {
@@ -674,26 +692,24 @@ background: #ffffff;
 }
 
 .icon-card h3 {
-    font-size: 16px;
+font-size: 14px;
     color: #28616C;
-    margin: 10px 0;
-    min-height: 40px; /* Garante que títulos de 1 ou 2 linhas não movam o card */
-    display: flex;
-    align-items: center;
+    margin: 0;
+    font-weight: 600;
+    flex: 1; /* Ocupa o restante do espaço */
+    text-align: left;
 }
 
 .icon-card p {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
+    width: 100%; /* Força o texto a ir para a linha de baixo */
+    font-size: 12px;
+    color: #777;
     margin: 0;
-    font-size: 14px;
-    color: #666;
-    line-height: 1.4;
-    /* Transição suave de verdade */
-    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease;
+    transition: all 0.4s ease;
 }
-
 .icon-card.active {
     border-color: #EB5A5D;
     background: #fffafa;
@@ -701,9 +717,11 @@ background: #ffffff;
 }
 
 .icon-card.active p {
-    max-height: 200px; /* Espaço suficiente para o texto */
+    max-height: 150px;
     opacity: 1;
-    margin-top: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f9f9f9;
 }
 /* ======== Fim sessão de Icones ======== */
 
@@ -789,7 +807,7 @@ background: #ffffff;
 
 .short-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(255, 0, 60, 0.3);
+  box-shadow: 0 6px 18px rgba(6, 6, 6, 0.3);
 }
 
 .short-card video {
@@ -1133,18 +1151,16 @@ display: block !important;
     }
 }
 .icons-wrapper {
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas no celular */
-        gap: 10px;
-        padding: 10px;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px;
     }
 
-    .icon-card {
-        padding: 15px;
-        min-height: 140px; /* Altura mínima maior no mobile para os títulos */
+   .icon-card {
+        padding: 8px 10px;
     }
     
     .icon-card h3 {
-        font-size: 14px;
+        font-size: 13px;
     }
 
 /* 3. AJUSTES PARA TELAS PEQUENAS E CENTRALIZAÇÃO (Abaixo de 600px) */
