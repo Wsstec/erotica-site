@@ -92,7 +92,7 @@ main {
 }
 
 .btn-register-new {
-    background: #28616C !important; /* Vermelho vibrante do Anuncie */
+    background: #28616C !important; /* Azul petróleo do código React */
     color: #ffffff !important;
     padding: 10px 22px;
     border: none;
@@ -108,10 +108,10 @@ main {
     
     /* Efeito de transição suave */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(235, 90, 93, 0.3);
+    
 }
 .btn-register-new:hover {
- background: #d44b4e !important; /* Um tom levemente mais escuro */
+    background: #d44b4e !important; /* Um tom levemente mais escuro */
     transform: translateY(-2px); /* Pequena subida para dar profundidade */
     box-shadow: 0 6px 20px rgba(235, 90, 93, 0.4);
     color: #ffffff !important;
@@ -165,12 +165,25 @@ main {
     padding: 0 15px;
 }
 
-.site-logo { 
-    height: 80px; /* Altura ideal para logo .jpg */
-    width: auto;
+.site-logo {
     display: block;
+    image-rendering: -webkit-optimize-contrast; /* Para Chrome/Safari */
+    image-rendering: crisp-edges;               /* Para Firefox */
+    object-fit: contain;                        /* Garante que a imagem caiba no espaço sem distorcer */
+    width: auto;                                /* Deixa a largura ser definida pelo container ou max-width */
 }
 
+/* 2. Ajuste Específico para o Cabeçalho (PC) */
+.logo-header .site-logo {
+    height: 55px !important;    /* Altura fixa para manter o header alinhado */
+    max-width: 220px;           /* Limite de largura para não invadir os links */
+}
+
+/* 3. Ajuste Específico para o Rodapé (Maior) */
+.logo-footer .site-logo {
+    height: 80px !important;    /* Logo maior no rodapé para destaque */
+    margin: 0 auto;             /* Centraliza se o rodapé for centralizado */
+}
 /* 1. Base dos Links (Início e +Modelos) */
 .nav-links { 
     display: flex; 
@@ -1162,6 +1175,12 @@ display: block !important;
     .icon-card h3 {
         font-size: 13px;
     }
+
+ .logo-header .site-logo {
+        height: 45px !important; /* Um pouco menor no celular */
+        max-width: 160px;
+    }
+
 
 /* 3. AJUSTES PARA TELAS PEQUENAS E CENTRALIZAÇÃO (Abaixo de 600px) */
 @media (max-width: 600px) {
