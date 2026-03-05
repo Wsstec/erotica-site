@@ -1170,6 +1170,54 @@ width: 100%;
         margin-top: 40px;
     }
 }
+
+/* --- Regras de Visibilidade --- */
+.profile-header-mobile { display: none; } /* Esconde no PC */
+
+@media (max-width: 768px) {
+    .profile-header-mobile {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-name-mobile {
+        font-size: 32px;
+        color: #EB5A5D;
+        margin-bottom: 5px;
+        font-family: 'Montserrat Alternates', sans-serif;
+        font-weight: bold;
+    }
+
+    .profile-meta-mobile {
+        color: #888;
+        font-size: 14px;
+    }
+
+    .profile-meta-mobile i {
+        color: #EB5A5D;
+        margin-right: 5px;
+    }
+
+    /* Esconde as versões de desktop no mobile */
+    .profile-name-desktop, 
+    .profile-meta-desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .profile-name-desktop {
+        font-size: 42px;
+        color: #EB5A5D;
+        margin-bottom: 5px;
+    }
+    .profile-meta-desktop {
+        color: #888;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+}
 /*=================== FIM DO PERFIL MODELOS ===================================== */
 
 /* ======== Sessão de ícones ======== */

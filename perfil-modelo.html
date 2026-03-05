@@ -25,8 +25,8 @@
 
     <main class="container profile-main-container">
         <h1 class="profile-name-mobile">Isabella</h1>
+        <p class="profile-meta-mobile"></p> </div>
         
-            
            <div class="profile-grid">
         <aside class="profile-visual-column">
             <div class="main-photo-wrapper">
@@ -290,11 +290,14 @@
                 mainPhoto.src = foto;
             }
 
-            // 5. Troca LOCALIZAÇÃO E IDADE
-            const profileMeta = document.querySelector('.profile-meta');
-            if (profileMeta) {
-                profileMeta.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${cidade} — ${idade} anos`;
-            }
+            // Localização e Idade (Preenche os dois lugares)
+        const infoHTML = `<i class="fa-solid fa-location-dot"></i> ${cidade} — ${idade} anos`;
+        
+        const metaDesktop = document.querySelector('.profile-meta-desktop');
+        const metaMobile = document.querySelector('.profile-meta-mobile');
+        
+        if(metaDesktop) metaDesktop.innerHTML = infoHTML;
+        if(metaMobile) metaMobile.innerHTML = infoHTML;
 
             // 6. Atualiza o título da aba
             document.title = `${nome} - Perfil | Erótica`;
