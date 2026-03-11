@@ -1,309 +1,248 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isabella - Perfil | Erotica</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carregando perfil… | Erótica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="profile-page-body">
 
-    <header class="main-header">
-        <div class="container nav-content">
-            <div class="logo-header">
-                <img src="img/logoeroticamaior2.png" alt="Erotica Logo" class="site-logo">
-            </div>
-            <nav class="nav-links">
-                <a href="index.html">Início</a>
-                <a href="#">+ Modelos</a>
-                <a href="#" class="btn-anuncie">Anuncie</a>
-            </nav>
+  <!-- ===== HEADER ===== -->
+  <header class="main-header">
+    <div class="container nav-content">
+      <div class="logo-header">
+        <img src="img/logoeroticamaior2.png" alt="Erotica Logo" class="site-logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="modelos.html">+ Modelos</a>
+        <a href="#" class="btn-anuncie">Anuncie</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container profile-main-container">
+
+    <!-- Nome/cidade — MOBILE (topo) -->
+    <div class="profile-header-mobile">
+      <h1 class="profile-name-mobile">…</h1>
+      <p class="profile-meta-mobile">…</p>
+    </div>
+
+    <div class="profile-grid">
+
+      <!-- ============================
+           COLUNA ESQUERDA: MÍDIA
+           ============================ -->
+      <aside class="profile-visual-column">
+
+        <!-- Foto principal -->
+        <div class="main-photo-wrapper">
+          <img src="" id="mainPhoto" alt="Foto principal">
+
+          <!-- Badges — visibilidade controlada por JS -->
+          <span class="badge-verificado-top" id="badgeVerificado" style="display:none">
+            PERFIL VERIFICADO
+          </span>
+          <span class="badge-status-bottom" id="badgeDisponivel">
+            DISPONÍVEL AGORA
+          </span>
+          <span class="badge-vip-overlay" id="badgeVip" style="display:none">
+            ⭐ VIP
+          </span>
+
+          <!-- Curtidas -->
+          <div class="like-counter-overlay">
+            <button class="btn-like" id="btnLike">
+              <i class="fa-solid fa-heart"></i>
+              <span id="like-count">0</span>
+            </button>
+          </div>
         </div>
-    </header>
 
-    <main class="container profile-main-container">
-        <h1 class="profile-name-mobile">Isabella</h1>
-        <p class="profile-meta-mobile"></p> </div>
-        
-           <div class="profile-grid">
-        <aside class="profile-visual-column">
-            <div class="main-photo-wrapper">
-                <img src="img/modelo-perfil.jpg" id="mainPhoto" alt="Isabella">
-                <span class="badge-verificado-top">PERFIL VERIFICADO</span>
-                <span class="badge-status-bottom">DISPONÍVEL AGORA</span>
-                
-                <div class="like-counter-overlay">
-                    <button class="btn-like" onclick="toggleLike()">
-                        <i class="fa-solid fa-heart"></i>
-                        <span id="like-count">1.248</span>
-                    </button>
-                </div>
-            </div>
+        <!-- Galeria de fotos -->
+        <div class="gallery-section">
+          <h4>Galeria de Fotos</h4>
+          <div class="thumbnail-grid" id="thumbGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
 
-                <div class="gallery-section">
-                    <h4>Galeria de Fotos</h4>
-                    <div class="thumbnail-grid">
-                        <img src="img/thumb1.jpg" onclick="updatePhoto(this.src)">
-                        <img src="img/thumb2.jpg" onclick="updatePhoto(this.src)">
-                        <img src="img/thumb3.jpg" onclick="updatePhoto(this.src)">
-                        <img src="img/thumb4.jpg" onclick="updatePhoto(this.src)">
-                        <img src="img/thumb5.jpg" onclick="updatePhoto(this.src)">
-                    </div>
-                </div>
+        <!-- Galeria de vídeos -->
+        <div class="video-section">
+          <h4>Seção de Vídeos</h4>
+          <div class="video-grid" id="videoGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
 
-                <div class="video-section">
-                    <h4>Seção de Vídeos</h4>
-                    <div class="video-grid">
-                        <div class="video-item">
-                            <video src="videos/perfil1.mp4" poster="img/video-thumb.jpg" controls></video>
-                        </div>
-                        <div class="video-item">
-                            <video src="videos/perfil2.mp4" controls></video>
-                        </div>
-                    </div>
-                </div>
-            </aside>
+      </aside>
 
-    <section class="profile-data-column">
-    <h1 class="profile-name-desktop">Isabella</h1>
-    <p class="profile-meta"><i class="fa-solid fa-location-dot"></i> São Paulo — 26 anos</p>
-    
-    <div class="whatsapp-wrapper-desktop">
-        <a href="#" class="btn-whatsapp-profile">
+      <!-- ============================
+           COLUNA DIREITA: DADOS
+           ============================ -->
+      <div class="profile-data-column">
+
+        <!-- Nome/cidade — DESKTOP -->
+        <div class="profile-header-desktop">
+          <h1 class="profile-name-desktop">…</h1>
+          <p class="profile-meta-desktop">…</p>
+        </div>
+
+        <!-- WhatsApp desktop -->
+        <div class="whatsapp-wrapper-desktop">
+          <a href="#" class="btn-whatsapp-profile">
             <i class="fa-brands fa-whatsapp"></i> WHATSAPP
-        </a>
-    </div>
-    
-    <div class="price-table-container">
-        <span class="price-starting-label">A partir de:</span>
-        <div class="price-row-item">
-            <span>30 Minutos</span>
-            <strong>R$ 300</strong>
+          </a>
         </div>
-        <div class="price-row-item highlighted">
-            <span>01 Hora</span>
-            <strong>R$ 500</strong>
-        </div>
-        <div class="price-row-item">
-            <span>02 Horas</span>
-            <strong>R$ 900</strong>
-        </div>
-    </div>
 
-    <div class="service-type-highlight">
-        <span class="label">ATENDIMENTO</span>
-        <span class="value">COM LOCAL</span>
-    </div>
-    
-    <hr class="profile-divider">
+        <!-- Tabela de preços -->
+        <div class="price-table-container">
+          <span class="price-starting-label">A partir de:</span>
+          <div id="priceTable">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
 
-    <div class="payment-methods-section">
-        <h3>FORMAS DE PAGAMENTO</h3>
-        <div class="payment-grid">
-            <div class="pay-item">
-                <i class="fa-brands fa-pix"></i>
-                <span>Pix</span>
+        <!-- Tipo de atendimento -->
+        <div class="service-type-highlight">
+          <span class="label">ATENDIMENTO</span>
+          <span class="value" id="atendValue">…</span>
+        </div>
+
+        <hr class="profile-divider">
+
+        <!-- Pagamentos -->
+        <div class="payment-methods-section">
+          <h3>FORMAS DE PAGAMENTO</h3>
+          <div class="payment-grid" id="payGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
+
+        <hr class="profile-divider">
+
+        <!-- Bio -->
+        <div class="about-me-section">
+          <h3>SOBRE MIM</h3>
+          <p id="profileBio">…</p>
+        </div>
+
+        <hr class="profile-divider">
+
+        <!-- Serviços -->
+        <div class="services-section">
+          <h3>SERVIÇOS</h3>
+          <div class="services-tags" id="servicosTags">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
+
+        <hr class="profile-divider">
+
+        <!-- Banner de Propaganda -->
+        <div class="profile-ad-banner" id="profileAdBanner">
+          <a href="#" target="_blank">
+            <img src="img/anuncio03.png" alt="Publicidade" id="profileAdImg">
+          </a>
+        </div>
+
+        <!-- Características físicas -->
+        <div class="physical-specs-section">
+          <h3>CARACTERÍSTICAS FÍSICAS</h3>
+          <div class="physical-grid" id="physGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
+
+        <!-- Horários -->
+        <div class="schedule-section">
+          <h3>HORÁRIOS DE ATENDIMENTO</h3>
+          <div class="schedule-grid" id="schedGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
+        </div>
+
+        <!-- Local -->
+        <div class="location-details-section">
+          <h3>LOCAL DE ATENDIMENTO</h3>
+          <div class="location-card-info">
+            <p class="loc-address" id="locAddress">…</p>
+            <div class="comfort-icons" id="comfortGrid">
+              <!-- preenchido por loadProfile() -->
             </div>
-            <div class="pay-item">
-                <i class="fa-solid fa-money-bill-1-wave"></i>
-                <span>Dinheiro</span>
+          </div>
+        </div>
+
+        <!-- Avaliações -->
+        <div class="reviews-section">
+          <h3>MURAL DE AVALIAÇÕES</h3>
+          <div class="reviews-summary">
+            <div class="stars-total">
+              <span id="starsEl"></span>
+              <span id="reviewsNota"></span>
             </div>
-            <div class="pay-item">
-                <i class="fa-solid fa-credit-card"></i>
-                <span>Cartão</span>
-            </div>
+          </div>
+          <div class="reviews-list" id="reviewsList">
+            <!-- preenchido por loadProfile() -->
+          </div>
+          <button class="btn-add-review">Deixar uma avaliação</button>
         </div>
+
+      </div><!-- fim .profile-data-column -->
+    </div><!-- fim .profile-grid -->
+
+    <!-- WhatsApp fixo no mobile -->
+    <div class="whatsapp-fixed-mobile">
+      <a href="#" class="btn-whatsapp-profile">
+        <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+      </a>
     </div>
 
-    <hr class="profile-divider">
+  </main>
 
-    <div class="about-me-section">
-        <h3>SOBRE MIM</h3>
-        <p>Mulher sofisticada e elegante, perfeita para eventos sociais e jantares executivos. Conversação refinada e presença marcante.</p>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="img/logobranco.png" alt="Erotica Logo">
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Termos</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
     </div>
+    <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
+  </footer>
 
-    <hr class="profile-divider">
+  <!-- Carrega o array data + a função loadProfile() -->
+  <script src="script.js"></script>
 
-    <div class="services-section">
-        <h3>SERVIÇOS</h3>
-        <div class="services-tags">
-            <span>Eventos</span><span>Jantares</span><span>Viagens</span><span>Pernoite</span>
-        </div>
-    </div>
+  <script>
+    /* ===== Executado após script.js carregar ===== */
 
-    <hr class="profile-divider">
+    /* 1. Popula toda a página com dados da modelo */
+    loadProfile();
 
-    <div class="verification-video-container">
-        <h3>VÍDEO DE VERIFICAÇÃO</h3>
-        <div class="vertical-video-wrapper">
-            <video src="videos/verificacao.mp4" controls></video>
-        </div>
-    </div>
-
-    <div class="physical-specs-section">
-        <h3>CARACTERÍSTICAS FÍSICAS</h3>
-        <div class="physical-grid">
-            <div class="p-item"><span>Altura</span><strong>1.68m</strong></div>
-            <div class="p-item"><span>Peso</span><strong>58kg</strong></div>
-            <div class="p-item"><span>Cabelo</span><strong>Loiro</strong></div>
-            <div class="p-item"><span>Olhos</span><strong>Castanhos</strong></div>
-        </div>
-    </div>
-
-    <div class="schedule-section">
-        <h3>HORÁRIOS DE ATENDIMENTO</h3>
-        <div class="schedule-grid">
-            <div class="s-item"><span>Seg a Sex</span><strong>10:00 às 22:00</strong></div>
-            <div class="s-item"><span>Sábados</span><strong>14:00 às 20:00</strong></div>
-            <div class="s-item"><span>Domingos</span><strong>Somente reserva</strong></div>
-        </div>
-    </div>
-
-    <div class="location-details-section">
-            <h3>LOCAL DE ATENDIMENTO</h3>
-        <div class="location-card-info">
-            <p class="loc-address"><i class="fa-solid fa-house-chimney"></i> <strong>Porto Alegre</strong> — Bairro Moinhos de Vento</p>
-            <div class="comfort-icons">
-                <div class="comfort-tag"><i class="fa-solid fa-snowflake"></i> Ar-condicionado</div>
-                <div class="comfort-tag"><i class="fa-solid fa-shower"></i> Banheiro Privativo</div>
-                <div class="comfort-tag"><i class="fa-solid fa-square-p"></i> Estacionamento</div>
-                <div class="comfort-tag"><i class="fa-solid fa-wifi"></i> Wi-fi</div>
-            </div>
-        </div>
-    </div>
-    <div class="reviews-section">
-                <h3>MURAL DE AVALIAÇÕES</h3>
-                <div class="reviews-summary">
-                    <div class="stars-total">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                        <span>(4.8 de 5)</span>
-                    </div>
-                </div>
-
-                <div class="reviews-list">
-                    <div class="review-item">
-                        <div class="review-header">
-                            <strong>Ricardo M.</strong>
-                            <span class="review-date">há 2 dias</span>
-                        </div>
-                        <p>"Atendimento impecável e local muito discreto. Exatamente como nas fotos."</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-header">
-                            <strong>Felipe S.</strong>
-                            <span class="review-date">há 1 semana</span>
-                        </div>
-                        <p>"Uma das melhores experiências que já tive. Muito educada e o local é excelente."</p>
-                    </div>
-                </div>
-                <button class="btn-add-review">Deixar uma avaliação</button>
-            </div>
-        </section>
-    </div>
-
-   <div class="contact-actions">
-        <a href="#" class="btn-whatsapp-profile">
-            <i class="fa-brands fa-whatsapp"></i> WHATSAPP
-        </a>
-    </div>
-
-   
-</section>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <p>© 2025 Erotica — Todos os direitos reservados.</p>
-    </footer>
-
-    <script>
-        function updatePhoto(src) {
-            document.getElementById('mainPhoto').src = src;
-        }
-    </script>
-
-<script>
-    // Pega os parâmetros da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    // Se existir um nome na URL, nós trocamos os dados da página
-    if (urlParams.has('nome')) {
-        const nome = urlParams.get('nome');
-        const foto = urlParams.get('foto');
-        const cidade = urlParams.get('cidade');
-        const idade = urlParams.get('idade');
-
-        // Troca o Nome (Desktop e Mobile)
-        document.querySelector('.profile-name-desktop').innerText = nome;
-        document.querySelector('.profile-name-mobile').innerText = nome;
-        
-        // Troca a Foto Principal
-        document.getElementById('mainPhoto').src = foto;
-        
-        // Troca a Localização e Idade no topo
-        document.querySelector('.profile-meta').innerHTML = 
-            `<i class="fa-solid fa-location-dot"></i> ${cidade} — ${idade} anos`;
-            
-        // Atualiza o Título da Aba
-        document.title = `${nome} - Perfil | Erótica`;
+    /* 2. Troca foto ao clicar na miniatura */
+    function updatePhoto(src) {
+      document.getElementById('mainPhoto').src = src;
     }
-</script>
 
-<script>
-    // Função para executar assim que a página carregar
-    window.addEventListener('load', function() {
-        // 1. Captura os parâmetros da URL
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        const nome  = urlParams.get('nome');
-        const foto  = urlParams.get('foto');
-        const cidade = urlParams.get('cidade');
-        const idade  = urlParams.get('idade');
-
-        console.log("Tentando carregar dados de:", nome); // Log para teste no console (F12)
-
-        if (nome) {
-            // 2. Troca o nome no DESKTOP
-            // Verifique se no seu HTML a classe está exatamente assim: profile-name-desktop
-            const desktopName = document.querySelector('.profile-name-desktop');
-            if (desktopName) {
-                desktopName.innerText = nome;
-            } else {
-                console.error("Classe .profile-name-desktop não encontrada!");
-            }
-
-            // 3. Troca o nome no MOBILE
-            const mobileName = document.querySelector('.profile-name-mobile');
-            if (mobileName) {
-                mobileName.innerText = nome;
-            }
-
-            // 4. Troca a FOTO
-            const mainPhoto = document.getElementById('mainPhoto');
-            if (mainPhoto) {
-                mainPhoto.src = foto;
-            }
-
-            // Localização e Idade (Preenche os dois lugares)
-        const infoHTML = `<i class="fa-solid fa-location-dot"></i> ${cidade} — ${idade} anos`;
-        
-        const metaDesktop = document.querySelector('.profile-meta-desktop');
-        const metaMobile = document.querySelector('.profile-meta-mobile');
-        
-        if(metaDesktop) metaDesktop.innerHTML = infoHTML;
-        if(metaMobile) metaMobile.innerHTML = infoHTML;
-
-            // 6. Atualiza o título da aba
-            document.title = `${nome} - Perfil | Erótica`;
-        }
+    /* 3. Botão de curtir */
+    document.getElementById('btnLike').addEventListener('click', function () {
+      this.classList.toggle('active');
+      const counter = document.getElementById('like-count');
+      let count = parseInt(counter.textContent.replace(/\./g, ''), 10);
+      count = this.classList.contains('active') ? count + 1 : count - 1;
+      counter.textContent = count.toLocaleString('pt-BR');
     });
-</script>
+  </script>
 
 </body>
 </html>
+

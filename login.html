@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Erótica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --red:       #EB5A5D;
+      --red-dark:  #c94a4d;
+      --blue:      #28616C;
+      --blue-dark: #1e4a54;
+      --bg:        #f7f7f7;
+      --card:      #ffffff;
+      --border:    #e8e8e8;
+      --text:      #1e1e1e;
+      --muted:     #666;
+      --font:      'Montserrat Alternates', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .page-spacer { flex: 1; }
+
+    /* ===== ÁREA CENTRAL ===== */
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+    }
+
+    .login-box {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+      width: 100%;
+      max-width: 440px;
+      overflow: hidden;
+    }
+
+    /* ===== CABEÇALHO DO CARD ===== */
+    .login-header {
+      padding: 36px 40px 28px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .login-header h1 {
+      font-size: 1.7rem;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+
+    .login-header p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== ABAS DE TIPO DE USUÁRIO ===== */
+    .user-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .user-tab {
+      flex: 1;
+      padding: 14px 10px;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.25s, border-color 0.25s;
+    }
+
+    .user-tab:hover { color: var(--blue); }
+
+    .user-tab.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    .user-tab i { font-size: 15px; }
+
+    /* ===== CORPO DO FORMULÁRIO ===== */
+    .login-body { padding: 32px 40px 36px; }
+
+    /* Aviso de tipo */
+    .role-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f0f7f8;
+      border-left: 4px solid var(--blue);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .role-badge i { font-size: 16px; flex-shrink: 0; }
+
+    /* Campos */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .field-input-wrap {
+      position: relative;
+    }
+
+    .field-input-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #bbb;
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    .field input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 14px 13px 42px;
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      box-sizing: border-box;
+      background: #fdfdfd;
+    }
+
+    .field input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(40,97,108,0.1);
+      background: #fff;
+    }
+
+    /* Toggle senha */
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #bbb;
+      font-size: 15px;
+      padding: 0;
+      pointer-events: all;
+      transition: color 0.2s;
+    }
+
+    .toggle-password:hover { color: var(--blue); }
+
+    /* Esqueci a senha */
+    .forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 12px;
+      color: var(--red);
+      text-decoration: none;
+      margin-top: -10px;
+      margin-bottom: 24px;
+      transition: opacity 0.2s;
+    }
+
+    .forgot-link:hover { opacity: 0.75; }
+
+    /* Botão entrar */
+    .btn-login {
+      width: 100%;
+      padding: 15px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-login:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-login:active { transform: translateY(0); }
+
+    /* Spinner de loading */
+    .btn-login .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    .btn-login.loading .btn-text { display: none; }
+    .btn-login.loading .spinner  { display: block; }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Mensagem de erro */
+    .error-msg {
+      display: none;
+      background: #fff0f0;
+      border: 1px solid #f5c0c0;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 13px;
+      color: var(--red);
+      margin-bottom: 18px;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .error-msg.show { display: flex; }
+
+    /* Rodapé do card */
+    .login-footer {
+      padding: 20px 40px 28px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .login-footer p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .login-footer a {
+      color: var(--red);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .login-footer a:hover { text-decoration: underline; }
+
+    /* ===== PAINEL PÓS-LOGIN (simulado) ===== */
+    .dashboard-redirect {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      flex: 1;
+    }
+
+    .dashboard-redirect.show { display: flex; }
+
+    .dash-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #fff;
+      margin: 0 auto 24px;
+    }
+
+    .dash-icon.cliente { background: linear-gradient(135deg, var(--blue), #3a8a9a); }
+    .dash-icon.modelo  { background: linear-gradient(135deg, var(--red), #ff8080); }
+    .dash-icon.admin   { background: linear-gradient(135deg, #1a1a2e, #3a3a6e); }
+
+    .dashboard-redirect h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-redirect h2.cliente { color: var(--blue); }
+    .dashboard-redirect h2.modelo  { color: var(--red); }
+    .dashboard-redirect h2.admin   { color: #3a3a6e; }
+
+    .dashboard-redirect p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    .dash-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dash-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .dash-btn.primary {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .dash-btn.primary:hover { background: var(--red-dark); }
+
+    .dash-btn.secondary {
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid var(--border);
+    }
+
+    .dash-btn.secondary:hover { border-color: var(--blue); }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 500px) {
+      .login-header,
+      .login-body,
+      .login-footer { padding-left: 22px; padding-right: 22px; }
+
+      .login-header { padding-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="main-header">
+    <div class="container nav-content">
+      <div class="logo-header">
+        <img src="img/logoeroticamaior2.png" alt="Erotica Logo" class="site-logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="modelos.html">+ Modelos</a>
+        <a href="#" class="btn-anuncie">Anuncie</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== FORMULÁRIO DE LOGIN ===== -->
+  <div class="login-wrapper" id="loginWrapper">
+    <div class="login-box">
+
+      <!-- Cabeçalho -->
+      <div class="login-header">
+        <h1>Bem-vindo de volta</h1>
+        <p>Acesse sua conta na plataforma Erótica</p>
+      </div>
+
+      <!-- Abas de tipo -->
+      <div class="user-tabs">
+        <button class="user-tab active" id="tabCliente" onclick="switchTab('cliente')">
+          <i class="fa-solid fa-user-tie"></i> Cliente
+        </button>
+        <button class="user-tab" id="tabModelo" onclick="switchTab('modelo')">
+          <i class="fa-solid fa-star"></i> Acompanhante
+        </button>
+        <button class="user-tab" id="tabAdmin" onclick="switchTab('admin')">
+          <i class="fa-solid fa-shield-halved"></i> Admin
+        </button>
+      </div>
+
+      <!-- Corpo -->
+      <div class="login-body">
+
+        <!-- Badge do tipo selecionado -->
+        <div class="role-badge" id="roleBadge">
+          <i class="fa-solid fa-user-tie"></i>
+          <span id="roleText">Acesso para clientes cadastrados</span>
+        </div>
+
+        <!-- Mensagem de erro -->
+        <div class="error-msg" id="errorMsg">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span id="errorText">E-mail ou senha incorretos.</span>
+        </div>
+
+        <!-- Campo de login -->
+        <div class="field">
+          <label id="loginLabel">E-mail ou telefone</label>
+          <div class="field-input-wrap">
+            <i class="fa-solid fa-envelope" id="loginIcon"></i>
+            <input type="text" id="loginInput" placeholder="seu@email.com ou telefone" autocomplete="username">
+          </div>
+        </div>
+
+        <!-- Campo de senha -->
+        <div class="field">
+          <label>Senha</label>
+          <div class="field-input-wrap">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="senhaInput" placeholder="Sua senha" autocomplete="current-password">
+            <button class="toggle-password" onclick="toggleSenha()" type="button" tabindex="-1">
+              <i class="fa-solid fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <a href="#" class="forgot-link">Esqueceu a senha?</a>
+
+        <!-- Botão entrar -->
+        <button class="btn-login" id="btnLogin" onclick="handleLogin()">
+          <span class="btn-text"><i class="fa-solid fa-right-to-bracket"></i> &nbsp;Entrar</span>
+          <div class="spinner"></div>
+        </button>
+
+      </div>
+
+      <!-- Rodapé do card -->
+      <div class="login-footer">
+        <p>Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== TELA PÓS-LOGIN (simulada — será substituída pelo backend) ===== -->
+  <div class="dashboard-redirect" id="dashRedirect">
+    <!-- preenchido por JS -->
+  </div>
+
+  <div class="page-spacer"></div>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="img/logobranco.png" alt="Erotica Logo">
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Termos</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    /* =============================================
+       ESTADO
+       ============================================= */
+    let tipoAtivo = 'cliente';
+
+    /* Configurações por tipo de usuário */
+    const tipoConfig = {
+      cliente: {
+        badge:       { icon: 'fa-solid fa-user-tie',       text: 'Acesso para clientes cadastrados' },
+        loginLabel:  'E-mail ou telefone',
+        loginIcon:   'fa-solid fa-envelope',
+        placeholder: 'seu@email.com ou telefone',
+        dashIcon:    'fa-solid fa-user-tie',
+        dashClass:   'cliente',
+        dashTitle:   'Olá, Cliente!',
+        dashMsg:     'Login realizado com sucesso.<br>Em breve você terá acesso ao seu painel de preferências e avaliações.',
+        dashBtns: [
+          { label: '← Voltar ao início', href: 'index.html', cls: 'primary' },
+          { label: 'Ver Modelos',         href: 'modelos.html', cls: 'secondary' }
+        ]
+      },
+      modelo: {
+        badge:       { icon: 'fa-solid fa-star',            text: 'Acesso para acompanhantes cadastradas' },
+        loginLabel:  'E-mail cadastrado',
+        loginIcon:   'fa-solid fa-envelope',
+        placeholder: 'seu@email.com',
+        dashIcon:    'fa-solid fa-star',
+        dashClass:   'modelo',
+        dashTitle:   'Olá, Acompanhante!',
+        dashMsg:     'Login realizado com sucesso.<br>Em breve você terá acesso ao painel para editar seu perfil, ver suas avaliações e gerenciar sua disponibilidade.',
+        dashBtns: [
+          { label: '← Voltar ao início', href: 'index.html', cls: 'primary' },
+          { label: 'Meu Perfil',          href: '#',          cls: 'secondary' }
+        ]
+      },
+      admin: {
+        badge:       { icon: 'fa-solid fa-shield-halved',   text: 'Acesso restrito — Administrador' },
+        loginLabel:  'Usuário admin',
+        loginIcon:   'fa-solid fa-user-shield',
+        placeholder: 'admin@erotica.com.br',
+        dashIcon:    'fa-solid fa-gauge-high',
+        dashClass:   'admin',
+        dashTitle:   'Painel Administrativo',
+        dashMsg:     'Login de administrador realizado.<br>Em breve o painel completo estará disponível: gerenciar modelos, aprovar cadastros, editar banners e visualizar métricas do site.',
+        dashBtns: [
+          { label: '← Voltar ao início',   href: 'index.html', cls: 'primary' },
+          { label: 'Painel Admin (em breve)', href: '#',        cls: 'secondary' }
+        ]
+      }
+    };
+
+    /* =============================================
+       TROCA DE ABA
+       ============================================= */
+    function switchTab(tipo) {
+      tipoAtivo = tipo;
+      const cfg = tipoConfig[tipo];
+
+      /* Atualiza abas */
+      document.querySelectorAll('.user-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab' + tipo.charAt(0).toUpperCase() + tipo.slice(1))
+              .classList.add('active');
+
+      /* Badge */
+      document.getElementById('roleBadge').innerHTML =
+        `<i class="${cfg.badge.icon}"></i><span>${cfg.badge.text}</span>`;
+
+      /* Label e placeholder */
+      document.getElementById('loginLabel').textContent = cfg.loginLabel;
+      document.getElementById('loginIcon').className = cfg.loginIcon;
+      document.getElementById('loginInput').placeholder = cfg.placeholder;
+
+      /* Limpa erros */
+      hideError();
+    }
+
+    /* =============================================
+       TOGGLE SENHA
+       ============================================= */
+    function toggleSenha() {
+      const input = document.getElementById('senhaInput');
+      const icon  = document.getElementById('eyeIcon');
+      const show  = input.type === 'password';
+      input.type  = show ? 'text' : 'password';
+      icon.className = show ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+    }
+
+    /* =============================================
+       MOSTRAR / ESCONDER ERRO
+       ============================================= */
+    function showError(msg) {
+      const el = document.getElementById('errorMsg');
+      document.getElementById('errorText').textContent = msg;
+      el.classList.add('show');
+    }
+
+    function hideError() {
+      document.getElementById('errorMsg').classList.remove('show');
+    }
+
+    /* =============================================
+       LOGIN
+       ============================================= */
+    function handleLogin() {
+      hideError();
+
+      const login = document.getElementById('loginInput').value.trim();
+      const senha = document.getElementById('senhaInput').value;
+
+      /* Validações básicas */
+      if (!login) return showError('Por favor, preencha o campo de login.');
+      if (!senha)  return showError('Por favor, informe a senha.');
+      if (senha.length < 6) return showError('Senha inválida.');
+
+      /* Simula loading */
+      const btn = document.getElementById('btnLogin');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      /* Simula chamada ao backend (1.5s) */
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+
+        /* 
+          PONTO DE INTEGRAÇÃO COM BACKEND:
+          Aqui você fará um fetch() para a sua API de autenticação.
+          A API retornará o tipo de usuário (cliente / modelo / admin)
+          e um token JWT para manter a sessão.
+          
+          Exemplo futuro:
+          const res = await fetch('/api/login', {
+            method: 'POST',
+            body: JSON.stringify({ login, senha, tipo: tipoAtivo })
+          });
+          const { token, user } = await res.json();
+          localStorage.setItem('token', token);
+          window.location.href = user.tipo === 'admin' ? '/admin' : '/';
+        */
+
+        /* Por enquanto, simula sucesso para qualquer login */
+        showDashboard(tipoAtivo);
+
+      }, 1500);
+    }
+
+    /* Enter no campo de senha aciona o login */
+    document.getElementById('senhaInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleLogin();
+    });
+    document.getElementById('loginInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('senhaInput').focus();
+    });
+
+    /* =============================================
+       TELA PÓS-LOGIN
+       ============================================= */
+    function showDashboard(tipo) {
+      const cfg = tipoConfig[tipo];
+
+      document.getElementById('loginWrapper').style.display = 'none';
+
+      const dash = document.getElementById('dashRedirect');
+      dash.innerHTML = `
+        <div class="dash-icon ${cfg.dashClass}">
+          <i class="${cfg.dashIcon}"></i>
+        </div>
+        <h2 class="${cfg.dashClass}">${cfg.dashTitle}</h2>
+        <p>${cfg.dashMsg}</p>
+        <div class="dash-actions">
+          ${cfg.dashBtns.map(b =>
+            `<a href="${b.href}" class="dash-btn ${b.cls}">${b.label}</a>`
+          ).join('')}
+        </div>`;
+
+      dash.classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

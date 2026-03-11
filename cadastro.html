@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro | Erótica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* =============================================
+       VARIÁVEIS E BASE
+       ============================================= */
+    :root {
+      --red:  #EB5A5D;
+      --blue: #28616C;
+      --red-dark:  #c94a4d;
+      --blue-dark: #1e4a54;
+      --bg:   #f7f7f7;
+      --card: #ffffff;
+      --border: #e8e8e8;
+      --text: #1e1e1e;
+      --muted: #666;
+      --font: 'Montserrat Alternates', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: var(--font);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Empurra o rodapé para o fim da página */
+    .cad-hero,
+    .type-selector,
+    .form-section,
+    .success-screen {
+      flex-shrink: 0;
+    }
+
+    .page-spacer {
+      flex: 1;
+    }
+
+    /* =============================================
+       HERO DA PÁGINA
+       ============================================= */
+    .cad-hero {
+      background: transparent;
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    .cad-hero h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #EB5A5D;
+    }
+
+    .cad-hero h1 span { color: #EB5A5D; }
+
+    .cad-hero p {
+      font-size: 15px;
+      color: #28616C;
+    }
+
+    /* =============================================
+       SELETOR DE TIPO
+       ============================================= */
+    .type-selector {
+      max-width: 700px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .type-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .type-card:hover {
+      border-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(235,90,93,0.15);
+    }
+
+    .type-card.selected {
+      border-color: var(--red);
+      background: #fff5f5;
+      box-shadow: 0 10px 30px rgba(235,90,93,0.2);
+    }
+
+    .type-card i {
+      font-size: 2.8rem;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .type-card.selected i { color: var(--red); }
+
+    .type-card h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .type-card p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* =============================================
+       FORMULÁRIOS
+       ============================================= */
+    .form-section {
+      display: none;
+      max-width: 800px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+
+    .form-section.active { display: block; }
+
+    .form-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+
+    /* Título do bloco */
+    .form-block-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #fde8e8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-block-title:first-child { margin-top: 0; }
+
+    /* Campos */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-row.cols-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .form-group label .req { color: var(--red); margin-left: 2px; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: var(--font);
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      background: #fff;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(40,97,108,0.1);
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    /* Checkbox / Radio */
+    .check-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f9f9f9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text);
+      transition: 0.25s;
+      user-select: none;
+    }
+
+    .check-item input[type="checkbox"],
+    .check-item input[type="radio"] {
+      width: auto;
+      accent-color: var(--red);
+    }
+
+    .check-item:has(input:checked) {
+      background: #fff0f0;
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* Upload de arquivos */
+    .upload-area {
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .upload-area:hover,
+    .upload-area.dragover {
+      border-color: var(--red);
+      background: #fff5f5;
+    }
+
+    .upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      border: none;
+      padding: 0;
+    }
+
+    .upload-area i {
+      font-size: 2rem;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .upload-area p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .upload-area strong {
+      color: var(--red);
+    }
+
+    /* Preview de arquivos */
+    .file-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .preview-item {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .preview-item img,
+    .preview-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-item .remove-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: rgba(235,90,93,0.9);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      font-size: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-item .file-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      font-size: 9px;
+      padding: 3px 5px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    /* Contador de arquivo */
+    .upload-count {
+      font-size: 12px;
+      color: var(--blue);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    /* Botão de submit */
+    .btn-submit-cad {
+      width: 100%;
+      padding: 17px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      margin-top: 32px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-submit-cad:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit-cad:active { transform: translateY(0); }
+
+    /* Termos */
+    .terms-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .terms-line input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--red);
+      flex-shrink: 0;
+    }
+
+    .terms-line a { color: var(--red); text-decoration: none; }
+    .terms-line a:hover { text-decoration: underline; }
+
+    /* =============================================
+       TELA DE SUCESSO
+       ============================================= */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .success-screen.active { display: block; }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--blue), #3a8a9a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 2.2rem;
+      color: white;
+    }
+
+    .success-screen h2 {
+      font-size: 1.8rem;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .success-screen p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .success-screen .btn-back {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 32px;
+      background: var(--red);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .success-screen .btn-back:hover { background: var(--red-dark); }
+
+    /* =============================================
+       RESPONSIVIDADE
+       ============================================= */
+    @media (max-width: 680px) {
+      .type-selector { grid-template-columns: 1fr; gap: 14px; }
+      .form-card { padding: 24px 18px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-row.cols-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 420px) {
+      .form-row.cols-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="main-header">
+    <div class="container nav-content">
+      <div class="logo-header">
+        <img src="img/logoeroticamaior2.png" alt="Erotica Logo" class="site-logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="modelos.html">+ Modelos</a>
+        <a href="#" class="btn-anuncie">Anuncie</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <div class="cad-hero">
+    <h1>Criar <span>Conta</span></h1>
+    <p>Escolha como deseja se cadastrar na plataforma</p>
+  </div>
+
+  <!-- ===== SELETOR DE TIPO ===== -->
+  <div class="type-selector" id="typeSelector">
+
+    <div class="type-card" id="cardCliente" onclick="selectType('cliente')">
+      <i class="fa-solid fa-user-tie"></i>
+      <h3>Sou Cliente</h3>
+      <p>Quero receber novidades e fazer avaliações das acompanhantes</p>
+    </div>
+
+    <div class="type-card" id="cardModelo" onclick="selectType('modelo')">
+      <i class="fa-solid fa-star"></i>
+      <h3>Sou Acompanhante</h3>
+      <p>Quero criar meu perfil e divulgar meus serviços na plataforma</p>
+    </div>
+
+  </div>
+
+  <!-- ===================================================================
+       FORMULÁRIO — CLIENTE
+       =================================================================== -->
+  <div class="form-section" id="formCliente">
+    <div class="form-card">
+
+      <p class="form-block-title"><i class="fa-solid fa-user"></i> Dados do Cliente</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome ou Apelido <span class="req">*</span></label>
+          <input type="text" id="c-nome" placeholder="Como vai aparecer nas avaliações" required>
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" id="c-cidade" placeholder="Sua cidade">
+        </div>
+      </div>
+
+      <p class="form-block-title"><i class="fa-solid fa-envelope"></i> Contato para novidades</p>
+      <p style="font-size:13px;color:#666;margin-bottom:16px;">
+        Informe ao menos um dos campos abaixo para receber em primeira mão as novidades do site.
+      </p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="c-email" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp / Telefone</label>
+          <input type="tel" id="c-tel" placeholder="+55 (51) 9 9999-0000">
+        </div>
+      </div>
+
+      <p class="form-block-title"><i class="fa-solid fa-lock"></i> Acesso</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Senha <span class="req">*</span></label>
+          <input type="password" id="c-senha" placeholder="Mínimo 8 caracteres" required>
+        </div>
+        <div class="form-group">
+          <label>Confirmar Senha <span class="req">*</span></label>
+          <input type="password" id="c-senha2" placeholder="Repita a senha" required>
+        </div>
+      </div>
+
+      <div class="terms-line">
+        <input type="checkbox" id="c-termos" required>
+        <label for="c-termos">
+          Li e concordo com os <a href="#">Termos de Uso</a> e a
+          <a href="#">Política de Privacidade</a> da plataforma.
+        </label>
+      </div>
+
+      <button class="btn-submit-cad" onclick="submitCliente()">
+        <i class="fa-solid fa-check-circle"></i> &nbsp; Criar minha conta
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       FORMULÁRIO — ACOMPANHANTE
+       =================================================================== -->
+  <div class="form-section" id="formModelo">
+    <div class="form-card">
+
+      <!-- DADOS PESSOAIS -->
+      <p class="form-block-title"><i class="fa-solid fa-id-card"></i> Dados Pessoais</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome de Divulgação <span class="req">*</span></label>
+          <input type="text" id="m-nome" placeholder="Nome que aparecerá no perfil" required>
+        </div>
+        <div class="form-group">
+          <label>Idade <span class="req">*</span></label>
+          <input type="number" id="m-idade" placeholder="Ex: 24" min="18" max="70" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Cidade <span class="req">*</span></label>
+          <input type="text" id="m-cidade" placeholder="Ex: Porto Alegre" required>
+        </div>
+        <div class="form-group">
+          <label>Bairro</label>
+          <input type="text" id="m-bairro" placeholder="Ex: Moinhos de Vento">
+        </div>
+      </div>
+
+      <!-- CARACTERÍSTICAS FÍSICAS -->
+      <p class="form-block-title"><i class="fa-solid fa-person"></i> Características Físicas</p>
+
+      <div class="form-row cols-3">
+        <div class="form-group">
+          <label>Altura</label>
+          <input type="text" id="m-altura" placeholder="Ex: 1,68m">
+        </div>
+        <div class="form-group">
+          <label>Peso</label>
+          <input type="text" id="m-peso" placeholder="Ex: 58kg">
+        </div>
+        <div class="form-group">
+          <label>Cor dos Olhos</label>
+          <select id="m-olhos">
+            <option value="">Selecione</option>
+            <option>Castanhos</option>
+            <option>Verdes</option>
+            <option>Azuis</option>
+            <option>Mel</option>
+            <option>Pretos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row cols-3">
+        <div class="form-group">
+          <label>Cabelo</label>
+          <select id="m-cabelo">
+            <option value="">Selecione</option>
+            <option>Loiro</option>
+            <option>Morena</option>
+            <option>Ruiva</option>
+            <option>Preta</option>
+            <option>Morena Clara</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Etnia</label>
+          <select id="m-etnia">
+            <option value="">Selecione</option>
+            <option>Branca</option>
+            <option>Parda</option>
+            <option>Negra</option>
+            <option>Latina</option>
+            <option>Asiática</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Silicone</label>
+          <select id="m-silicone">
+            <option value="">Selecione</option>
+            <option>Não</option>
+            <option>Sim</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SOBRE E SERVIÇOS -->
+      <p class="form-block-title"><i class="fa-solid fa-pen-to-square"></i> Sobre Mim e Serviços</p>
+
+      <div class="form-group full">
+        <label>Descrição / Bio <span class="req">*</span></label>
+        <textarea id="m-bio" placeholder="Descreva-se com elegância para atrair os melhores clientes…" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Serviços Oferecidos</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" value="Eventos"> Eventos</label>
+          <label class="check-item"><input type="checkbox" value="Jantares"> Jantares</label>
+          <label class="check-item"><input type="checkbox" value="Viagens"> Viagens</label>
+          <label class="check-item"><input type="checkbox" value="Pernoite"> Pernoite</label>
+          <label class="check-item"><input type="checkbox" value="Massagem"> Massagem</label>
+          <label class="check-item"><input type="checkbox" value="Passeios"> Passeios</label>
+          <label class="check-item"><input type="checkbox" value="VIP"> Atend. VIP</label>
+        </div>
+      </div>
+
+      <!-- ATENDIMENTO E VALORES -->
+      <p class="form-block-title"><i class="fa-solid fa-dollar-sign"></i> Atendimento e Valores</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tipo de Atendimento</label>
+          <select id="m-atendimento">
+            <option value="">Selecione</option>
+            <option>Com Local</option>
+            <option>A Domicílio</option>
+            <option>A Combinar</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Valor por Hora (R$) <span class="req">*</span></label>
+          <input type="number" id="m-valor" placeholder="Ex: 300" min="0" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tabela de Preços (outros períodos)</label>
+        <div id="priceRows">
+          <div class="form-row price-row-input" style="margin-bottom:8px;">
+            <input type="text" placeholder="Período (ex: 30 min)" class="price-label-input">
+            <input type="text" placeholder="Valor (ex: R$ 200)" class="price-value-input">
+          </div>
+        </div>
+        <button type="button" onclick="addPriceRow()" style="background:none;border:1px dashed var(--blue);color:var(--blue);padding:7px 16px;border-radius:6px;cursor:pointer;font-size:12px;margin-top:4px;font-family:var(--font);">
+          <i class="fa-solid fa-plus"></i> Adicionar período
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label>Formas de Pagamento</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" value="pix" checked> Pix</label>
+          <label class="check-item"><input type="checkbox" value="dinheiro"> Dinheiro</label>
+          <label class="check-item"><input type="checkbox" value="cartao"> Cartão</label>
+        </div>
+      </div>
+
+      <!-- HORÁRIOS -->
+      <p class="form-block-title"><i class="fa-solid fa-clock"></i> Horários de Atendimento</p>
+
+      <div id="scheduleRows">
+        <div class="form-row schedule-row" style="margin-bottom:10px;">
+          <input type="text" placeholder="Período (ex: Seg a Sex)" class="sched-day">
+          <input type="text" placeholder="Horário (ex: 10:00 às 22:00)" class="sched-time">
+        </div>
+      </div>
+      <button type="button" onclick="addScheduleRow()" style="background:none;border:1px dashed var(--blue);color:var(--blue);padding:7px 16px;border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:8px;font-family:var(--font);">
+        <i class="fa-solid fa-plus"></i> Adicionar período
+      </button>
+
+      <!-- LOCAL E COMODIDADES -->
+      <p class="form-block-title"><i class="fa-solid fa-house"></i> Local e Comodidades</p>
+
+      <div class="form-group">
+        <label>Comodidades Disponíveis</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" value="Ar-condicionado"> <i class="fa-solid fa-snowflake" style="font-size:13px"></i> Ar-condicionado</label>
+          <label class="check-item"><input type="checkbox" value="Banheiro Privativo"> <i class="fa-solid fa-shower" style="font-size:13px"></i> Banheiro Privativo</label>
+          <label class="check-item"><input type="checkbox" value="Estacionamento"> <i class="fa-solid fa-square-p" style="font-size:13px"></i> Estacionamento</label>
+          <label class="check-item"><input type="checkbox" value="Wi-fi"> <i class="fa-solid fa-wifi" style="font-size:13px"></i> Wi-fi</label>
+          <label class="check-item"><input type="checkbox" value="Frigobar"> <i class="fa-solid fa-wine-bottle" style="font-size:13px"></i> Frigobar</label>
+          <label class="check-item"><input type="checkbox" value="TV"> <i class="fa-solid fa-tv" style="font-size:13px"></i> TV</label>
+        </div>
+      </div>
+
+      <!-- CONTATO -->
+      <p class="form-block-title"><i class="fa-brands fa-whatsapp"></i> Contato</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>WhatsApp <span class="req">*</span></label>
+          <input type="tel" id="m-whatsapp" placeholder="+55 (51) 9 9999-0000" required>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="m-email" placeholder="seu@email.com">
+        </div>
+      </div>
+
+      <!-- FOTOS -->
+      <p class="form-block-title"><i class="fa-solid fa-camera"></i> Fotos do Perfil</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">
+        A primeira foto será usada como capa do seu perfil. Máximo 10 fotos. Formatos: JPG, PNG, WEBP.
+      </p>
+
+      <div class="upload-area" id="photoUploadArea">
+        <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotoUpload(event)">
+        <i class="fa-solid fa-images"></i>
+        <p><strong>Clique ou arraste suas fotos aqui</strong></p>
+        <p>JPG, PNG ou WEBP · até 10 fotos</p>
+      </div>
+      <div class="upload-count" id="photoCount"></div>
+      <div class="file-preview-grid" id="photoPreview"></div>
+
+      <!-- VÍDEOS -->
+      <p class="form-block-title" style="margin-top:28px;"><i class="fa-solid fa-video"></i> Vídeos do Perfil</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">
+        Vídeos que aparecerão na galeria do seu perfil. Máximo 3 vídeos. Formatos: MP4, MOV.
+      </p>
+
+      <div class="upload-area" id="videoUploadArea">
+        <input type="file" id="videoInput" accept="video/*" multiple onchange="handleVideoUpload(event)">
+        <i class="fa-solid fa-film"></i>
+        <p><strong>Clique ou arraste seus vídeos aqui</strong></p>
+        <p>MP4 ou MOV · até 3 vídeos</p>
+      </div>
+      <div class="upload-count" id="videoCount"></div>
+      <div class="file-preview-grid" id="videoPreview"></div>
+
+      <!-- FOTO SHORTS -->
+      <p class="form-block-title" style="margin-top:28px;"><i class="fa-solid fa-mobile-screen"></i> Short (Vídeo Vertical)</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">
+        Vídeo curto vertical (formato Reels/TikTok) que aparecerá na seção "Erótica Shorts" da página inicial.
+      </p>
+
+      <div class="upload-area" id="shortUploadArea">
+        <input type="file" id="shortInput" accept="video/*" onchange="handleShortUpload(event)">
+        <i class="fa-solid fa-clapperboard"></i>
+        <p><strong>Clique para selecionar o short</strong></p>
+        <p>MP4 vertical · máximo 60 segundos</p>
+      </div>
+      <div class="upload-count" id="shortCount"></div>
+      <div class="file-preview-grid" id="shortPreview"></div>
+
+      <!-- ACESSO -->
+      <p class="form-block-title"><i class="fa-solid fa-lock"></i> Acesso à Plataforma</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Senha <span class="req">*</span></label>
+          <input type="password" id="m-senha" placeholder="Mínimo 8 caracteres" required>
+        </div>
+        <div class="form-group">
+          <label>Confirmar Senha <span class="req">*</span></label>
+          <input type="password" id="m-senha2" placeholder="Repita a senha" required>
+        </div>
+      </div>
+
+      <div class="terms-line">
+        <input type="checkbox" id="m-termos" required>
+        <label for="m-termos">
+          Li e concordo com os <a href="#">Termos de Uso</a>, a
+          <a href="#">Política de Privacidade</a> e confirmo que sou maior de 18 anos.
+        </label>
+      </div>
+
+      <div class="terms-line">
+        <input type="checkbox" id="m-responsabilidade" required>
+        <label for="m-responsabilidade">
+          Declaro que as fotos e vídeos enviados são de minha autoria e autoridade, e
+          que o conteúdo é de minha exclusiva responsabilidade.
+        </label>
+      </div>
+
+      <button class="btn-submit-cad" onclick="submitModelo()">
+        <i class="fa-solid fa-paper-plane"></i> &nbsp; Enviar cadastro para análise
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ===== TELAS DE SUCESSO ===== -->
+  <div class="success-screen" id="successCliente">
+    <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+    <h2>Cadastro realizado!</h2>
+    <p>
+      Bem-vindo(a) à plataforma Erótica.<br>
+      Você receberá em primeira mão as novidades sobre novas acompanhantes no contato informado.
+    </p>
+    <a href="index.html" class="btn-back">← Voltar ao início</a>
+  </div>
+
+  <div class="success-screen" id="successModelo">
+    <div class="success-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+    <h2>Cadastro enviado!</h2>
+    <p>
+      Seu perfil foi enviado para análise pela nossa equipe.<br>
+      Em até <strong>48 horas</strong> você receberá uma confirmação no contato informado.<br><br>
+      Após aprovação, seu perfil estará disponível para todos os clientes da plataforma.
+    </p>
+    <a href="index.html" class="btn-back">← Voltar ao início</a>
+  </div>
+
+  <div class="page-spacer"></div>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="site-footer" style="margin-top:0">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="img/logobranco.png" alt="Erotica Logo">
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Termos</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    /* =============================================
+       SELEÇÃO DE TIPO
+       ============================================= */
+    function selectType(type) {
+      // Atualiza visual dos cards
+      document.getElementById('cardCliente').classList.toggle('selected', type === 'cliente');
+      document.getElementById('cardModelo').classList.toggle('selected',  type === 'modelo');
+
+      // Esconde todos os formulários e telas de sucesso
+      document.querySelectorAll('.form-section, .success-screen').forEach(el => el.classList.remove('active'));
+
+      // Mostra o formulário correto
+      const targetId = type === 'cliente' ? 'formCliente' : 'formModelo';
+      const section  = document.getElementById(targetId);
+      section.classList.add('active');
+
+      // Scroll suave até o formulário
+      setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+
+    /* =============================================
+       SUBMIT — CLIENTE
+       ============================================= */
+    function submitCliente() {
+      const nome   = document.getElementById('c-nome').value.trim();
+      const email  = document.getElementById('c-email').value.trim();
+      const tel    = document.getElementById('c-tel').value.trim();
+      const senha  = document.getElementById('c-senha').value;
+      const senha2 = document.getElementById('c-senha2').value;
+      const termos = document.getElementById('c-termos').checked;
+
+      if (!nome)               return alert('Por favor, informe seu nome ou apelido.');
+      if (!email && !tel)      return alert('Informe ao menos um e-mail ou número de telefone.');
+      if (senha.length < 8)    return alert('A senha deve ter no mínimo 8 caracteres.');
+      if (senha !== senha2)    return alert('As senhas não coincidem.');
+      if (!termos)             return alert('Você precisa aceitar os Termos de Uso para continuar.');
+
+      // Aqui você conectaria ao backend
+      showSuccess('cliente');
+    }
+
+    /* =============================================
+       SUBMIT — MODELO
+       ============================================= */
+    function submitModelo() {
+      const nome     = document.getElementById('m-nome').value.trim();
+      const idade    = document.getElementById('m-idade').value;
+      const cidade   = document.getElementById('m-cidade').value.trim();
+      const whatsapp = document.getElementById('m-whatsapp').value.trim();
+      const bio      = document.getElementById('m-bio').value.trim();
+      const valor    = document.getElementById('m-valor').value;
+      const senha    = document.getElementById('m-senha').value;
+      const senha2   = document.getElementById('m-senha2').value;
+      const termos   = document.getElementById('m-termos').checked;
+      const resp     = document.getElementById('m-responsabilidade').checked;
+
+      if (!nome)             return alert('Informe o nome de divulgação.');
+      if (!idade || idade < 18) return alert('Você precisa ter 18 anos ou mais para se cadastrar.');
+      if (!cidade)           return alert('Informe a cidade de atendimento.');
+      if (!whatsapp)         return alert('Informe o WhatsApp para contato.');
+      if (!bio)              return alert('Escreva uma descrição para o seu perfil.');
+      if (!valor)            return alert('Informe o valor por hora.');
+      if (senha.length < 8)  return alert('A senha deve ter no mínimo 8 caracteres.');
+      if (senha !== senha2)  return alert('As senhas não coincidem.');
+      if (!termos)           return alert('Aceite os Termos de Uso para continuar.');
+      if (!resp)             return alert('Confirme a responsabilidade sobre o conteúdo enviado.');
+
+      // Aqui você conectaria ao backend / FormData com os arquivos
+      showSuccess('modelo');
+    }
+
+    /* =============================================
+       TELA DE SUCESSO
+       ============================================= */
+    function showSuccess(type) {
+      document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
+      document.getElementById('typeSelector').style.display = 'none';
+      document.querySelector('.cad-hero').style.display = 'none';
+
+      const id = type === 'cliente' ? 'successCliente' : 'successModelo';
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* =============================================
+       UPLOAD DE FOTOS
+       ============================================= */
+    let photoFiles = [];
+
+    function handlePhotoUpload(event) {
+      const newFiles = Array.from(event.target.files);
+      const remaining = 10 - photoFiles.length;
+      const toAdd = newFiles.slice(0, remaining);
+
+      if (newFiles.length > remaining) {
+        alert(`Você pode adicionar no máximo 10 fotos. ${remaining} vagas restantes.`);
+      }
+
+      toAdd.forEach(file => {
+        photoFiles.push(file);
+        const reader = new FileReader();
+        reader.onload = e => addPreview('photoPreview', e.target.result, file.name, 'img', photoFiles.length - 1);
+        reader.readAsDataURL(file);
+      });
+
+      updatePhotoCount();
+      event.target.value = '';
+    }
+
+    function updatePhotoCount() {
+      const el = document.getElementById('photoCount');
+      el.textContent = photoFiles.length > 0
+        ? `${photoFiles.length} foto(s) selecionada(s)` : '';
+    }
+
+    /* =============================================
+       UPLOAD DE VÍDEOS
+       ============================================= */
+    let videoFiles = [];
+
+    function handleVideoUpload(event) {
+      const newFiles = Array.from(event.target.files);
+      const remaining = 3 - videoFiles.length;
+      const toAdd = newFiles.slice(0, remaining);
+
+      if (newFiles.length > remaining) {
+        alert(`Você pode adicionar no máximo 3 vídeos. ${remaining} vagas restantes.`);
+      }
+
+      toAdd.forEach(file => {
+        videoFiles.push(file);
+        const url = URL.createObjectURL(file);
+        addPreview('videoPreview', url, file.name, 'video', videoFiles.length - 1);
+      });
+
+      document.getElementById('videoCount').textContent =
+        videoFiles.length > 0 ? `${videoFiles.length} vídeo(s) selecionado(s)` : '';
+      event.target.value = '';
+    }
+
+    /* =============================================
+       UPLOAD DO SHORT
+       ============================================= */
+    let shortFile = null;
+
+    function handleShortUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      shortFile = file;
+      document.getElementById('shortPreview').innerHTML = '';
+      const url = URL.createObjectURL(file);
+      addPreview('shortPreview', url, file.name, 'video', 0, true);
+      document.getElementById('shortCount').textContent = '1 short selecionado';
+      event.target.value = '';
+    }
+
+    /* =============================================
+       PREVIEW GENÉRICO
+       ============================================= */
+    function addPreview(containerId, src, name, type, index, single = false) {
+      const container = document.getElementById(containerId);
+      const item = document.createElement('div');
+      item.className = 'preview-item';
+      item.dataset.index = index;
+
+      const media = document.createElement(type === 'img' ? 'img' : 'video');
+      media.src = src;
+      if (type === 'video') { media.muted = true; media.loop = true; media.autoplay = true; }
+
+      const label = document.createElement('div');
+      label.className = 'file-label';
+      label.textContent = name;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.innerHTML = '✕';
+      removeBtn.onclick = () => {
+        item.remove();
+        if (containerId === 'photoPreview') {
+          photoFiles.splice(index, 1);
+          updatePhotoCount();
+        } else if (containerId === 'videoPreview') {
+          videoFiles.splice(index, 1);
+        } else {
+          shortFile = null;
+          document.getElementById('shortCount').textContent = '';
+        }
+      };
+
+      item.appendChild(media);
+      item.appendChild(label);
+      item.appendChild(removeBtn);
+      container.appendChild(item);
+    }
+
+    /* =============================================
+       LINHAS DINÂMICAS — PREÇOS E HORÁRIOS
+       ============================================= */
+    function addPriceRow() {
+      const container = document.getElementById('priceRows');
+      const row = document.createElement('div');
+      row.className = 'form-row price-row-input';
+      row.style.marginBottom = '8px';
+      row.innerHTML = `
+        <input type="text" placeholder="Período (ex: Pernoite)" class="price-label-input"
+               style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-family:var(--font);font-size:14px;outline:none;">
+        <input type="text" placeholder="Valor (ex: R$ 1.500)" class="price-value-input"
+               style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-family:var(--font);font-size:14px;outline:none;">
+        <button type="button" onclick="this.parentElement.remove()"
+                style="background:none;border:none;color:var(--red);cursor:pointer;font-size:18px;padding:0 4px;">✕</button>`;
+      container.appendChild(row);
+    }
+
+    function addScheduleRow() {
+      const container = document.getElementById('scheduleRows');
+      const row = document.createElement('div');
+      row.className = 'form-row schedule-row';
+      row.style.marginBottom = '10px';
+      row.innerHTML = `
+        <input type="text" placeholder="Período (ex: Sábados)" class="sched-day"
+               style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-family:var(--font);font-size:14px;outline:none;">
+        <input type="text" placeholder="Horário (ex: 14:00 às 20:00)" class="sched-time"
+               style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-family:var(--font);font-size:14px;outline:none;">
+        <button type="button" onclick="this.parentElement.remove()"
+                style="background:none;border:none;color:var(--red);cursor:pointer;font-size:18px;padding:0 4px;">✕</button>`;
+      container.appendChild(row);
+    }
+
+    /* =============================================
+       DRAG & DROP
+       ============================================= */
+    ['photoUploadArea', 'videoUploadArea', 'shortUploadArea'].forEach(id => {
+      const area = document.getElementById(id);
+      if (!area) return;
+      area.addEventListener('dragover',  e => { e.preventDefault(); area.classList.add('dragover'); });
+      area.addEventListener('dragleave', () => area.classList.remove('dragover'));
+      area.addEventListener('drop', e => {
+        e.preventDefault();
+        area.classList.remove('dragover');
+        const input = area.querySelector('input[type="file"]');
+        // Cria um evento sintético com os arquivos soltos
+        const dt = e.dataTransfer;
+        if (!dt || !dt.files.length) return;
+        const synth = { target: { files: dt.files, value: '' } };
+        if (id === 'photoUploadArea') handlePhotoUpload(synth);
+        else if (id === 'videoUploadArea') handleVideoUpload(synth);
+        else handleShortUpload(synth);
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
