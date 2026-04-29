@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,16 +17,16 @@
         <img src="img/logoeroticamaior2.png" alt="Erotica Logo" class="site-logo">
       </div>
       <nav class="nav-links">
-        <a href="index.html">Início</a>
-        <a href="modelos.html">+ Modelos</a>
-        <a href="anuncie.html" class="btn-anuncie">Anuncie</a>
+        <a href="index.html" data-i18n="nav.home">Início</a>
+        <a href="modelos.html" data-i18n="nav.models">+ Modelos</a>
+        <a href="anuncie.html" class="btn-anuncie" data-i18n="nav.advertise">Anuncie</a>
       </nav>
     </div>
   </header>
 
   <main class="container profile-main-container">
 
-    <!-- Nome/cidade — MOBILE (topo) -->
+    <!-- Nome — MOBILE -->
     <div class="profile-header-mobile">
       <h1 class="profile-name-mobile">…</h1>
       <p class="profile-meta-mobile">…</p>
@@ -34,27 +34,14 @@
 
     <div class="profile-grid">
 
-      <!-- ============================
-           COLUNA ESQUERDA: MÍDIA
-           ============================ -->
+      <!-- COLUNA ESQUERDA: MÍDIA -->
       <aside class="profile-visual-column">
 
-        <!-- Foto principal -->
         <div class="main-photo-wrapper">
           <img src="" id="mainPhoto" alt="Foto principal">
-
-          <!-- Badges — visibilidade controlada por JS -->
-          <span class="badge-verificado-top" id="badgeVerificado" style="display:none">
-            PERFIL VERIFICADO
-          </span>
-          <span class="badge-status-bottom" id="badgeDisponivel">
-            DISPONÍVEL AGORA
-          </span>
-          <span class="badge-vip-overlay" id="badgeVip" style="display:none">
-            ⭐ VIP
-          </span>
-
-          <!-- Curtidas -->
+          <span class="badge-verificado-top" id="badgeVerificado" style="display:none" data-i18n="profile.badge.verified">PERFIL VERIFICADO</span>
+          <span class="badge-status-bottom" id="badgeDisponivel">DISPONÍVEL AGORA</span>
+          <span class="badge-vip-overlay" id="badgeVip" style="display:none">⭐ VIP</span>
           <div class="like-counter-overlay">
             <button class="btn-like" id="btnLike">
               <i class="fa-solid fa-heart"></i>
@@ -63,30 +50,22 @@
           </div>
         </div>
 
-        <!-- Galeria de fotos -->
         <div class="gallery-section">
-          <h4>Galeria de Fotos</h4>
-          <div class="thumbnail-grid" id="thumbGrid">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <h4 data-i18n="profile.gallery.photos">Galeria de Fotos</h4>
+          <div class="thumbnail-grid" id="thumbGrid"></div>
         </div>
 
-        <!-- Galeria de vídeos -->
         <div class="video-section">
-          <h4>Seção de Vídeos</h4>
-          <div class="video-grid" id="videoGrid">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <h4 data-i18n="profile.gallery.videos">Seção de Vídeos</h4>
+          <div class="video-grid" id="videoGrid"></div>
         </div>
 
       </aside>
 
-      <!-- ============================
-           COLUNA DIREITA: DADOS
-           ============================ -->
+      <!-- COLUNA DIREITA: DADOS -->
       <div class="profile-data-column">
 
-        <!-- Nome/cidade — DESKTOP -->
+        <!-- Nome — DESKTOP -->
         <div class="profile-header-desktop">
           <h1 class="profile-name-desktop">…</h1>
           <p class="profile-meta-desktop">…</p>
@@ -95,21 +74,20 @@
         <!-- WhatsApp desktop -->
         <div class="whatsapp-wrapper-desktop">
           <a href="#" class="btn-whatsapp-profile">
-            <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+            <i class="fa-brands fa-whatsapp"></i>
+            <span data-i18n="profile.whatsapp">WHATSAPP</span>
           </a>
         </div>
 
-        <!-- Tabela de preços -->
+        <!-- Preços -->
         <div class="price-table-container">
-          <span class="price-starting-label">A partir de:</span>
-          <div id="priceTable">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <span class="price-starting-label" data-i18n="profile.from">A partir de:</span>
+          <div id="priceTable"></div>
         </div>
 
-        <!-- Tipo de atendimento -->
+        <!-- Atendimento -->
         <div class="service-type-highlight">
-          <span class="label">ATENDIMENTO</span>
+          <span class="label" data-i18n="profile.attendance">ATENDIMENTO</span>
           <span class="value" id="atendValue">…</span>
         </div>
 
@@ -117,17 +95,15 @@
 
         <!-- Pagamentos -->
         <div class="payment-methods-section">
-          <h3>FORMAS DE PAGAMENTO</h3>
-          <div class="payment-grid" id="payGrid">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <h3 data-i18n="profile.payment.title">FORMAS DE PAGAMENTO</h3>
+          <div class="payment-grid" id="payGrid"></div>
         </div>
 
         <hr class="profile-divider">
 
         <!-- Bio -->
         <div class="about-me-section">
-          <h3>SOBRE MIM</h3>
+          <h3 data-i18n="profile.about.title">SOBRE MIM</h3>
           <p id="profileBio">…</p>
         </div>
 
@@ -135,15 +111,13 @@
 
         <!-- Serviços -->
         <div class="services-section">
-          <h3>SERVIÇOS</h3>
-          <div class="services-tags" id="servicosTags">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <h3 data-i18n="profile.services.title">SERVIÇOS</h3>
+          <div class="services-tags" id="servicosTags"></div>
         </div>
 
         <hr class="profile-divider">
 
-        <!-- Banner de Propaganda -->
+        <!-- Banner -->
         <div class="profile-ad-banner" id="profileAdBanner">
           <a href="#" target="_blank">
             <img src="img/anuncio03.png" alt="Publicidade" id="profileAdImg">
@@ -152,53 +126,46 @@
 
         <!-- Características físicas -->
         <div class="physical-specs-section">
-          <h3>CARACTERÍSTICAS FÍSICAS</h3>
-          <div class="physical-grid" id="physGrid">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <h3 data-i18n="profile.physical.title">CARACTERÍSTICAS FÍSICAS</h3>
+          <div class="physical-grid" id="physGrid"></div>
         </div>
 
         <!-- Horários -->
         <div class="schedule-section">
-          <h3>HORÁRIOS DE ATENDIMENTO</h3>
-          <div class="schedule-grid" id="schedGrid">
-            <!-- preenchido por loadProfile() -->
-          </div>
+          <h3 data-i18n="profile.schedule.title">HORÁRIOS DE ATENDIMENTO</h3>
+          <div class="schedule-grid" id="schedGrid"></div>
         </div>
 
         <!-- Local -->
         <div class="location-details-section">
-          <h3>LOCAL DE ATENDIMENTO</h3>
+          <h3 data-i18n="profile.location.title">LOCAL DE ATENDIMENTO</h3>
           <div class="location-card-info">
             <p class="loc-address" id="locAddress">…</p>
-            <div class="comfort-icons" id="comfortGrid">
-              <!-- preenchido por loadProfile() -->
-            </div>
+            <div class="comfort-icons" id="comfortGrid"></div>
           </div>
         </div>
 
         <!-- Avaliações -->
         <div class="reviews-section">
-          <h3>MURAL DE AVALIAÇÕES</h3>
+          <h3 data-i18n="profile.reviews.title">MURAL DE AVALIAÇÕES</h3>
           <div class="reviews-summary">
             <div class="stars-total">
               <span id="starsEl"></span>
               <span id="reviewsNota"></span>
             </div>
           </div>
-          <div class="reviews-list" id="reviewsList">
-            <!-- preenchido por loadProfile() -->
-          </div>
-          <button class="btn-add-review">Deixar uma avaliação</button>
+          <div class="reviews-list" id="reviewsList"></div>
+          <button class="btn-add-review" data-i18n="profile.reviews.btn">Deixar uma avaliação</button>
         </div>
 
-      </div><!-- fim .profile-data-column -->
-    </div><!-- fim .profile-grid -->
+      </div>
+    </div>
 
-    <!-- WhatsApp fixo no mobile -->
+    <!-- WhatsApp fixo mobile -->
     <div class="whatsapp-fixed-mobile">
       <a href="#" class="btn-whatsapp-profile">
-        <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+        <i class="fa-brands fa-whatsapp"></i>
+        <span data-i18n="profile.whatsapp">WHATSAPP</span>
       </a>
     </div>
 
@@ -210,30 +177,24 @@
         <img src="img/logobranco.png" alt="Erotica Logo">
       </div>
       <ul class="footer-links">
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Termos</a></li>
-        <li><a href="#">Privacidade</a></li>
-        <li><a href="#">Contato</a></li>
+        <li><a href="#" data-i18n="footer.about">Sobre</a></li>
+        <li><a href="#" data-i18n="footer.terms">Termos</a></li>
+        <li><a href="#" data-i18n="footer.privacy">Privacidade</a></li>
+        <li><a href="#" data-i18n="footer.contact">Contato</a></li>
       </ul>
     </div>
-    <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
+    <p class="footer-copy" data-i18n="footer.copy">© 2025 Erotica — Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Carrega o array data + a função loadProfile() -->
   <script src="script.js"></script>
-
+  <script src="i18n.js"></script>
   <script>
-    /* ===== Executado após script.js carregar ===== */
-
-    /* 1. Popula toda a página com dados da modelo */
     loadProfile();
 
-    /* 2. Troca foto ao clicar na miniatura */
     function updatePhoto(src) {
       document.getElementById('mainPhoto').src = src;
     }
 
-    /* 3. Botão de curtir */
     document.getElementById('btnLike').addEventListener('click', function () {
       this.classList.toggle('active');
       const counter = document.getElementById('like-count');
@@ -241,6 +202,9 @@
       count = this.classList.contains('active') ? count + 1 : count - 1;
       counter.textContent = count.toLocaleString('pt-BR');
     });
+
+    /* Re-carrega perfil ao trocar idioma (atualiza labels traduzidos) */
+    document.addEventListener('langchange', () => loadProfile());
   </script>
 
 </body>
