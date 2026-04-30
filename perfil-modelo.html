@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR" id="html-root">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carregando perfil… | Erótica</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="profile-page-body">
@@ -17,16 +17,16 @@
         <img src="img/bitmap.png" alt="Erotica Logo" class="site-logo">
       </div>
       <nav class="nav-links">
-        <a href="index.html" data-i18n="nav.home">Início</a>
-        <a href="modelos.html" data-i18n="nav.models">+ Modelos</a>
-        <a href="anuncie.html" class="btn-anuncie" data-i18n="nav.advertise">Anuncie</a>
+        <a href="index.html">Início</a>
+        <a href="modelos.html">+ Modelos</a>
+        <a href="anuncie.html" class="btn-anuncie">Anuncie</a>
       </nav>
     </div>
   </header>
 
   <main class="container profile-main-container">
 
-    <!-- Nome — MOBILE -->
+    <!-- Nome/cidade — MOBILE (topo) -->
     <div class="profile-header-mobile">
       <h1 class="profile-name-mobile">…</h1>
       <p class="profile-meta-mobile">…</p>
@@ -34,14 +34,27 @@
 
     <div class="profile-grid">
 
-      <!-- COLUNA ESQUERDA: MÍDIA -->
+      <!-- ============================
+           COLUNA ESQUERDA: MÍDIA
+           ============================ -->
       <aside class="profile-visual-column">
 
+        <!-- Foto principal -->
         <div class="main-photo-wrapper">
           <img src="" id="mainPhoto" alt="Foto principal">
-          <span class="badge-verificado-top" id="badgeVerificado" style="display:none" data-i18n="profile.badge.verified">PERFIL VERIFICADO</span>
-          <span class="badge-status-bottom" id="badgeDisponivel">DISPONÍVEL AGORA</span>
-          <span class="badge-vip-overlay" id="badgeVip" style="display:none">⭐ VIP</span>
+
+          <!-- Badges — visibilidade controlada por JS -->
+          <span class="badge-verificado-top" id="badgeVerificado" style="display:none">
+            PERFIL VERIFICADO
+          </span>
+          <span class="badge-status-bottom" id="badgeDisponivel">
+            DISPONÍVEL AGORA
+          </span>
+          <span class="badge-vip-overlay" id="badgeVip" style="display:none">
+            ⭐ VIP
+          </span>
+
+          <!-- Curtidas -->
           <div class="like-counter-overlay">
             <button class="btn-like" id="btnLike">
               <i class="fa-solid fa-heart"></i>
@@ -50,22 +63,30 @@
           </div>
         </div>
 
+        <!-- Galeria de fotos -->
         <div class="gallery-section">
-          <h4 data-i18n="profile.gallery.photos">Galeria de Fotos</h4>
-          <div class="thumbnail-grid" id="thumbGrid"></div>
+          <h4>Galeria de Fotos</h4>
+          <div class="thumbnail-grid" id="thumbGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
+        <!-- Galeria de vídeos -->
         <div class="video-section">
-          <h4 data-i18n="profile.gallery.videos">Seção de Vídeos</h4>
-          <div class="video-grid" id="videoGrid"></div>
+          <h4>Seção de Vídeos</h4>
+          <div class="video-grid" id="videoGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
       </aside>
 
-      <!-- COLUNA DIREITA: DADOS -->
+      <!-- ============================
+           COLUNA DIREITA: DADOS
+           ============================ -->
       <div class="profile-data-column">
 
-        <!-- Nome — DESKTOP -->
+        <!-- Nome/cidade — DESKTOP -->
         <div class="profile-header-desktop">
           <h1 class="profile-name-desktop">…</h1>
           <p class="profile-meta-desktop">…</p>
@@ -74,20 +95,21 @@
         <!-- WhatsApp desktop -->
         <div class="whatsapp-wrapper-desktop">
           <a href="#" class="btn-whatsapp-profile">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span data-i18n="profile.whatsapp">WHATSAPP</span>
+            <i class="fa-brands fa-whatsapp"></i> WHATSAPP
           </a>
         </div>
 
-        <!-- Preços -->
+        <!-- Tabela de preços -->
         <div class="price-table-container">
-          <span class="price-starting-label" data-i18n="profile.from">A partir de:</span>
-          <div id="priceTable"></div>
+          <span class="price-starting-label">A partir de:</span>
+          <div id="priceTable">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
-        <!-- Atendimento -->
+        <!-- Tipo de atendimento -->
         <div class="service-type-highlight">
-          <span class="label" data-i18n="profile.attendance">ATENDIMENTO</span>
+          <span class="label">ATENDIMENTO</span>
           <span class="value" id="atendValue">…</span>
         </div>
 
@@ -95,15 +117,17 @@
 
         <!-- Pagamentos -->
         <div class="payment-methods-section">
-          <h3 data-i18n="profile.payment.title">FORMAS DE PAGAMENTO</h3>
-          <div class="payment-grid" id="payGrid"></div>
+          <h3>FORMAS DE PAGAMENTO</h3>
+          <div class="payment-grid" id="payGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
         <hr class="profile-divider">
 
         <!-- Bio -->
         <div class="about-me-section">
-          <h3 data-i18n="profile.about.title">SOBRE MIM</h3>
+          <h3>SOBRE MIM</h3>
           <p id="profileBio">…</p>
         </div>
 
@@ -111,13 +135,15 @@
 
         <!-- Serviços -->
         <div class="services-section">
-          <h3 data-i18n="profile.services.title">SERVIÇOS</h3>
-          <div class="services-tags" id="servicosTags"></div>
+          <h3>SERVIÇOS</h3>
+          <div class="services-tags" id="servicosTags">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
         <hr class="profile-divider">
 
-        <!-- Banner -->
+        <!-- Banner de Propaganda -->
         <div class="profile-ad-banner" id="profileAdBanner">
           <a href="#" target="_blank">
             <img src="img/anuncio03.png" alt="Publicidade" id="profileAdImg">
@@ -126,46 +152,53 @@
 
         <!-- Características físicas -->
         <div class="physical-specs-section">
-          <h3 data-i18n="profile.physical.title">CARACTERÍSTICAS FÍSICAS</h3>
-          <div class="physical-grid" id="physGrid"></div>
+          <h3>CARACTERÍSTICAS FÍSICAS</h3>
+          <div class="physical-grid" id="physGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
         <!-- Horários -->
         <div class="schedule-section">
-          <h3 data-i18n="profile.schedule.title">HORÁRIOS DE ATENDIMENTO</h3>
-          <div class="schedule-grid" id="schedGrid"></div>
+          <h3>HORÁRIOS DE ATENDIMENTO</h3>
+          <div class="schedule-grid" id="schedGrid">
+            <!-- preenchido por loadProfile() -->
+          </div>
         </div>
 
         <!-- Local -->
         <div class="location-details-section">
-          <h3 data-i18n="profile.location.title">LOCAL DE ATENDIMENTO</h3>
+          <h3>LOCAL DE ATENDIMENTO</h3>
           <div class="location-card-info">
             <p class="loc-address" id="locAddress">…</p>
-            <div class="comfort-icons" id="comfortGrid"></div>
+            <div class="comfort-icons" id="comfortGrid">
+              <!-- preenchido por loadProfile() -->
+            </div>
           </div>
         </div>
 
         <!-- Avaliações -->
         <div class="reviews-section">
-          <h3 data-i18n="profile.reviews.title">MURAL DE AVALIAÇÕES</h3>
+          <h3>MURAL DE AVALIAÇÕES</h3>
           <div class="reviews-summary">
             <div class="stars-total">
               <span id="starsEl"></span>
               <span id="reviewsNota"></span>
             </div>
           </div>
-          <div class="reviews-list" id="reviewsList"></div>
-          <button class="btn-add-review" data-i18n="profile.reviews.btn">Deixar uma avaliação</button>
+          <div class="reviews-list" id="reviewsList">
+            <!-- preenchido por loadProfile() -->
+          </div>
+          <button class="btn-add-review">Deixar uma avaliação</button>
         </div>
 
-      </div>
-    </div>
+      </div><!-- fim .profile-data-column -->
+    </div><!-- fim .profile-grid -->
 
-    <!-- WhatsApp fixo mobile -->
+    <!-- WhatsApp fixo no mobile -->
     <div class="whatsapp-fixed-mobile">
       <a href="#" class="btn-whatsapp-profile">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span data-i18n="profile.whatsapp">WHATSAPP</span>
+        <i class="fa-brands fa-whatsapp"></i> WHATSAPP
       </a>
     </div>
 
@@ -174,27 +207,33 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-logo">
-        <img src="img/logobranco.png" alt="Erotica Logo">
+        <img src="img/bitmap.png" alt="Erotica Logo">
       </div>
       <ul class="footer-links">
-        <li><a href="#" data-i18n="footer.about">Sobre</a></li>
-        <li><a href="#" data-i18n="footer.terms">Termos</a></li>
-        <li><a href="#" data-i18n="footer.privacy">Privacidade</a></li>
-        <li><a href="#" data-i18n="footer.contact">Contato</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="#">Termos</a></li>
+        <li><a href="#">Privacidade</a></li>
+        <li><a href="#">Contato</a></li>
       </ul>
     </div>
-    <p class="footer-copy" data-i18n="footer.copy">© 2025 Erotica — Todos os direitos reservados.</p>
+    <p class="footer-copy">© 2025 Erotica — Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Carrega o array data + a função loadProfile() -->
   <script src="script.js"></script>
-  <script src="i18n.js"></script>
+
   <script>
+    /* ===== Executado após script.js carregar ===== */
+
+    /* 1. Popula toda a página com dados da modelo */
     loadProfile();
 
+    /* 2. Troca foto ao clicar na miniatura */
     function updatePhoto(src) {
       document.getElementById('mainPhoto').src = src;
     }
 
+    /* 3. Botão de curtir */
     document.getElementById('btnLike').addEventListener('click', function () {
       this.classList.toggle('active');
       const counter = document.getElementById('like-count');
@@ -202,12 +241,173 @@
       count = this.classList.contains('active') ? count + 1 : count - 1;
       counter.textContent = count.toLocaleString('pt-BR');
     });
+  </script>
 
-    /* Re-carrega perfil ao trocar idioma (atualiza labels traduzidos) */
-    document.addEventListener('langchange', () => loadProfile());
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:#000;z-index:9999999;overflow:hidden;touch-action:pan-y;">
+    <!-- Fechar -->
+    <button onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;z-index:10;background:rgba(0,0,0,0.6);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <!-- Contador -->
+    <div id="lbCounter" style="position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:10;color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;font-family:'Montserrat',sans-serif;"></div>
+    <!-- Container de scroll vertical -->
+    <div id="lbScroll" style="height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;">
+    </div>
+  </div>
+
+  <script>
+    /* ===== LIGHTBOX ===== */
+    let lbItems   = [];   // array de { type:'img'|'video', src }
+    let lbCurrent = 0;
+
+    // Imagem de propaganda para o interstício (5s)
+    const AD_VIDEO_SRC = 'img/anuncio-video.mp4'; // substitua pelo vídeo real
+    const AD_POSTER    = 'img/anuncio03.png';
+
+    function openLightbox(index) {
+      lbCurrent = index;
+      const lb = document.getElementById('lightbox');
+      lb.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      buildLbScroll();
+      setTimeout(() => scrollToLbItem(index), 50);
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+      // Pausa todos os vídeos dentro do lightbox
+      document.querySelectorAll('#lbScroll video').forEach(v => { v.pause(); v.currentTime = 0; });
+    }
+
+    function buildLbScroll() {
+      const scroll = document.getElementById('lbScroll');
+      scroll.innerHTML = '';
+
+      /* Monta lista intercalada: itens reais + anúncios a cada 3 */
+      let builtItems = []; // { realIndex, type, src } ou { isAd: true }
+      let realCount  = 0;
+
+      lbItems.forEach((item, i) => {
+        builtItems.push({ ...item, realIndex: i });
+        realCount++;
+        if (realCount % 3 === 0 && realCount < lbItems.length) {
+          builtItems.push({ isAd: true });
+        }
+      });
+
+      builtItems.forEach((item, bi) => {
+        const slide = document.createElement('div');
+        slide.style.cssText = `
+          width:100%; height:100vh;
+          scroll-snap-align:start; flex-shrink:0;
+          display:flex; align-items:center; justify-content:center;
+          position:relative; background:#000;`;
+        slide.dataset.builtIndex = bi;
+
+        if (item.isAd) {
+          /* Slide de anúncio — vídeo de 5s que avança sozinho */
+          slide.innerHTML = `
+            <div style="width:100%;height:100%;position:relative;">
+              <video id="adVideo${bi}" src="${AD_VIDEO_SRC}" poster="${AD_POSTER}"
+                     style="width:100%;height:100%;object-fit:cover;"
+                     muted playsinline></video>
+              <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);
+                          background:rgba(0,0,0,0.55);color:#fff;font-size:11px;font-weight:700;
+                          padding:4px 14px;border-radius:20px;font-family:'Montserrat',sans-serif;
+                          letter-spacing:0.08em;">
+                PUBLICIDADE
+              </div>
+              <div id="adTimer${bi}" style="position:absolute;bottom:24px;right:24px;
+                   background:rgba(0,0,0,0.6);color:#fff;font-size:13px;font-weight:700;
+                   padding:6px 14px;border-radius:20px;font-family:'Montserrat',sans-serif;">5</div>
+            </div>`;
+        } else if (item.type === 'img') {
+          slide.innerHTML = `
+            <img src="${item.src}" alt="Foto"
+                 style="max-width:100%;max-height:100vh;object-fit:contain;user-select:none;"
+                 draggable="false">`;
+        } else {
+          slide.innerHTML = `
+            <video src="${item.src}" poster="${item.poster || ''}"
+                   controls playsinline
+                   style="max-width:100%;max-height:100vh;object-fit:contain;"></video>`;
+        }
+
+        scroll.appendChild(slide);
+      });
+
+      /* Observer: ao entrar em view, toca vídeo / inicia countdown de ad */
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const bi = parseInt(entry.target.dataset.builtIndex);
+          const item = builtItems[bi];
+
+          /* Atualiza contador */
+          if (!item.isAd) {
+            const realIdx = item.realIndex;
+            document.getElementById('lbCounter').textContent =
+              (realIdx + 1) + ' / ' + lbItems.length;
+          } else {
+            document.getElementById('lbCounter').textContent = '';
+          }
+
+          /* Ad: play vídeo + countdown */
+          if (item.isAd) {
+            const vid   = document.getElementById('adVideo' + bi);
+            const timer = document.getElementById('adTimer' + bi);
+            if (vid) { vid.currentTime = 0; vid.play().catch(() => {}); }
+            let secs = 5;
+            const iv = setInterval(() => {
+              secs--;
+              if (timer) timer.textContent = secs;
+              if (secs <= 0) {
+                clearInterval(iv);
+                /* Avança para o próximo slide */
+                const nextSlide = entry.target.nextElementSibling;
+                if (nextSlide) nextSlide.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 1000);
+          }
+        });
+      }, { root: scroll, threshold: 0.6 });
+
+      scroll.querySelectorAll('div[data-built-index]').forEach(s => observer.observe(s));
+
+      /* Swipe / scroll → fechar se já no primeiro e arrasta para cima */
+      let startY = 0;
+      scroll.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+      scroll.addEventListener('touchend',   e => {
+        const dy = e.changedTouches[0].clientY - startY;
+        if (scroll.scrollTop === 0 && dy > 60) closeLightbox();
+      }, { passive: true });
+    }
+
+    function scrollToLbItem(realIndex) {
+      const scroll = document.getElementById('lbScroll');
+      /* Encontrar o slide cujo realIndex corresponde */
+      const slides = scroll.querySelectorAll('div[data-built-index]');
+      for (const s of slides) {
+        const bi   = parseInt(s.dataset.builtIndex);
+        /* Conta anúncios antes deste índice */
+        const adsB = Math.floor(realIndex / 3);
+        const expected = realIndex + adsB;
+        if (bi === expected) { s.scrollIntoView(); break; }
+      }
+    }
+
+    /* Fecha ao pressionar Escape */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
   </script>
 
 </body>
 </html>
+
+
 
 

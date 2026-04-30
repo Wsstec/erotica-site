@@ -1,16 +1,9 @@
 /* ===============================================================
    script.js — Erotica
    Dados completos + perfil 100% dinâmico via ?id=
-   Com suporte i18n: usa i18n.t('chave') nos textos gerados por JS
    =============================================================== */
 
-/* Helper seguro: funciona mesmo se i18n ainda não carregou */
-function _t(key, fallback) {
-  if (typeof i18n !== 'undefined') return i18n.t(key);
-  return fallback || key;
-}
-
-/* ===== Array de Modelos ===== */
+/* ===== Array de Modelos — todos os campos do perfil ===== */
 const data = [
   {
     id: 1,
@@ -365,25 +358,21 @@ function goToProfile(modelId) {
 }
 
 function createCardHTML(model) {
-  const available = _t('card.available', 'Disponível');
-  const verified  = _t('card.verified',  'VERIFICADA');
-  const perhour   = _t('card.perhour',   '/hora');
-
   return `
     <div class="model-card-modern" onclick="goToProfile(${model.id})">
       <img src="${model.Image}" alt="${model.name}" loading="lazy">
       ${model.vip ? `<div class="badge-vip-card">VIP</div>` : ''}
       ${model.verificado ? `
         <div class="badge-verified-modern">
-          <i class="fa-solid fa-circle-check"></i> ${verified}
+          <i class="fa-solid fa-circle-check"></i> VERIFICADA
         </div>` : ''}
       <div class="card-info-overlay">
-        ${model.disponivel ? `<div class="card-status-dot"><span class="dot-pulse"></span> ${available}</div>` : ''}
+        ${model.disponivel ? `<div class="card-status-dot"><span class="dot-pulse"></span> Disponível</div>` : ''}
         <h3 class="model-name-modern">${model.name}</h3>
         <div class="model-location-modern">
           <i class="fa-solid fa-location-dot"></i> ${model.city}
         </div>
-        <div class="model-price-modern">R$ ${model.valor_hora}${perhour}</div>
+        <div class="model-price-modern">R$ ${model.valor_hora}/hora</div>
       </div>
     </div>`;
 }
@@ -440,17 +429,15 @@ function loadProfile() {
   const model = data.find(m => m.id === id);
 
   if (!model) {
-    const notFoundTitle = _t('profile.notfound.title', 'Perfil não encontrado');
-    const notFoundBack  = _t('profile.notfound.back',  '← Voltar ao início');
     document.body.innerHTML = `
       <div style="text-align:center;padding:80px 20px;font-family:sans-serif;">
-        <h2 style="color:#EB5A5D">${notFoundTitle}</h2>
-        <a href="index.html" style="color:#28616C">${notFoundBack}</a>
+        <h2 style="color:#EB5A5D">Perfil não encontrado</h2>
+        <a href="index.html" style="color:#28616C">← Voltar ao início</a>
       </div>`;
     return;
   }
 
-  document.title = `${model.name} — ${_t('profile.notfound.title', 'Perfil')} | Erótica`;
+  document.title = `${model.name} — Perfil | Erótica`;
 
   const set = (sel, val, prop = 'textContent') =>
     document.querySelectorAll(sel).forEach(el => el[prop] = val);
@@ -469,16 +456,11 @@ function loadProfile() {
 
   /* Badges */
   const bv = el('badgeVerificado');
-  if (bv) {
-    bv.style.display = model.verificado ? 'block' : 'none';
-    bv.textContent = _t('profile.badge.verified', 'PERFIL VERIFICADO');
-  }
+  if (bv) bv.style.display = model.verificado ? 'block' : 'none';
 
   const bd = el('badgeDisponivel');
   if (bd) {
-    bd.textContent = model.disponivel
-      ? _t('profile.badge.available',   'DISPONÍVEL AGORA')
-      : _t('profile.badge.unavailable', 'INDISPONÍVEL');
+    bd.textContent = model.disponivel ? 'DISPONÍVEL AGORA' : 'INDISPONÍVEL';
     bd.style.borderLeftColor = model.disponivel ? '#25D366' : '#EB5A5D';
   }
 
@@ -489,21 +471,40 @@ function loadProfile() {
   const lc = el('like-count');
   if (lc) lc.textContent = model.likes.toLocaleString('pt-BR');
 
-  /* Galeria de fotos */
+  /* Galeria de fotos + vídeos → preenche lbItems para o lightbox */
+  const allPhotos = model.gallery  || [];
+  const allVideos = model.videos   || [];
+
+  // Monta array global do lightbox: fotos primeiro, depois vídeos
+  if (typeof window !== 'undefined') {
+    window.lbItems = [
+      ...allPhotos.map(src => ({ type: 'img', src })),
+      ...allVideos.map(v   => ({ type: 'video', src: v.src, poster: v.poster || '' }))
+    ];
+  }
+
+  /* Miniaturas de fotos — clicam abre lightbox */
   const tg = el('thumbGrid');
-  if (tg) tg.innerHTML = model.gallery.map(src =>
-    `<img src="${src}" alt="foto" onclick="updatePhoto('${src}')" loading="lazy">`
+  if (tg) tg.innerHTML = allPhotos.map((src, i) =>
+    `<img src="${src}" alt="foto" loading="lazy"
+          onclick="openLightbox(${i})"
+          style="cursor:zoom-in;">`
   ).join('');
 
-  /* Vídeos */
+  /* Vídeos — clique abre lightbox no índice correto */
   const vg = el('videoGrid');
   if (vg) {
-    if (model.videos.length === 0) {
-      vg.closest('.video-section').style.display = 'none';
+    if (allVideos.length === 0) {
+      const vs2 = vg.closest('.video-section');
+      if (vs2) vs2.style.display = 'none';
     } else {
-      vg.innerHTML = model.videos.map(v =>
-        `<div class="video-item"><video src="${v.src}" ${v.poster ? `poster="${v.poster}"` : ''} controls></video></div>`
-      ).join('');
+      vg.innerHTML = allVideos.map((v, i) => {
+        const lbIdx = allPhotos.length + i;
+        return `<div class="video-item" onclick="openLightbox(${lbIdx})" style="cursor:zoom-in;">
+          <video src="${v.src}" ${v.poster ? `poster="${v.poster}"` : ''} muted></video>
+          <div class="video-play-overlay"><i class="fa-solid fa-play"></i></div>
+        </div>`;
+      }).join('');
     }
   }
 
@@ -513,8 +514,7 @@ function loadProfile() {
     if (!model.videoVerificacao) {
       vs.style.display = 'none';
     } else {
-      const vid = vs.querySelector('video');
-      if (vid) vid.src = model.videoVerificacao;
+      vs.querySelector('video').src = model.videoVerificacao;
     }
   }
 
@@ -534,10 +534,6 @@ function loadProfile() {
     </div>`
   ).join('');
 
-  /* Label "A partir de" */
-  const psl = document.querySelector('.price-starting-label');
-  if (psl) psl.textContent = _t('profile.from', 'A partir de:');
-
   /* Pagamentos */
   const pg = el('payGrid');
   if (pg) pg.innerHTML = model.pagamentos.map(p => {
@@ -553,16 +549,16 @@ function loadProfile() {
   const st = el('servicosTags');
   if (st) st.innerHTML = model.servicos.map(s => `<span>${s}</span>`).join('');
 
-  /* Características físicas — labels traduzidos */
+  /* Características físicas */
   const phys = el('physGrid');
   if (phys) {
     phys.innerHTML = [
-      { label: _t('phys.age',    'Idade'),  val: `${model.age} anos` },
-      { label: _t('phys.height', 'Altura'), val: model.height },
-      { label: _t('phys.weight', 'Peso'),   val: model.weight },
-      { label: _t('phys.hair',   'Cabelo'), val: model.hair },
-      { label: _t('phys.eyes',   'Olhos'),  val: model.eyes },
-      { label: _t('phys.city',   'Cidade'), val: model.city }
+      { label: 'Idade',  val: `${model.age} anos` },
+      { label: 'Altura', val: model.height },
+      { label: 'Peso',   val: model.weight },
+      { label: 'Cabelo', val: model.hair },
+      { label: 'Olhos',  val: model.eyes },
+      { label: 'Cidade', val: model.city }
     ].map(s => `<div class="p-item"><span>${s.label}</span><strong>${s.val}</strong></div>`).join('');
   }
 
@@ -607,9 +603,6 @@ function loadProfile() {
       <p>"${r.texto}"</p>
     </div>`
   ).join('');
-
-  /* Re-aplica traduções nos elementos estáticos do perfil após carregar */
-  if (typeof i18n !== 'undefined') i18n.apply();
 }
 
 /* ===== Inicialização (index.html) ===== */
@@ -636,12 +629,34 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeBtn) closeBtn.addEventListener('click', () => {
     document.getElementById('modal').style.display = 'none';
   });
-
-  /* Re-renderiza os cards quando o idioma muda, para atualizar textos gerados por JS */
-  document.addEventListener('langchange', () => {
-    renderModelsGrid();
-    renderShorts();
-  });
 });
+
+/* =============================================
+   DROPDOWN DE IDIOMA (global)
+   ============================================= */
+function toggleLang(e) {
+  e.stopPropagation();
+  const dd = document.getElementById('langDropdown');
+  if (dd) dd.classList.toggle('open');
+}
+
+function setLang(lang, e) {
+  e.stopPropagation();
+  const label = document.getElementById('langLabel');
+  if (label) label.textContent = lang;
+  document.querySelectorAll('.lang-option').forEach(el => el.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  const dd = document.getElementById('langDropdown');
+  if (dd) dd.classList.remove('open');
+  // Aqui futuramente: trocar idioma do site
+}
+
+// Fecha o dropdown ao clicar fora
+document.addEventListener('click', () => {
+  const dd = document.getElementById('langDropdown');
+  if (dd) dd.classList.remove('open');
+});
+
+
 
 

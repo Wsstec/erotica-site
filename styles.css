@@ -10,7 +10,7 @@
   --muted: #666;
   --card-bg: #fff0f0;
   --border: #f3d2d2;
-  --font-padrao: "Montserrat Alternates", sans-serif;
+  --font-padrao: "Montserrat", sans-serif;
 }
 
 /* ================= Reset & Tipografia ================= */
@@ -29,7 +29,7 @@ html, body {
 }
 
 body {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: var(--bg);
   color: var(--text-dark);
 }
@@ -58,7 +58,50 @@ main {
   background: #fff;
   border-bottom: 1px solid #f3f4f6;
   padding: 10px 0;
+  position: relative;
+  z-index: 999999;
 }
+
+/* Wrapper do botão de idioma para posicionar o dropdown */
+.lang-wrapper {
+  position: relative;
+}
+
+.lang-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 130px;
+  z-index: 9999999;
+  overflow: hidden;
+}
+
+.lang-dropdown.open { display: block; }
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-family: var(--font-padrao);
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.lang-option:hover { background: #f5f5f5; }
+.lang-option.active { color: var(--primary-red); font-weight: 700; }
+.lang-option .flag  { font-size: 16px; }
 
 .top-bar .container {
   max-width: 1280px;
@@ -230,7 +273,7 @@ main {
   color: #eb5a5d !important;
   font-size: 42px !important;
   font-weight: 800 !important;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   line-height: 1;
 }
@@ -1463,6 +1506,9 @@ main {
    RESPONSIVIDADE — MOBILE (≤ 768px)
    ================================================ */
 @media (max-width: 768px) {
+  /* Ver todas — oculto no mobile */
+  .view-all-link { display: none !important; }
+
   /* Header */
   .logo-header .site-logo {
     height: 40px !important;
@@ -1666,6 +1712,37 @@ main {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ===== VIDEO PLAY OVERLAY (galeria do perfil) ===== */
+.video-item {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: background 0.2s;
+}
+
+.video-item:hover .video-play-overlay { background: rgba(0,0,0,0.5); }
+
+.video-play-overlay i {
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.9);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+/* Oculta scrollbar no lightbox */
+#lbScroll::-webkit-scrollbar { display: none; }
+
+
 
 
 
